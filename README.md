@@ -1,10 +1,10 @@
 # Raku Lingua::NumericWordForms
 
-This repository provides a Raku package for generator, parser, and interpreter of numeric word forms in different languages.
+This repository provides a Raku package with functions for the 
+generation, parsing, and interpretation of numeric word forms in different languages.
 
 The initial versions of the code in this repository can be found in the GitHub repository \[AAr1\].
 
-t
 ## Installation
 
 **1.** Install Raku (Perl 6) : https://raku.org/downloads . 
