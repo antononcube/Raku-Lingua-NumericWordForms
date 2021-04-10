@@ -1,0 +1,29 @@
+{
+    "perl" : "6.d",
+    "name" : "Lingua::NumericWordForms",
+    "api"  : "1",
+    "auth" : "github:antononcube",
+    "version" : "0.1.0",
+    "description" : "Lingua::NumericWordForms generator, parser, and interpreter of numeric word forms in different languages.",
+    "authors" : [ "Anton Antonov" ],
+    "license" : "Artistic-2.0",
+    "provides" : {
+        "Lingua::NumericWordForms" : "lib/Lingua/NumericWordForms/NumericWordForms.rakumod",
+        "Lingua::NumericWordForms::Actions::WordedNumberSpec" : "lib/Lingua/NumericWordForms/Actions/WordedNumberSpec.rakumod",
+        "Lingua::NumericWordForms::Actions::Bulgarian::WordedNumberSpec" : "lib/Lingua/NumericWordForms/Actions/Bulgarian/WordedNumberSpec.rakumod",
+        "Lingua::NumericWordForms::Actions::English::WordedNumberSpec" :   "lib/Lingua/NumericWordForms/Actions/English/WordedNumberSpec.rakumod",
+        "Lingua::NumericWordForms::Actions::Russian::WordedNumberSpec" :   "lib/Lingua/NumericWordForms/Actions/Russian/WordedNumberSpec.rakumod",
+        "Lingua::NumericWordForms::Roles::WordedNumberSpec" : "lib/Lingua/NumericWordForms/Roles/WordedNumberSpec.rakumod",
+        "Lingua::NumericWordForms::Roles::Bulgarian::WordedNumberSpec" : "lib/Lingua/NumericWordForms/Roles/Bulgarian/WordedNumberSpec.rakumod",
+        "Lingua::NumericWordForms::Roles::English::WordedNumberSpec" :   "lib/Lingua/NumericWordForms/Roles/English/WordedNumberSpec.rakumod",
+        "Lingua::NumericWordForms::Roles::Russian::WordedNumberSpec" :   "lib/Lingua/NumericWordForms/Roles/Russian/WordedNumberSpec.rakumod"
+    },
+    "depends" : [ ],
+    "build-depends" : [ ],
+    "test-depends" : [ ],
+    "resources" : [ ],
+    "tags": [
+        "parser", "interpreter", "word form", "number", "numeric"
+    ],
+    "source-url" : "https://github.com/antononcube/Raku-Lingua-NumericWordForms.git"
+}

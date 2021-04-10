@@ -1,0 +1,178 @@
+use Test;
+
+use lib './lib';
+use lib '.';
+
+use Lingua::NumericWordForms;
+
+plan 41;
+
+#-----------------------------------------------------------
+# Worded number specifications parsing
+#-----------------------------------------------------------
+
+## 1
+is from-numeric-word-form('fifteen hundred'), 1500,
+        'fifteen hundred';
+
+## 2
+is from-numeric-word-form('five hundred thirty eight'), 538,
+        'five hundred thirty eight';
+
+## 3
+is from-numeric-word-form('one thousand and five hundred'), 1500,
+        'one thousand and five hundred';
+
+## 4
+is from-numeric-word-form('six hundred million'), 600000000,
+        'six hundred million';
+
+## 5
+is from-numeric-word-form('thirteen hundred ninety nine million'), 1399000000,
+        'thirteen hundred ninety nine million';
+
+## 6
+is from-numeric-word-form('thirty - eight'), 38,
+        'thirty - eight';
+
+## 7
+is from-numeric-word-form('thirty-eight'), 38,
+        'thirty-eight';
+
+## 8
+is from-numeric-word-form('thirty eight'), 38,
+        'thirty eight';
+
+## 9
+is from-numeric-word-form('thirty - eight thousand'), 38000,
+        'thirty - eight thousand';
+
+## 10
+is from-numeric-word-form('thirty-eight thousand'), 38000,
+        'thirty-eight thousand';
+
+## 11
+is from-numeric-word-form('thirty eight thousand'), 38000,
+        'thirty eight thousand';
+
+## 12
+is from-numeric-word-form('three hundred and thirty eight'), 338,
+        'three hundred and thirty eight';
+
+## 13
+is from-numeric-word-form('three hundred thirty eight'), 338,
+        'three hundred thirty eight';
+
+## 14
+is from-numeric-word-form('two hundred and thirty eight thousand'), 238000,
+        'two hundred and thirty eight thousand';
+
+## 15
+is from-numeric-word-form('two hundred thirty eight thousand'), 238000,
+        'two hundred thirty eight thousand';
+
+## 16
+is from-numeric-word-form('eight'), 8,
+        'eight';
+
+## 17
+is from-numeric-word-form('eight hundred seventy - five thousand and twenty'), 875020,
+        'eight hundred seventy - five thousand and twenty';
+
+## 18
+is from-numeric-word-form('eight hundred thousand, five hundred'), 800500,
+        'eight hundred thousand, five hundred';
+
+## 19
+is from-numeric-word-form('eighty six'), 86,
+        'eighty six';
+
+## 20
+is from-numeric-word-form('eighty ten thousand , eight hundred zero million'), 90800000000,
+        'eighty ten thousand , eight hundred zero million';
+
+## 21
+is from-numeric-word-form('eleven hundred thousand , sixteen hundred'), 1101600,
+        'eleven hundred thousand , sixteen hundred';
+
+## 22
+is from-numeric-word-form('fifteen hundred and seventeen'), 1517,
+        'fifteen hundred and seventeen';
+
+## 23
+is from-numeric-word-form('fifty one'), 51,
+        'fifty one';
+
+## 24
+is from-numeric-word-form('fifty - two'), 52,
+        'fifty - two';
+
+## 25
+is from-numeric-word-form('five hundred ninety'), 590,
+        'five hundred ninety';
+
+## 26
+is from-numeric-word-form('forty six'), 46,
+        'forty six';
+
+## 27
+is from-numeric-word-form('four hundred'), 400,
+        'four hundred';
+
+## 28
+is from-numeric-word-form('fourteen hundred and seven'), 1407,
+        'fourteen hundred and seven';
+
+## 29
+is from-numeric-word-form('four thousand and two hundred thirty million three hundred thousand'), 4230300000,
+        'four thousand and two hundred thirty million three hundred thousand';
+
+## 30
+is from-numeric-word-form('nineteen hundred fourteen'), 1914,
+        'nineteen hundred fourteen';
+
+## 31
+is from-numeric-word-form('ninety'), 90,
+        'ninety';
+
+## 32
+is from-numeric-word-form('one hundred million'), 100000000,
+        'one hundred million';
+
+## 33
+is from-numeric-word-form('seven hundred and ninety'), 790,
+        'seven hundred and ninety';
+
+## 34
+is from-numeric-word-form('seven hundred million'), 700000000,
+        'seven hundred million';
+
+## 35
+is from-numeric-word-form('seventy'), 70,
+        'seventy';
+
+## 36
+is from-numeric-word-form('one thousand and five hundred'), 1500,
+        'one thousand and five hundred';
+
+## 37
+is from-numeric-word-form('sixteen hundred zero thousand million and two thousand, ten hundred thirty'), 1600000003030,
+        'sixteen hundred zero thousand million and two thousand, ten hundred thirty';
+
+## 38
+is from-numeric-word-form('sixty thousand'), 60000,
+        'sixty thousand';
+
+## 39
+is from-numeric-word-form('thirty - ten thousand zero'), 40000,
+        'thirty - ten thousand zero';
+
+## 40
+is from-numeric-word-form('three hundred and ninety eight thousand'), 398000,
+        'three hundred and ninety eight thousand';
+
+## 41
+is from-numeric-word-form('zero'), 0,
+        'zero';
+
+done-testing;
