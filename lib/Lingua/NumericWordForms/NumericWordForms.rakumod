@@ -27,12 +27,16 @@ use Lingua::NumericWordForms::Actions::Russian::WordedNumberSpec;
 my %langToAction =
     "bulgarian"      => Lingua::NumericWordForms::Actions::Bulgarian::WordedNumberSpec,
     "english"        => Lingua::NumericWordForms::Actions::English::WordedNumberSpec,
-    "russian"        => Lingua::NumericWordForms::Actions::Russian::WordedNumberSpec;
+    "russian"        => Lingua::NumericWordForms::Actions::Russian::WordedNumberSpec,
+    "български"      => Lingua::NumericWordForms::Actions::Bulgarian::WordedNumberSpec,
+    "руский"         => Lingua::NumericWordForms::Actions::Russian::WordedNumberSpec;
 
 my %langToRole =
     "bulgarian"      => Lingua::NumericWordForms::Roles::Bulgarian::WordedNumberSpec,
     "english"        => Lingua::NumericWordForms::Roles::English::WordedNumberSpec,
-    "russian"        => Lingua::NumericWordForms::Roles::Russian::WordedNumberSpec;
+    "russian"        => Lingua::NumericWordForms::Roles::Russian::WordedNumberSpec,
+    "български"      => Lingua::NumericWordForms::Roles::Bulgarian::WordedNumberSpec,
+    "руский"         => Lingua::NumericWordForms::Roles::Russian::WordedNumberSpec;
 
 
 #===========================================================
@@ -52,10 +56,15 @@ grammar WordFormParser
 #-----------------------------------------------------------
 proto from-numeric-word-form( Str:D $spec, Str:D $lang = 'English', Bool :$number = True ) is export {*}
 
+multi from-numeric-word-form( Str @specs, Str:D $lang = 'English', Bool :$number = True ) {
+    do for @specs -> $s {
+        from-numeric-word-form($s, $lang, :$number)
+    }
+}
+
 multi from-numeric-word-form( Str:D $spec, Str:D $lang = 'English', Bool :$number = True ) {
 
     die 'Unknown language.' unless %langToAction{$lang.lc}:exists;
-
 
     my $parserObj = WordFormParser but %langToRole{$lang.lc};
     my $res = $parserObj.parse( $spec.lc, rule => 'worded-number-spec');
