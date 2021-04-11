@@ -43,7 +43,7 @@ my %langToRole =
 #-----------------------------------------------------------
 grammar WordFormParser
         does Lingua::NumericWordForms::Roles::WordedNumberSpec {
-        rule TOP { <worded-number-spec> }
+        rule TOP { <numeric-word-form> }
     }
 
 #-----------------------------------------------------------
@@ -60,7 +60,7 @@ multi from-numeric-word-form( Str:D $spec, Str:D $lang = 'English', Bool :$numbe
     die 'Unknown language.' unless %langToAction{$lang.lc}:exists;
 
     my $parserObj = WordFormParser but %langToRole{$lang.lc};
-    my $res = $parserObj.parse( $spec.lc, rule => 'worded-number-spec');
+    my $res = $parserObj.parse( $spec.lc, rule => 'numeric-word-form');
 
     if not ( $res and $res.Str.chars > 0 ) {
         note 'Cannot parse the given word form with the specified language.';
@@ -69,7 +69,7 @@ multi from-numeric-word-form( Str:D $spec, Str:D $lang = 'English', Bool :$numbe
 
     $res = $parserObj.parse(
             $spec.lc,
-            rule => 'worded-number-spec',
+            rule => 'numeric-word-form',
             actions => %langToAction{$lang.lc}.new ).made;
 
     $number ?? $res !! $res.Str

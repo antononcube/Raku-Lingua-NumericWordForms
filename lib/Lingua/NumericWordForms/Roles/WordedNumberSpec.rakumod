@@ -6,7 +6,7 @@ use v6;
 
 role Lingua::NumericWordForms::Roles::WordedNumberSpec {
 
-    rule worded-number-spec { <worded_number_up_to_tril> }
+    rule numeric-word-form { <worded_number_up_to_tril> }
 
     proto token worded_number_100s {*}
     regex worded_number_100s:sym<General> { <name_1_to_19> \h+ <name_of_100> | <name_of_100> }

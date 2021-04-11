@@ -2,7 +2,7 @@ use v6;
 
 class Lingua::NumericWordForms::Actions::WordedNumberSpec {
 
-    method worded-number-spec($/)     { make $/.values[0].made }
+    method numeric-word-form($/)     { make $/.values[0].made }
 
     method worded_number_100s:sym<General>($/) { make $<name_1_to_19>.made * 100 }
 

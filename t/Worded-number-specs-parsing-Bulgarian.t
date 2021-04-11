@@ -8,13 +8,13 @@ use Lingua::NumericWordForms::Actions::Bulgarian::WordedNumberSpec;
 
 grammar ParseObj
         does Lingua::NumericWordForms::Roles::Bulgarian::WordedNumberSpec {
-    rule TOP { <worded-number-spec> }
+    rule TOP { <numeric-word-form> }
 };
 
 sub parse-func(Str:D $spec) {
     ParseObj.parse(
             $spec.lc,
-            rule => 'worded-number-spec',
+            rule => 'numeric-word-form',
             actions => Lingua::NumericWordForms::Actions::Bulgarian::WordedNumberSpec.new).made,
 }
 
