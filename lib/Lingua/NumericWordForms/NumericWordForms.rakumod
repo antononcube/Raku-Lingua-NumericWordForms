@@ -24,6 +24,8 @@ use Lingua::NumericWordForms::Actions::English::WordedNumberSpec;
 use Lingua::NumericWordForms::Actions::Russian::WordedNumberSpec;
 
 #===========================================================
+# Parsing
+#===========================================================
 my %langToAction =
     "bulgarian"      => Lingua::NumericWordForms::Actions::Bulgarian::WordedNumberSpec,
     "english"        => Lingua::NumericWordForms::Actions::English::WordedNumberSpec,
@@ -38,16 +40,7 @@ my %langToRole =
     "български"      => Lingua::NumericWordForms::Roles::Bulgarian::WordedNumberSpec,
     "руский"         => Lingua::NumericWordForms::Roles::Russian::WordedNumberSpec;
 
-
-#===========================================================
-proto to-numeric-word-form( Int:D $num, Str:D $lang = 'English' ) is export {*}
-
-multi to-numeric-word-form( Int:D $num, Str:D $lang = 'English' ) {
-
-    die 'Not implemented';
-}
-
-#===========================================================
+#-----------------------------------------------------------
 grammar WordFormParser
         does Lingua::NumericWordForms::Roles::WordedNumberSpec {
         rule TOP { <worded-number-spec> }
@@ -79,5 +72,15 @@ multi from-numeric-word-form( Str:D $spec, Str:D $lang = 'English', Bool :$numbe
             rule => 'worded-number-spec',
             actions => %langToAction{$lang.lc}.new ).made;
 
-    $number ?? $res.Int !! $res
+    $number ?? $res !! $res.Str
+}
+
+#===========================================================
+# Generation
+#===========================================================
+proto to-numeric-word-form( Int:D $num, Str:D $lang = 'English' ) is export {*}
+
+multi to-numeric-word-form( Int:D $num, Str:D $lang = 'English' ) {
+
+    die 'Not implemented';
 }
