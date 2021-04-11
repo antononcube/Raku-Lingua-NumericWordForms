@@ -27,17 +27,19 @@ zef install https://github.com/antononcube/Raku-Lingua-NumericWordForms.git
 Generation of numeric word forms:
 
 ```perl6
-say to-numeric-word-from(8093);
-
-say to-nuimeric-word-from(8093, 'Bulgarian');
+use Lingua::NumericWordForms;
+say to-numeric-word-form(8093);
+say to-numeric-word-form(8093, 'Bulgarian');
+say to-numeric-word-form(8093, 'Russian');
 ```
 
 Interpretation of numeric word forms:
 
 ```perl6
-say from-numeric-word-from('one thousand and twenty three');
-
-say from-numeric-word-from('хиляда двадесет и три', 'Bulgarian');
+use Lingua::NumericWordForms;
+say from-numeric-word-form('one thousand and twenty three');
+say from-numeric-word-form('хиляда двадесет и три', 'Bulgarian');
+say from-numeric-word-form('одна тысяча двадцать три', 'Russian');
 ```
 
 ## References
