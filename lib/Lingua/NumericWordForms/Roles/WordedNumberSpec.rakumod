@@ -11,9 +11,9 @@ role Lingua::NumericWordForms::Roles::WordedNumberSpec {
     proto token worded_number_100s {*}
     regex worded_number_100s:sym<General> { <name_1_to_19> \h+ <name_of_100> | <name_of_100> }
 
-    regex worded_number_1000s    { <worded_number_up_to_1000>    \h+ <name_of_1000> }
-    regex worded_number_1000000s { <worded_number_up_to_1000000> \h+ <name_of_1000000> }
-    regex worded_number_bils     { <worded_number_up_to_bil>     \h+ <name_of_bil> }
+    regex worded_number_1000s    { [ <worded_number_up_to_1000>    \h+ ]? <name_of_1000> }
+    regex worded_number_1000000s {   <worded_number_up_to_1000000> \h+    <name_of_1000000> }
+    regex worded_number_bils     {   <worded_number_up_to_bil>     \h+    <name_of_bil> }
 
     proto token worded_number_up_to_100 {*}
     regex worded_number_up_to_100:sym<General> { <name_of_10s> [ [ \h* <.hyphen-symbol> \h* | \h+ ]? <name_1_to_10> ]? || <name_up_to_19> }
