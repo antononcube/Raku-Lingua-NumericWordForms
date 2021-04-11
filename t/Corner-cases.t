@@ -1,0 +1,38 @@
+use Test;
+
+use lib './lib';
+use lib '.';
+
+use Lingua::NumericWordForms;
+
+plan 6;
+
+#-----------------------------------------------------------
+# Corner cases
+#-----------------------------------------------------------
+
+## 1
+is from-numeric-word-form('fifteen hundred'), 1500,
+        'fifteen hundred';
+
+## 2
+is from-numeric-word-form('thousand and twenty three'), 1023,
+        'thousand and twenty three';
+
+## 3
+is from-numeric-word-form('one thousand and twenty three'), 1023,
+        'one thousand and twenty three';
+
+## 4
+is from-numeric-word-form('хиляда и двадесет и три', 'Bulgarian'), 1023,
+        'хиляда и двадесет и три';
+
+## 5 Should it pass?
+is from-numeric-word-form('хиляди и двадесет и три', 'Bulgarian'), 1023,
+        'хиляди и двадесет и три';
+
+## 6
+is from-numeric-word-form('шест хиляди и двадесет и три', 'Bulgarian'), 6023,
+        'шест хиляди и двадесет и три';
+
+done-testing;
