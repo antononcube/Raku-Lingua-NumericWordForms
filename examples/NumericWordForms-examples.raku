@@ -4,49 +4,6 @@ use lib './lib';
 use lib '.';
 
 use Lingua::NumericWordForms;
-use Lingua::NumericWordForms::Roles::English::WordedNumberSpec;
-use Lingua::NumericWordForms::Roles::Bulgarian::WordedNumberSpec;
-use Lingua::NumericWordForms::Roles::Russian::WordedNumberSpec;
-
-use Lingua::NumericWordForms::Actions::Bulgarian::WordedNumberSpec;
-use Lingua::NumericWordForms::Actions::English::WordedNumberSpec;
-use Lingua::NumericWordForms::Actions::Russian::WordedNumberSpec;
-
-grammar ParseObj
-        does Lingua::NumericWordForms::Roles::WordedNumberSpec
-        does Lingua::NumericWordForms::Roles::English::WordedNumberSpec {
-
-    rule TOP { <worded-number-spec> }
-};
-
-grammar BGParseObj
-        does Lingua::NumericWordForms::Roles::WordedNumberSpec
-        does Lingua::NumericWordForms::Roles::Bulgarian::WordedNumberSpec {
-
-    rule TOP { <worded-number-spec> }
-};
-
-
-#say ParseObj.parse( 'one thousand and five hundred', rule => 'worded-number-spec',  actions => Lingua::NumericWordForms::Actions::English::WordedNumberSpec.new ).made;
-
-#say ParseObj.parse( 'thousand and five hundred', rule => 'worded-number-spec',  actions => Lingua::NumericWordForms::Actions::English::WordedNumberSpec.new ).made;
-#
-#say '=' x 60;
-#
-#say ParseObj.parse( 'петстотин четиридесет и пет милиона седемстотин четири хиляди седемстотин осемдесет и три', rule => 'worded-number-spec');
-#
-#say '=' x 60;
-#
-#say ParseObj.parse( 'осемстотин четиридесет и два милиона седемстотин четири хиляди седемстотин осемдесет и три', rule => 'worded-number-spec');
-
-#say ParseObj.parse( 'two hundred and twenty one', rule => 'worded-number-spec', actions => Lingua::NumericWordForms::Actions::English::WordedNumberSpec.new ).made;
-#
-#say "-" x 60;
-#
-#say ParseObj.parse( 'eight hundred sixty‐seven billion, five hundred sixty‐one million, three hundred eighty thousand, four hundred fourteen', rule => 'worded-number-spec', actions => Lingua::NumericWordForms::Actions::English::WordedNumberSpec.new ).made;
-#
-#say "=" x 60;
-
 
 #my @commands = (
 #'thirty eight',
@@ -70,6 +27,7 @@ grammar BGParseObj
 my @commands = (
 'fifteen hundred',
 'one thousand and five hundred',
+'thousand and five hundred',
 'six hundred million',
 'thirteen hundred ninety nine million',
 'четиридесет и осем',
@@ -77,6 +35,7 @@ my @commands = (
 'сто двайсе и пет',
 'двеста петдесет и три',
 'две хиляди и трийсет',
+'хиляда и трийсет',
 'седемдесе и пет милиона, триста и осем хиляди и двеста петдесе и три'
 );
 
