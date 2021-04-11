@@ -12,8 +12,8 @@ role Lingua::NumericWordForms::Roles::WordedNumberSpec {
     regex worded_number_100s:sym<General> { <name_1_to_19> \h+ <name_of_100> | <name_of_100> }
 
     regex worded_number_1000s    { [ <worded_number_up_to_1000>    \h+ ]? <name_of_1000> }
-    regex worded_number_1000000s {   <worded_number_up_to_1000000> \h+    <name_of_1000000> }
-    regex worded_number_bils     {   <worded_number_up_to_bil>     \h+    <name_of_bil> }
+    regex worded_number_1000000s { [ <worded_number_up_to_1000000> \h+ ]? <name_of_1000000> }
+    regex worded_number_bils     { [ <worded_number_up_to_bil>     \h+ ]? <name_of_bil> }
 
     proto token worded_number_up_to_100 {*}
     regex worded_number_up_to_100:sym<General> { <name_of_10s> [ [ \h* <.hyphen-symbol> \h* | \h+ ]? <name_1_to_10> ]? || <name_up_to_19> }
@@ -26,7 +26,7 @@ role Lingua::NumericWordForms::Roles::WordedNumberSpec {
     token name_1_to_10 { <name_of_1> | <name_of_2> | <name_of_3> | <name_of_4> | <name_of_5> | <name_of_6> | <name_of_7> | <name_of_8> | <name_of_9> | <name_of_10> }
     token name_2_to_9  {               <name_of_2> | <name_of_3> | <name_of_4> | <name_of_5> | <name_of_6> | <name_of_7> | <name_of_8> | <name_of_9> }
     token name_1_to_19 {
-        <name_of_1> | <name_of_2> | <name_of_3> | <name_of_4> | <name_of_5> | <name_of_6> | <name_of_7> | <name_of_8> | <name_of_9> | <name_of_10> |
+        <name_of_1>  | <name_of_2>  | <name_of_3>  | <name_of_4>  | <name_of_5>  | <name_of_6>  | <name_of_7>  | <name_of_8>  | <name_of_9> | <name_of_10> |
         <name_of_11> | <name_of_12> | <name_of_13> | <name_of_14> | <name_of_15> | <name_of_16> | <name_of_17> | <name_of_18> | <name_of_19> }
     token name_up_to_19 { <name_of_0> | <name_1_to_19> }
 

@@ -2,13 +2,13 @@ use v6;
 
 class Lingua::NumericWordForms::Actions::WordedNumberSpec {
 
-    method worded-number-spec($/)     { $/.Str.chars > 0 ?? make $/.values[0].made !! 'Cannot parse it.'; }
+    method worded-number-spec($/)     { make $/.values[0].made }
 
-    method worded_number_100s:sym<General>($/) { make ( $<name_1_to_19>.made.Int * 100 ).Str }
+    method worded_number_100s:sym<General>($/) { make $<name_1_to_19>.made.Int * 100 }
 
-    method worded_number_1000s($/)    { make ( $<worded_number_up_to_1000>.made.Int * 1_000 ).Str }
-    method worded_number_1000000s($/) { make ( $<worded_number_up_to_1000000>.made.Int * 1_000_000 ).Str }
-    method worded_number_bils($/)     { make ( $<worded_number_up_to_bil>.made.Int * 1_000_000_000 ).Str }
+    method worded_number_1000s($/)    { make ( $<worded_number_up_to_1000>    ?? $<worded_number_up_to_1000>.made.Int * 1_000        !! 1_000 ).Str }
+    method worded_number_1000000s($/) { make ( $<worded_number_up_to_1000000> ?? $<worded_number_up_to_1000000>.made.Int * 1_000_000 !! 1_000_000 ).Str }
+    method worded_number_bils($/)     { make ( $<worded_number_up_to_bil>     ?? $<worded_number_up_to_bil>.made.Int * 1_000_000_000 !! 1_000_000_000 ).Str }
 
     method worded_number_up_to_100:sym<General>($/) {
         if $<name_of_10s> and $<name_1_to_10> {
