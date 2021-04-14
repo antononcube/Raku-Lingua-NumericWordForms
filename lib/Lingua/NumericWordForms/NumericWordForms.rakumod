@@ -78,9 +78,47 @@ multi from-numeric-word-form( Str:D $spec, Str:D $lang = 'English', Bool :$numbe
 #===========================================================
 # Generation
 #===========================================================
+
+#-----------------------------------------------------------
+## Taken from: http://rosettacode.org/wiki/Number_names#Raku
+
+my @I = <zero one    two    three    four     five    six     seven     eight    nine
+               ten  eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen>;
+my @X = <0    X      twenty thirty   forty    fifty   sixty   seventy   eighty   ninety>;
+my @C = @I X~ ' hundred';
+my @M = (<0 thousand>,
+    ((<m b tr quadr quint sext sept oct non>,
+    (map { ('', <un duo tre quattuor quin sex septen octo novem>).flat X~ $_ },
+    <dec vigint trigint quadragint quinquagint sexagint septuagint octogint nonagint>),
+    'cent').flat X~ 'illion')).flat;
+
+sub int-name (Int:D $num, Str:D $lang) {
+    if $num.substr(0,1) eq '-' { return "negative {int-name($num.substr(1))}" }
+    if $num eq '0' { return @I[0] }
+    my $m = 0;
+    return join ', ', reverse gather for $num.flip.comb(/\d ** 1..3/) {
+        my ($i,$x,$c) = .comb».Int;
+        if $i or $x or $c {
+            take join ' ', gather {
+                if $c { take @C[$c] }
+                if $x and $x == 1 { take @I[$i+10] }
+                else {
+                    if $x { take @X[$x] }
+                    if $i { take @I[$i] }
+                }
+                take @M[$m] // die "WOW! ZILLIONS!\n" if $m;
+            }
+        }
+        $m++;
+    }
+}
+
+#-----------------------------------------------------------
 proto to-numeric-word-form( Int:D $num, Str:D $lang = 'English' ) is export {*}
 
 multi to-numeric-word-form( Int:D $num, Str:D $lang = 'English' ) {
 
-    die 'Not implemented';
+    #die 'Unknown language.' unless %langToX{$lang.lc}:exists;
+
+    int-name($num, $lang.lc)
 }
