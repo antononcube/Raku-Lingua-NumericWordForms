@@ -45,8 +45,11 @@ for @commands -> $c {
     say "=" x 60;
     say $c;
     for @langs -> $l {
+        my $res = from-numeric-word-form($c, $l, :number);
         say "-" x 40;
-        say "Language $l: ", from-numeric-word-form($c, $l, :!number);
+        say "Language $l: ";
+        say 'from word form: ', $res;
+        say $res ?? to-numeric-word-form($res, $l) !! Nil;
     }
 };
 
