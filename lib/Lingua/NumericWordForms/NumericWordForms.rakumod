@@ -63,7 +63,8 @@ multi from-numeric-word-form( Str @specs, Str:D $lang = 'English', Bool :$number
 
 multi from-numeric-word-form( Str:D $spec, Str:D $lang = 'English', Bool :$number = True ) {
 
-    die 'Unknown language.' unless %langToAction{$lang.lc}:exists;
+    die ('Unknown language. The known languages are: ' ~ %langToAction.keys.sort.join(', ') ~ '.')
+    unless %langToAction{$lang.lc}:exists;
 
     my $parserObj = WordFormParser but %langToRole{$lang.lc};
     my $res = $parserObj.parse( $spec.lc, rule => 'numeric-word-form');
@@ -129,4 +130,16 @@ multi to-numeric-word-form( Int:D $num, Str:D $lang = 'English' ) {
     note "Using English, not $lang." unless $lang.lc eq "english";
 
     int-name($num, $lang.lc)
+}
+
+#===========================================================
+# Translation
+#===========================================================
+proto translate-numeric-word-form( Str:D $spec, Pair $rule = ('English' => 'Bulgarian') ) is export {*}
+
+multi translate-numeric-word-form( Str:D $spec, Pair $rule = ('English' => 'Bulgarian') ) {
+
+    my Int $num = from-numeric-word-form($spec, $rule.key, :number);
+
+    if $num { to-numeric-word-form($num, $rule.value) } else { Nil }
 }
