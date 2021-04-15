@@ -1,5 +1,7 @@
 # Raku Lingua::NumericWordForms
 
+## Introduction
+
 This repository provides a Raku package with functions for the 
 generation, parsing, and interpretation of numeric word forms in different languages.
 
@@ -20,6 +22,8 @@ to the functions in [BL1, SS1].
 **Remark:** Maybe a more complete version of this package should be merged with 
 [`Lingua::Number`](https://github.com/labster/p6-Lingua-Number), [BL1].
 
+------
+
 ## Installation
 
 **1.** Install Raku (Perl 6) : https://raku.org/downloads . 
@@ -36,6 +40,8 @@ to the functions in [BL1, SS1].
 ```
 zef install https://github.com/antononcube/Raku-Lingua-NumericWordForms.git
 ```
+
+------
 
 ## Examples
 
@@ -76,6 +82,8 @@ Translation from one language to another:
 
 (Currently that functions translates to English only.)
 
+------
+
 ## Roles
 
 This package provides (exports) roles that can be used in grammars or roles in other packages, applications, etc.
@@ -102,6 +110,8 @@ They were introduced in order to have simpler roles and actions code
 (and non-duplicated implementations.) Hence, that role and class should not be used in
 grammars and roles outside of this package.
 
+------
+
 ## TODO
 
 The following TODO items are ordered by priority, the most important are on top. 
@@ -111,7 +121,7 @@ The following TODO items are ordered by priority, the most important are on top.
 2. [ ] Automatic determination of the language
 
 3. [ ] Word form generation:
-   - [ ] English
+   - [X] English
    - [ ] Bulgarian
    - [ ] Russian
    - [ ] General algorithm
