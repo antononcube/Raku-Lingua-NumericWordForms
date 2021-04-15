@@ -64,6 +64,8 @@ class Lingua::NumericWordForms::Actions::WordedNumberSpec {
     method name_2_to_9($/)   { make $/.values[0].made }
     method name_1_to_19($/)  { make $/.values[0].made }
     method name_up_to_19($/) { make $/.values[0].made }
+    method name_20_to_29($/) { make $/.values[0].made }
+    method name_up_to_29($/) { make $/.values[0].made }
 
     method name_of_10s($/)   { make $/.values[0].made }
 
@@ -88,6 +90,15 @@ class Lingua::NumericWordForms::Actions::WordedNumberSpec {
     method name_of_18:sym<General>($/) {make 18}
     method name_of_19:sym<General>($/) {make 19}
     method name_of_20:sym<General>($/) {make 20}
+    method name_of_21:sym<General>($/) {make 21}
+    method name_of_22:sym<General>($/) {make 22}
+    method name_of_23:sym<General>($/) {make 23}
+    method name_of_24:sym<General>($/) {make 24}
+    method name_of_25:sym<General>($/) {make 25}
+    method name_of_26:sym<General>($/) {make 26}
+    method name_of_27:sym<General>($/) {make 27}
+    method name_of_28:sym<General>($/) {make 28}
+    method name_of_29:sym<General>($/) {make 29}
     method name_of_30:sym<General>($/) {make 30}
     method name_of_40:sym<General>($/) {make 40}
     method name_of_50:sym<General>($/) {make 50}

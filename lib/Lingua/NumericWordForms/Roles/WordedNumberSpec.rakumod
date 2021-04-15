@@ -29,6 +29,9 @@ role Lingua::NumericWordForms::Roles::WordedNumberSpec {
         <name_of_1>  | <name_of_2>  | <name_of_3>  | <name_of_4>  | <name_of_5>  | <name_of_6>  | <name_of_7>  | <name_of_8>  | <name_of_9> | <name_of_10> |
         <name_of_11> | <name_of_12> | <name_of_13> | <name_of_14> | <name_of_15> | <name_of_16> | <name_of_17> | <name_of_18> | <name_of_19> }
     token name_up_to_19 { <name_of_0> | <name_1_to_19> }
+    token name_20_to_29 {
+        <name_of_20> | <name_of_21> | <name_of_22> | <name_of_23> | <name_of_24> | <name_of_25> | <name_of_26> | <name_of_27> | <name_of_28> | <name_of_29> }
+    token name_up_to_29 { <name_of_0> | <name_1_to_19> | <name_20_to_29> }
 
     token name_of_10s { <name_of_20> | <name_of_30> | <name_of_40> | <name_of_50> | <name_of_60> | <name_of_70> | <name_of_80> | <name_of_90> }
 
@@ -95,6 +98,33 @@ role Lingua::NumericWordForms::Roles::WordedNumberSpec {
     proto token name_of_20 {*}
     token name_of_20:sym<General> {'20'}
 
+    proto token name_of_21 {*}
+    token name_of_21:sym<General> {'21'}
+
+    proto token name_of_22 {*}
+    token name_of_22:sym<General> {'22'}
+
+    proto token name_of_23 {*}
+    token name_of_23:sym<General> {'23'}
+
+    proto token name_of_24 {*}
+    token name_of_24:sym<General> {'24'}
+
+    proto token name_of_25 {*}
+    token name_of_25:sym<General> {'25'}
+
+    proto token name_of_26 {*}
+    token name_of_26:sym<General> {'26'}
+
+    proto token name_of_27 {*}
+    token name_of_27:sym<General> {'27'}
+
+    proto token name_of_28 {*}
+    token name_of_28:sym<General> {'28'}
+
+    proto token name_of_29 {*}
+    token name_of_29:sym<General> {'29'}
+    
     proto token name_of_30 {*}
     token name_of_30:sym<General> {'30'}
 
