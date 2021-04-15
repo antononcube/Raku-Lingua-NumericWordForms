@@ -17,7 +17,7 @@
         "Lingua::NumericWordForms::Roles::WordedNumberSpec" : "lib/Lingua/NumericWordForms/Roles/WordedNumberSpec.rakumod",
         "Lingua::NumericWordForms::Roles::Bulgarian::WordedNumberSpec" : "lib/Lingua/NumericWordForms/Roles/Bulgarian/WordedNumberSpec.rakumod",
         "Lingua::NumericWordForms::Roles::English::WordedNumberSpec" :   "lib/Lingua/NumericWordForms/Roles/English/WordedNumberSpec.rakumod",
-        "Lingua::NumericWordForms::Polish::English::WordedNumberSpec" :  "lib/Lingua/NumericWordForms/Roles/Polish/WordedNumberSpec.rakumod",
+        "Lingua::NumericWordForms::Roles::Polish::WordedNumberSpec" :    "lib/Lingua/NumericWordForms/Roles/Polish/WordedNumberSpec.rakumod",
         "Lingua::NumericWordForms::Roles::Russian::WordedNumberSpec" :   "lib/Lingua/NumericWordForms/Roles/Russian/WordedNumberSpec.rakumod"
     },
     "depends" : [ ],
