@@ -134,6 +134,7 @@ The following TODO items are ordered by priority, the most important are on top.
 
 7. [X] Translation function (from one language to another)
 
+------
 
 ## References
 
