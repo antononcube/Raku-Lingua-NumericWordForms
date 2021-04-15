@@ -59,6 +59,7 @@ say from-numeric-word-form('one thousand and twenty three');
 say from-numeric-word-form('хиляда двадесет и три', 'Bulgarian');
 say from-numeric-word-form('tysiąc dwadzieścia trzy', 'Polish');
 say from-numeric-word-form('одна тысяча двадцать три', 'Russian');
+say from-numeric-word-form('mil veintitrés', 'Spanish');
 ```
 Here is a screenshot of the results:
 
@@ -66,6 +67,14 @@ Here is a screenshot of the results:
 
 For more examples see the file 
 [NumericWordForms-examples.raku](./examples/NumericWordForms-examples.raku).
+
+Translation from one language to another:
+
+```raku
+‌‌say translate-numeric-word-form('хиляда двадесет и три', 'Bulgarian' => 'English');
+```
+
+(Currently that functions translates to English only.)
 
 ## Roles
 
@@ -112,6 +121,8 @@ The following TODO items are ordered by priority, the most important are on top.
 5. [ ] Implement parsing of year "shortcut" word forms, like "twenty o three" 
 
 6. [ ] Implement parsing of numeric word forms for rationals, like "five twelfths" 
+
+7. [X] Translation function (from one language to another)
 
 
 ## References
