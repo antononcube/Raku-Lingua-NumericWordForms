@@ -1,0 +1,231 @@
+use Test;
+
+use lib './lib';
+use lib '.';
+
+use Lingua::NumericWordForms::Roles::Polish::WordedNumberSpec;
+use Lingua::NumericWordForms::Actions::Polish::WordedNumberSpec;
+
+grammar ParseObj
+        does Lingua::NumericWordForms::Roles::Polish::WordedNumberSpec {
+    rule TOP { <numeric-word-form>  }
+};
+
+sub parse-func(Str:D $spec) {
+    ParseObj.parse(
+            $spec.lc,
+            rule => 'numeric-word-form',
+            actions => Lingua::NumericWordForms::Actions::Polish::WordedNumberSpec.new).made,
+}
+
+plan 42;
+
+#-----------------------------------------------------------
+# Worded number specifications parsing
+#-----------------------------------------------------------
+# The tests below are generated with the following Mathematica code:
+#SeedRandom[39902];
+#testLanguage = "Polish";
+#k = 6;
+#lsTestNumbers =
+#  Union[Join @@
+#    Map[RandomInteger[#, k] &, {{0, 19}, {20, 100}, {101,
+#       1000}, {1001, 10000}, {10001, 10^6}, {10^6, 10^9}, {10^9,
+#       10^12}}]];
+#Length[lsTestNumbers]
+#
+#lsSentences =
+#  Map[IntegerName[#, {"Russian", "Words"}] &, lsTestNumbers];
+#Shallow[lsSentences]
+#
+#StringRiffle[
+# MapThread[
+#  "## " <> #3 <> "\n" <> "is parse-func('" <> #1 <> "'), " <> #2 <>
+#    ",\n'" <> #1 <> "';" &, {lsSentences, ToString /@ lsTestNumbers,
+#   ToString /@ Range[Length[lsTestNumbers]]}], "\n\n"]
+
+## 1
+is parse-func('zero'), 0,
+        'zero';
+
+## 2
+is parse-func('trzy'), 3,
+        'trzy';
+
+## 3
+is parse-func('cztery'), 4,
+        'cztery';
+
+## 4
+is parse-func('dziewięć'), 9,
+        'dziewięć';
+
+## 5
+is parse-func('osiemnaście'), 18,
+        'osiemnaście';
+
+## 6
+is parse-func('dziewiętnaście'), 19,
+        'dziewiętnaście';
+
+## 7
+is parse-func('dwadzieścia jeden'), 21,
+        'dwadzieścia jeden';
+
+## 8
+is parse-func('dwadzieścia dziewięć'), 29,
+        'dwadzieścia dziewięć';
+
+## 9
+is parse-func('pięćdziesiąt sześć'), 56,
+        'pięćdziesiąt sześć';
+
+## 10
+is parse-func('siedemdziesiąt sześć'), 76,
+        'siedemdziesiąt sześć';
+
+## 11
+is parse-func('osiemdziesiąt pięć'), 85,
+        'osiemdziesiąt pięć';
+
+## 12
+is parse-func('dziewięćdziesiąt siedem'), 97,
+        'dziewięćdziesiąt siedem';
+
+## 13
+is parse-func('sto sześćdziesiąt trzy'), 163,
+        'sto sześćdziesiąt trzy';
+
+## 14
+is parse-func('sto sześćdziesiąt osiem'), 168,
+        'sto sześćdziesiąt osiem';
+
+## 15
+is parse-func('dwieście cztery'), 204,
+        'dwieście cztery';
+
+## 16
+is parse-func('dwieście sześćdziesiąt'), 260,
+        'dwieście sześćdziesiąt';
+
+## 17
+is parse-func('czterysta dwadzieścia siedem'), 427,
+        'czterysta dwadzieścia siedem';
+
+## 18
+is parse-func('osiemset cztery'), 804,
+        'osiemset cztery';
+
+## 19
+is parse-func('dwa tysiące siedemdziesiąt dwa'), 2072,
+        'dwa tysiące siedemdziesiąt dwa';
+
+## 20
+is parse-func('dwa tysiące dwieście dwadzieścia osiem'), 2228,
+        'dwa tysiące dwieście dwadzieścia osiem';
+
+## 21
+is parse-func('pięć tysięcy pięćset dwadzieścia osiem'), 5528,
+        'pięć tysięcy pięćset dwadzieścia osiem';
+
+## 22
+is parse-func('pięć tysięcy osiemset pięćdziesiąt'), 5850,
+        'pięć tysięcy osiemset pięćdziesiąt';
+
+## 23
+is parse-func('sześć tysięcy pięćset osiem'), 6508,
+        'sześć tysięcy pięćset osiem';
+
+## 24
+is parse-func('siedem tysięcy czterysta dwanaście'), 7412,
+        'siedem tysięcy czterysta dwanaście';
+
+## 25
+is parse-func('dwieście czterdzieści pięć tysięcy trzysta dwadzieścia cztery'), 245324,
+        'dwieście czterdzieści pięć tysięcy trzysta dwadzieścia cztery';
+
+## 26
+is parse-func('sześćset piętnaście tysięcy dwieście dziewięćdziesiąt osiem'), 615298,
+        'sześćset piętnaście tysięcy dwieście dziewięćdziesiąt osiem';
+
+## 27
+is parse-func('siedemset trzydzieści jeden tysięcy sto sześć'), 731106,
+        'siedemset trzydzieści jeden tysięcy sto sześć';
+
+## 28
+is parse-func('osiemset dwadzieścia trzy tysiące osiemset dwadzieścia cztery'), 823824,
+        'osiemset dwadzieścia trzy tysiące osiemset dwadzieścia cztery';
+
+## 29
+is parse-func('osiemset dziewięćdziesiąt jeden tysięcy osiemset siedemdziesiąt jeden'), 891871,
+        'osiemset dziewięćdziesiąt jeden tysięcy osiemset siedemdziesiąt jeden';
+
+## 30
+is parse-func('dziewięćset czterdzieści jeden tysięcy pięćset sześć'), 941506,
+        'dziewięćset czterdzieści jeden tysięcy pięćset sześć';
+
+## 31
+is parse-func('pięćdziesiąt pięć milionów trzysta dziewięćdziesiąt tysięcy pięćset dwadzieścia siedem'), 55390527,
+        'pięćdziesiąt pięć milionów trzysta dziewięćdziesiąt tysięcy pięćset dwadzieścia siedem';
+
+## 32
+is parse-func('siedemdziesiąt sześć milionów siedemset dwadzieścia cztery tysiące czterysta trzydzieści sześć'),
+        76724436,
+        'siedemdziesiąt sześć milionów siedemset dwadzieścia cztery tysiące czterysta trzydzieści sześć';
+
+## 33
+is parse-func('dwieście czterdzieści siedem milionów pięćset siedem tysięcy osiemnaście'), 247507018,
+        'dwieście czterdzieści siedem milionów pięćset siedem tysięcy osiemnaście';
+
+## 34
+is parse-func('pięćset szesnaście milionów siedemset pięćdziesiąt trzy tysiące trzysta siedemdziesiąt osiem'),
+        516753378,
+        'pięćset szesnaście milionów siedemset pięćdziesiąt trzy tysiące trzysta siedemdziesiąt osiem';
+
+## 35
+is parse-func('osiemset czterdzieści dwa miliony siedemset cztery tysiące siedemset osiemdziesiąt trzy'), 842704783,
+        'osiemset czterdzieści dwa miliony siedemset cztery tysiące siedemset osiemdziesiąt trzy';
+
+## 36
+is
+        parse-func('dziewięćset osiemdziesiąt osiem milionów dziewięćset sześćdziesiąt jeden tysięcy trzysta dwadzieścia cztery'),
+        988961324,
+        'dziewięćset osiemdziesiąt osiem milionów dziewięćset sześćdziesiąt jeden tysięcy trzysta dwadzieścia cztery';
+
+## 37
+is
+        parse-func('pięćset osiemdziesiąt siedem miliardów siedemset dwadzieścia siedem milionów dwieście trzydzieści tysięcy sto dziewięćdziesiąt dziewięć'),
+        587727230199,
+        'pięćset osiemdziesiąt siedem miliardów siedemset dwadzieścia siedem milionów dwieście trzydzieści tysięcy sto dziewięćdziesiąt dziewięć';
+
+## 38
+is
+        parse-func('sześćset dwadzieścia siedem miliardów pięćset osiemdziesiąt milionów dziewięćset trzydzieści pięć tysięcy siedemdziesiąt dwa'),
+        627580935072,
+        'sześćset dwadzieścia siedem miliardów pięćset osiemdziesiąt milionów dziewięćset trzydzieści pięć tysięcy siedemdziesiąt dwa';
+
+## 39
+is
+        parse-func('siedemset osiemdziesiąt cztery miliardy sześćset trzydzieści milionów siedemset trzydzieści osiem tysięcy sto dwadzieścia'),
+        784630738120,
+        'siedemset osiemdziesiąt cztery miliardy sześćset trzydzieści milionów siedemset trzydzieści osiem tysięcy sto dwadzieścia';
+
+## 40
+is
+        parse-func('osiemset cztery miliardy trzysta dziewięćdziesiąt siedem milionów czterysta szesnaście tysięcy siedemset trzydzieści sześć'),
+        804397416736,
+        'osiemset cztery miliardy trzysta dziewięćdziesiąt siedem milionów czterysta szesnaście tysięcy siedemset trzydzieści sześć';
+
+## 41
+is
+        parse-func('osiemset sześćdziesiąt siedem miliardów pięćset sześćdziesiąt jeden milionów trzysta osiemdziesiąt tysięcy czterysta czternaście'),
+        867561380414,
+        'osiemset sześćdziesiąt siedem miliardów pięćset sześćdziesiąt jeden milionów trzysta osiemdziesiąt tysięcy czterysta czternaście';
+
+## 42
+is
+        parse-func('dziewięćset osiemdziesiąt miliardów siedemset trzydzieści sześć milionów sto trzydzieści osiem tysięcy osiemset trzydzieści dziewięć'),
+        980736138839,
+        'dziewięćset osiemdziesiąt miliardów siedemset trzydzieści sześć milionów sto trzydzieści osiem tysięcy osiemset trzydzieści dziewięć';
+
+done-testing;

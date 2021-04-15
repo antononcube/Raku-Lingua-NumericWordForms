@@ -12,10 +12,12 @@
         "Lingua::NumericWordForms::Actions::WordedNumberSpec" : "lib/Lingua/NumericWordForms/Actions/WordedNumberSpec.rakumod",
         "Lingua::NumericWordForms::Actions::Bulgarian::WordedNumberSpec" : "lib/Lingua/NumericWordForms/Actions/Bulgarian/WordedNumberSpec.rakumod",
         "Lingua::NumericWordForms::Actions::English::WordedNumberSpec" :   "lib/Lingua/NumericWordForms/Actions/English/WordedNumberSpec.rakumod",
+        "Lingua::NumericWordForms::Actions::Polish::WordedNumberSpec" :    "lib/Lingua/NumericWordForms/Actions/Polish/WordedNumberSpec.rakumod",
         "Lingua::NumericWordForms::Actions::Russian::WordedNumberSpec" :   "lib/Lingua/NumericWordForms/Actions/Russian/WordedNumberSpec.rakumod",
         "Lingua::NumericWordForms::Roles::WordedNumberSpec" : "lib/Lingua/NumericWordForms/Roles/WordedNumberSpec.rakumod",
         "Lingua::NumericWordForms::Roles::Bulgarian::WordedNumberSpec" : "lib/Lingua/NumericWordForms/Roles/Bulgarian/WordedNumberSpec.rakumod",
         "Lingua::NumericWordForms::Roles::English::WordedNumberSpec" :   "lib/Lingua/NumericWordForms/Roles/English/WordedNumberSpec.rakumod",
+        "Lingua::NumericWordForms::Polish::English::WordedNumberSpec" :  "lib/Lingua/NumericWordForms/Roles/Polish/WordedNumberSpec.rakumod",
         "Lingua::NumericWordForms::Roles::Russian::WordedNumberSpec" :   "lib/Lingua/NumericWordForms/Roles/Russian/WordedNumberSpec.rakumod"
     },
     "depends" : [ ],

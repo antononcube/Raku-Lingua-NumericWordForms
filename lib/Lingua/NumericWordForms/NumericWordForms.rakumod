@@ -17,10 +17,12 @@ unit module Lingua::NumericWordForms;
 
 use Lingua::NumericWordForms::Roles::Bulgarian::WordedNumberSpec;
 use Lingua::NumericWordForms::Roles::English::WordedNumberSpec;
+use Lingua::NumericWordForms::Roles::Polish::WordedNumberSpec;
 use Lingua::NumericWordForms::Roles::Russian::WordedNumberSpec;
 
 use Lingua::NumericWordForms::Actions::Bulgarian::WordedNumberSpec;
 use Lingua::NumericWordForms::Actions::English::WordedNumberSpec;
+use Lingua::NumericWordForms::Actions::Polish::WordedNumberSpec;
 use Lingua::NumericWordForms::Actions::Russian::WordedNumberSpec;
 
 #===========================================================
@@ -29,15 +31,19 @@ use Lingua::NumericWordForms::Actions::Russian::WordedNumberSpec;
 my %langToAction =
     "bulgarian"      => Lingua::NumericWordForms::Actions::Bulgarian::WordedNumberSpec,
     "english"        => Lingua::NumericWordForms::Actions::English::WordedNumberSpec,
+    "polish"         => Lingua::NumericWordForms::Actions::Polish::WordedNumberSpec,
     "russian"        => Lingua::NumericWordForms::Actions::Russian::WordedNumberSpec,
     "български"      => Lingua::NumericWordForms::Actions::Bulgarian::WordedNumberSpec,
+    "polski"         => Lingua::NumericWordForms::Actions::Polish::WordedNumberSpec,
     "руский"         => Lingua::NumericWordForms::Actions::Russian::WordedNumberSpec;
 
 my %langToRole =
     "bulgarian"      => Lingua::NumericWordForms::Roles::Bulgarian::WordedNumberSpec,
     "english"        => Lingua::NumericWordForms::Roles::English::WordedNumberSpec,
+    "polish"         => Lingua::NumericWordForms::Roles::Polish::WordedNumberSpec,
     "russian"        => Lingua::NumericWordForms::Roles::Russian::WordedNumberSpec,
     "български"      => Lingua::NumericWordForms::Roles::Bulgarian::WordedNumberSpec,
+    "polski"         => Lingua::NumericWordForms::Roles::Polish::WordedNumberSpec,
     "руский"         => Lingua::NumericWordForms::Roles::Russian::WordedNumberSpec;
 
 #-----------------------------------------------------------
@@ -119,6 +125,8 @@ proto to-numeric-word-form( Int:D $num, Str:D $lang = 'English' ) is export {*}
 multi to-numeric-word-form( Int:D $num, Str:D $lang = 'English' ) {
 
     #die 'Unknown language.' unless %langToX{$lang.lc}:exists;
+
+    note "Using English, not $lang." unless $lang.lc eq "english";
 
     int-name($num, $lang.lc)
 }
