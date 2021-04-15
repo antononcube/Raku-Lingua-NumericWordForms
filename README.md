@@ -44,9 +44,12 @@ Generation of numeric word forms:
 ```perl6
 use Lingua::NumericWordForms;
 say to-numeric-word-form(8093);
-say to-numeric-word-form(8093, 'Bulgarian');
-say to-numeric-word-form(8093, 'Russian');
+say to-numeric-word-form(8093, 'Bulgarian'); # not implemented yet
+say to-numeric-word-form(8093, 'Russian');   # not implemented yet
 ```
+Here is a screenshot of the results:
+
+![to-demo](./documents/diagrams/to-numeric-form-demo-Raku-REPL.png)
 
 Interpretation of numeric word forms:
 
@@ -54,8 +57,12 @@ Interpretation of numeric word forms:
 use Lingua::NumericWordForms;
 say from-numeric-word-form('one thousand and twenty three');
 say from-numeric-word-form('хиляда двадесет и три', 'Bulgarian');
+say from-numeric-word-form('tysiąc dwadzieścia trzy', 'Polish');
 say from-numeric-word-form('одна тысяча двадцать три', 'Russian');
 ```
+Here is a screenshot of the results:
+
+![from-demo](./documents/diagrams/from-numeric-form-demo-Raku-REPL.png)
 
 For more examples see the file 
 [NumericWordForms-examples.raku](./examples/NumericWordForms-examples.raku).
