@@ -1,15 +1,18 @@
 
 =begin pod
 
-=head1 DSL::Entity::English::Jobs
+=head1 Lingua::NumericWordForms
 
-C<DSL::Entity::English::Jobs> package has grammar and action classes for the parsing and
-interpretation of natural language commands that specify classification workflows.
+C<Lingua::NumericWordForms> provides functions for the
+generation, parsing, and interpretation of numeric word forms in different languages.
 
 =head1 Synopsis
 
-    use Lingua::NumericWor;
-    my $rcode = ToJobEntityCode('use dfTitanic; split data in training and testing parts with ratio 0.7; make a classifier; show roc curves');
+    use Lingua::NumericWordForms;
+    say from-numeric-word-form('one thousand two hundred and five');
+    say from-numeric-word-form('хиляда двеста и пет', 'Bulgarian');
+    say to-numeric-word-form(3394);
+    say translate-numeric-word-form('сто двадесет и три', 'Bulgarian' => 'English');
 
 =end pod
 
