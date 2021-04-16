@@ -80,7 +80,7 @@ Translation from one language to another:
 ‌‌say translate-numeric-word-form('хиляда двадесет и три', 'Bulgarian' => 'English');
 ```
 
-(Currently that functions translates to English only.)
+(Currently that function translates to English only.)
 
 ------
 
@@ -107,7 +107,7 @@ For code examples see the file
 **Remark:** The role `Lingua::NumericWordForms::Roles::WordedNumberSpec` and the corresponding
 actions class `Lingua::NumericWordForms::Actions::WordedNumberSpec` are "abstract".
 They were introduced in order to have simpler roles and actions code 
-(and non-duplicated implementations.) Hence, that role and class should not be used in
+(and non-duplicated implementations.) Hence, that role and class *should not* be used in
 grammars and roles outside of this package.
 
 ------
