@@ -1,5 +1,7 @@
 # Raku Lingua::NumericWordForms
 
+[![Build Status](https://travis-ci.com/antononcube/Raku-Lingua-NumericWordForms.svg?branch=main)](https://travis-ci.com/antononcube/Raku-Lingua-NumericWordForms)
+
 ## Introduction
 
 This repository provides a Raku package with functions for the 
