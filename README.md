@@ -24,6 +24,11 @@ to the functions in [BL1, SS1].
 **Remark:** Maybe a more complete version of this package should be merged with 
 [`Lingua::Number`](https://github.com/labster/p6-Lingua-Number), [BL1].
 
+**Remark:** I can judge the quality of the results only of the languages:
+Bulgarian, English, and Russian. The numeric word form interpreters for the rest of the languages
+pass testing, but they might have potentially many deficiencies. 
+(That are easily detected by people who have mastered those languages.)
+
 ------
 
 ## Installation
