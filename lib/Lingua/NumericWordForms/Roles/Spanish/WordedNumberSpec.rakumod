@@ -51,6 +51,7 @@ role Lingua::NumericWordForms::Roles::Spanish::WordedNumberSpec
     token name_of_1000:sym<Spanish> {'mil'}
     token name_of_1000000:sym<Spanish> {'millón' | 'millon' | 'millones'}
     token name_of_bil:sym<Spanish> {'mil millones'}
+    token name_of_tril:sym<Spanish> {'billón'}
 
     token worded-number-and-conjunction:sym<Spanish> {'y'}
 }

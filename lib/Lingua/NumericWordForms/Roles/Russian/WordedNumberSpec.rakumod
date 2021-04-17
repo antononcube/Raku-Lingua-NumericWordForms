@@ -42,6 +42,7 @@ role Lingua::NumericWordForms::Roles::Russian::WordedNumberSpec
     token name_of_1000:sym<Russian> { 'тысяч' | 'тысяча' | 'тысячи'}
     token name_of_1000000:sym<Russian> {'миллион' | 'миллиона' | 'миллионов' }
     token name_of_bil:sym<Russian> {'миллиард' | 'миллиарда' | 'миллиардов'}
+    token name_of_tril:sym<Russian> {'триллион' | 'триллиона' | 'триллионов'}
 
     token worded-number-and-conjunction:sym<Russian> {'и'}
 }

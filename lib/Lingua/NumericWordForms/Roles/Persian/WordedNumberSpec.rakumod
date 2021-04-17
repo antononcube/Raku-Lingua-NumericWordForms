@@ -46,5 +46,6 @@ role Lingua::NumericWordForms::Roles::Persian::WordedNumberSpec
     token name_of_1000000:sym<Persian> {'یک میلیون'}
     token name_of_bil:sym<Persian> {'یک میلیارد'}
     token name_of_tril:sym<Persian> {'یک هزار میلیارد'}
+
     token worded-number-and-conjunction:sym<Persian> {'و'}
 }

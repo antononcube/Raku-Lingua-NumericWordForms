@@ -47,7 +47,8 @@ class Lingua::NumericWordForms::Actions::Russian::WordedNumberSpec
     method name_of_90:sym<Russian>($/) {make 90}
     method name_of_100:sym<Russian>($/) {make 100}
     method suffix_for_100:sym<Russian>($/) {make 100}
-    method name_of_1000:sym<Russian>($/) {make 1000}
-    method name_of_1000000:sym<Russian>($/) {make 1000000}
-    method name_of_bil:sym<Russian>($/) {make 1000000000}
+    method name_of_1000:sym<Russian>($/) {make 1_000}
+    method name_of_1000000:sym<Russian>($/) {make 1_000_000}
+    method name_of_bil:sym<Russian>($/) {make 1_000_000_000}
+    method name_of_tril:sym<Russian>($/) {make 1_000_000_000_000}
 }

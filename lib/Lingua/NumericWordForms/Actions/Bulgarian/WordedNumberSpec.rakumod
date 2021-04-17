@@ -47,7 +47,8 @@ class Lingua::NumericWordForms::Actions::Bulgarian::WordedNumberSpec
     method name_of_90:sym<Bulgarian>($/) {make 90}
     method name_of_100:sym<Bulgarian>($/) {make 100}
     method suffix_for_100:sym<Bulgarian>($/) {make 100}
-    method name_of_1000:sym<Bulgarian>($/) {make 1000}
-    method name_of_1000000:sym<Bulgarian>($/) {make 1000000}
-    method name_of_bil:sym<Bulgarian>($/) {make 1000000000}
+    method name_of_1000:sym<Bulgarian>($/) {make 1_000}
+    method name_of_1000000:sym<Bulgarian>($/) {make 1_000_000}
+    method name_of_bil:sym<Bulgarian>($/) {make 1_000_000_000}
+    method name_of_tril:sym<Bulgarian>($/) {make 1_000_000_000_000}
 }

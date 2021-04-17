@@ -42,6 +42,7 @@ role Lingua::NumericWordForms::Roles::Polish::WordedNumberSpec
     token name_of_1000:sym<Polish> {'tysiąc' | 'tysiące' | 'tysięcy'}
     token name_of_1000000:sym<Polish> {'milion' | 'milionów' | 'miliony' }
     token name_of_bil:sym<Polish> {'miliard' | 'miliardów' | 'miliardy'}
+    token name_of_tril:sym<Polish> {'bilion' | 'bilionów' | 'biliony'}
 
     token worded-number-and-conjunction:sym<Polish> {'i'}
 }

@@ -60,6 +60,16 @@ class Lingua::NumericWordForms::Actions::WordedNumberSpec {
         }
     }
 
+    method worded_number_up_to_quad($/) {
+        if $<worded_number_trils> and $<worded_number_up_to_tril> {
+            make $<worded_number_trils>.made + $<worded_number_up_to_tril>.made
+        } elsif $<worded_number_trils> {
+            make $<worded_number_trils>.made
+        } else {
+            make $<worded_number_up_to_tril>.made
+        }
+    }
+
     method name_1_to_10($/)  { make $/.values[0].made }
     method name_2_to_9($/)   { make $/.values[0].made }
     method name_1_to_19($/)  { make $/.values[0].made }
@@ -108,7 +118,8 @@ class Lingua::NumericWordForms::Actions::WordedNumberSpec {
     method name_of_90:sym<General>($/) {make 90}
     method name_of_100:sym<General>($/) {make 100}
     method suffix_for_100:sym<General>($/) {make 100}
-    method name_of_1000:sym<General>($/) {make 1000}
-    method name_of_1000000:sym<General>($/) {make 1000000}
-    method name_of_bil:sym<General>($/) {make 1000000000}
+    method name_of_1000:sym<General>($/) {make 1_000}
+    method name_of_1000000:sym<General>($/) {make 1_000_000}
+    method name_of_bil:sym<General>($/) {make 1_000_000_000}
+    method name_of_tril:sym<General>($/) {make 1_000_000_000_000}
 }

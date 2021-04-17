@@ -42,6 +42,7 @@ role Lingua::NumericWordForms::Roles::Bulgarian::WordedNumberSpec
     token name_of_1000:sym<Bulgarian>    {'хиляда' | 'хиляди'}
     token name_of_1000000:sym<Bulgarian> {'милион' | 'милиона'}
     token name_of_bil:sym<Bulgarian>     {'милиард' | 'милиарда'}
+    token name_of_tril:sym<Bulgarian>    {'трилион' | 'трилиона'}
 
     token worded-number-and-conjunction:sym<Bulgarian> {'и'}
 }

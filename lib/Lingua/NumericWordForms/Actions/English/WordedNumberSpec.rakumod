@@ -47,7 +47,8 @@ class Lingua::NumericWordForms::Actions::English::WordedNumberSpec
     method name_of_90:sym<English>($/) {make 90}
     method name_of_100:sym<English>($/) {make 100}
     method suffix_for_100:sym<English>($/) {make 100}
-    method name_of_1000:sym<English>($/) {make 1000}
-    method name_of_1000000:sym<English>($/) {make 1000000}
-    method name_of_bil:sym<English>($/) {make 1000000000}
+    method name_of_1000:sym<English>($/) {make 1_000}
+    method name_of_1000000:sym<English>($/) {make 1_000_000}
+    method name_of_bil:sym<English>($/) {make 1_000_000_000}
+    method name_of_tril:sym<English>($/) {make 1_000_000_000_000}
 }

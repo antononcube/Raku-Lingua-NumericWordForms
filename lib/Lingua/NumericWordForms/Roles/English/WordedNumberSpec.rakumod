@@ -42,5 +42,7 @@ role Lingua::NumericWordForms::Roles::English::WordedNumberSpec
     token name_of_1000:sym<English> {'thousand'}
     token name_of_1000000:sym<English> {'million'}
     token name_of_bil:sym<English> {'billion'}
+    token name_of_tril:sym<English> {'trillion'}
+
     token worded-number-and-conjunction:sym<English> {'and'}
 }

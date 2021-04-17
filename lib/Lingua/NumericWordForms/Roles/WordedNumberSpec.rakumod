@@ -6,7 +6,7 @@ use v6;
 
 role Lingua::NumericWordForms::Roles::WordedNumberSpec {
 
-    rule numeric-word-form { <worded_number_up_to_tril> }
+    rule numeric-word-form { <worded_number_up_to_quad> }
 
     proto token worded_number_100s {*}
     regex worded_number_100s:sym<General> { <name_1_to_19> \h+ <name_of_100> | <name_of_100> }
@@ -14,6 +14,7 @@ role Lingua::NumericWordForms::Roles::WordedNumberSpec {
     regex worded_number_1000s    { [ <worded_number_up_to_1000>    \h+ ]? <name_of_1000> }
     regex worded_number_1000000s { [ <worded_number_up_to_1000000> \h+ ]? <name_of_1000000> }
     regex worded_number_bils     { [ <worded_number_up_to_bil>     \h+ ]? <name_of_bil> }
+    regex worded_number_trils    { [ <worded_number_up_to_tril>    \h+ ]? <name_of_tril> }
 
     proto token worded_number_up_to_100 {*}
     regex worded_number_up_to_100:sym<General> { <name_of_10s> [ [ \h* <.hyphen-symbol> \h* | \h+ ]? <name_1_to_10> ]? || <name_up_to_19> }
@@ -22,6 +23,7 @@ role Lingua::NumericWordForms::Roles::WordedNumberSpec {
     regex worded_number_up_to_1000000 { <worded_number_1000s>     [ [ [ \h+ <.worded-number-and-conjunction> \h+ ] | \h* ',' \h+ | \h+ ]? <worded_number_up_to_1000> ]?    || <worded_number_up_to_1000> }
     regex worded_number_up_to_bil     { <worded_number_1000000s>  [ [ [ \h+ <.worded-number-and-conjunction> \h+ ] | \h* ',' \h+ | \h+ ]? <worded_number_up_to_1000000> ]? || <worded_number_up_to_1000000> }
     regex worded_number_up_to_tril    { <worded_number_bils>      [ [ [ \h+ <.worded-number-and-conjunction> \h+ ] | \h* ',' \h+ | \h+ ]? <worded_number_up_to_bil> ]?     || <worded_number_up_to_bil> }
+    regex worded_number_up_to_quad    { <worded_number_trils>     [ [ [ \h+ <.worded-number-and-conjunction> \h+ ] | \h* ',' \h+ | \h+ ]? <worded_number_up_to_tril> ]?    || <worded_number_up_to_tril> }
 
     token name_1_to_10 { <name_of_1> | <name_of_2> | <name_of_3> | <name_of_4> | <name_of_5> | <name_of_6> | <name_of_7> | <name_of_8> | <name_of_9> | <name_of_10> }
     token name_2_to_9  {               <name_of_2> | <name_of_3> | <name_of_4> | <name_of_5> | <name_of_6> | <name_of_7> | <name_of_8> | <name_of_9> }
@@ -160,6 +162,9 @@ role Lingua::NumericWordForms::Roles::WordedNumberSpec {
 
     proto token name_of_bil {*}
     token name_of_bil:sym<General> {'billion'}
+
+    proto token name_of_tril {*}
+    token name_of_tril:sym<General> {'trillion'}
 
     proto token worded-number-and-conjunction {*}
     token worded-number-and-conjunction:sym<General> {'and'}
