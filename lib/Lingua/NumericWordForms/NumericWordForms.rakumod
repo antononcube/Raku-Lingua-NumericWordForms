@@ -1,21 +1,3 @@
-
-=begin pod
-
-=head1 Lingua::NumericWordForms
-
-C<Lingua::NumericWordForms> provides functions for the
-generation, parsing, and interpretation of numeric word forms in different languages.
-
-=head1 Synopsis
-
-    use Lingua::NumericWordForms;
-    say from-numeric-word-form('one thousand two hundred and five');
-    say from-numeric-word-form('хиляда двеста и пет', 'Bulgarian');
-    say to-numeric-word-form(3394);
-    say translate-numeric-word-form('сто двадесет и три', 'Bulgarian' => 'English');
-
-=end pod
-
 unit module Lingua::NumericWordForms;
 
 use Lingua::NumericWordForms::Roles::Bulgarian::WordedNumberSpec;
@@ -66,6 +48,11 @@ grammar WordFormParser
     }
 
 #-----------------------------------------------------------
+#|( Convert from a numeric word form to a number.
+    * C<$spec> A string to be converted.
+    * C<$lang> A string for the language the word form is written in.
+    * C<:$number> A boolean adverb whether the result to be an C<Int> object or a C<Str> object.
+)
 proto from-numeric-word-form( Str:D $spec, Str:D $lang = 'English', Bool :$number = True ) is export {*}
 
 multi from-numeric-word-form( Str @specs, Str:D $lang = 'English', Bool :$number = True ) {
@@ -134,7 +121,12 @@ sub int-name (Int:D $num, Str:D $lang) {
 }
 
 #-----------------------------------------------------------
+#|( Convert a number into a numeric word form.
+    * C<$num> A number to be converted.
+    * C<$lang> A string for the language the word form is written in.
+)
 proto to-numeric-word-form( Int:D $num, Str:D $lang = 'English' ) is export {*}
+#| Only conversion to English is implemented.
 
 multi to-numeric-word-form( Int:D $num, Str:D $lang = 'English' ) {
 
@@ -148,7 +140,12 @@ multi to-numeric-word-form( Int:D $num, Str:D $lang = 'English' ) {
 #===========================================================
 # Translation
 #===========================================================
+#|( Translate a numeric word form from one language into another language.
+   * C<$spec> A string with a numeric word form.
+   * C<$rule> A pair the specifies from which language to translate to which language.
+)
 proto translate-numeric-word-form( Str:D $spec, Pair $rule = ('English' => 'Bulgarian') ) is export {*}
+#| Only translation to English is implemented.
 
 multi translate-numeric-word-form( Str:D $spec, Pair $rule = ('English' => 'Bulgarian') ) {
 
@@ -156,3 +153,20 @@ multi translate-numeric-word-form( Str:D $spec, Pair $rule = ('English' => 'Bulg
 
     if $num { to-numeric-word-form($num, $rule.value) } else { Nil }
 }
+
+=begin pod
+
+=head1 Lingua::NumericWordForms
+
+C<Lingua::NumericWordForms> provides functions for the
+generation, parsing, and interpretation of numeric word forms in different languages.
+
+=head1 Synopsis
+
+    use Lingua::NumericWordForms;
+    say from-numeric-word-form('one thousand two hundred and five');
+    say from-numeric-word-form('хиляда двеста и пет', 'Bulgarian');
+    say to-numeric-word-form(3394);
+    say translate-numeric-word-form('сто двадесет и три', 'Bulgarian' => 'English');
+
+=end pod
