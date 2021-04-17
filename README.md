@@ -97,6 +97,16 @@ $res = from-numeric-word-form('one thousand and twenty three', :!number);
 say $res, ' ', $res.WHAT;
 ```
 
+#### Automatic language determination
+
+Automatic language determination is invoked if the second argument is 'Automatic`:
+
+```perl6
+say from-numeric-word-form('tysiąc dwadzieścia trzy', 'Automatic'):pair;
+```
+
+The adverb `:pair` specifies whether the result should be a pair with the language of the word form as a key.
+
 ### Translation
 
 Translation from one language to another:
@@ -143,7 +153,7 @@ The following TODO items are ordered by priority, the most important are on top.
  
 1. [ ] Expand parsing beyond trillions
 
-2. [ ] Automatic determination of the language
+2. [X] Automatic determination of the language
 
 3. [ ] Word form generation:
    - [X] English

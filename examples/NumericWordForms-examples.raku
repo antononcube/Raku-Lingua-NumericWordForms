@@ -22,10 +22,26 @@ use Lingua::NumericWordForms;
 #'six hundred million',
 #'thirteen hundred ninety nine million');
 
+#my $spec = 'tysiąc dwadzieścia trzy';
+#say from-numeric-word-form( $spec, 'automatic'):pair:!number;
 
+#my $spec = 'tysiąc dwadzieścia trzy';
+#say 'word form : ' , $spec;
+#say 'translation : ', translate-numeric-word-form( $spec, 'Polish' => 'English' );
+#
+#$spec = 'mil quinientos treinta y cinco';
+#say 'word form : ' , $spec;
+#say 'translation : ', translate-numeric-word-form( $spec, 'Spanish' => 'English' );
 
 my @commands = (
-'fifteen hundred',
+'چهل و هشت',
+'صد و بیست و پنج',
+'setecientos treinta y un',
+'un mil ciento seis',
+'veintinueve',
+'mil quinientos treinta y cinco',
+'tysiąc dwadzieścia trzy',
+'fifteen hundred and twenty five',
 'one thousand and five hundred',
 'thousand and five hundred',
 'six hundred million',
@@ -39,17 +55,14 @@ my @commands = (
 'седемдесе и пет милиона, триста и осем хиляди и двеста петдесе и три'
 );
 
-my @langs = <English Bulgarian>;
-
 for @commands -> $c {
     say "=" x 60;
     say $c;
-    for @langs -> $l {
-        my $res = from-numeric-word-form($c, $l, :number);
+    my $res = from-numeric-word-form($c, 'Automatic', :number, :pair);
+    if $res {
         say "-" x 40;
-        say "Language $l: ";
-        say 'from word form: ', $res;
-        say $res ?? to-numeric-word-form($res, $l) !! Nil;
+        say 'from ', $res.key, ' word form: ', $res.value ;
+        say 'to English word form : ', to-numeric-word-form($res.value, 'English');
     }
 };
 

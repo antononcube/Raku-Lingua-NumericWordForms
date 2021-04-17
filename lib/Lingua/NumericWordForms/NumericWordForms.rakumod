@@ -20,26 +20,34 @@ use Lingua::NumericWordForms::Actions::Spanish::WordedNumberSpec;
 my %langToAction =
     "bulgarian"      => Lingua::NumericWordForms::Actions::Bulgarian::WordedNumberSpec,
     "english"        => Lingua::NumericWordForms::Actions::English::WordedNumberSpec,
-    "español"        => Lingua::NumericWordForms::Actions::Spanish::WordedNumberSpec,
     "persian"        => Lingua::NumericWordForms::Actions::Persian::WordedNumberSpec,
     "polish"         => Lingua::NumericWordForms::Actions::Polish::WordedNumberSpec,
     "russian"        => Lingua::NumericWordForms::Actions::Russian::WordedNumberSpec,
-    "spanish"        => Lingua::NumericWordForms::Actions::Spanish::WordedNumberSpec,
+    "spanish"        => Lingua::NumericWordForms::Actions::Spanish::WordedNumberSpec;
+
+my %langToActionExtended =
+    "español"        => Lingua::NumericWordForms::Actions::Spanish::WordedNumberSpec,
     "български"      => Lingua::NumericWordForms::Actions::Bulgarian::WordedNumberSpec,
     "polski"         => Lingua::NumericWordForms::Actions::Polish::WordedNumberSpec,
     "руский"         => Lingua::NumericWordForms::Actions::Russian::WordedNumberSpec;
 
+%langToAction = %langToAction , %langToActionExtended;
+
 my %langToRole =
     "bulgarian"      => Lingua::NumericWordForms::Roles::Bulgarian::WordedNumberSpec,
     "english"        => Lingua::NumericWordForms::Roles::English::WordedNumberSpec,
-    "español"        => Lingua::NumericWordForms::Roles::Spanish::WordedNumberSpec,
     "persian"        => Lingua::NumericWordForms::Roles::Persian::WordedNumberSpec,
     "polish"         => Lingua::NumericWordForms::Roles::Polish::WordedNumberSpec,
     "russian"        => Lingua::NumericWordForms::Roles::Russian::WordedNumberSpec,
-    "spanish"        => Lingua::NumericWordForms::Roles::Spanish::WordedNumberSpec,
+    "spanish"        => Lingua::NumericWordForms::Roles::Spanish::WordedNumberSpec;
+
+my %langToRoleExtended =
+    "español"        => Lingua::NumericWordForms::Roles::Spanish::WordedNumberSpec,
     "български"      => Lingua::NumericWordForms::Roles::Bulgarian::WordedNumberSpec,
     "polski"         => Lingua::NumericWordForms::Roles::Polish::WordedNumberSpec,
     "руский"         => Lingua::NumericWordForms::Roles::Russian::WordedNumberSpec;
+
+%langToRole = %langToRole , %langToRoleExtended;
 
 #-----------------------------------------------------------
 grammar WordFormParser
@@ -51,26 +59,44 @@ grammar WordFormParser
 #|( Convert from a numeric word form to a number.
     * C<$spec> A string to be converted.
     * C<$lang> A string for the language the word form is written in.
-    * C<:$number> A boolean adverb whether the result to be an C<Int> object or a C<Str> object.
+    * C<:$number> A boolean adverb whether the result should be an C<Int> object or a C<Str> object.
+    & C<:$pair> A boolean adverb whether the result should be a pair with the language of the word form as a key.
 )
-proto from-numeric-word-form( Str:D $spec, Str:D $lang = 'English', Bool :$number = True ) is export {*}
+proto from-numeric-word-form( Str:D $spec, Str:D $lang = 'english', Bool :$number = True, :$pair = False ) is export {*}
 
-multi from-numeric-word-form( Str @specs, Str:D $lang = 'English', Bool :$number = True ) {
+multi from-numeric-word-form( Str @specs, Str:D $lang = 'english', Bool :$number = True, :$pair = False ) {
     do for @specs -> $s {
-        from-numeric-word-form($s, $lang, :$number)
+        from-numeric-word-form($s, $lang, :$number, :$pair)
     }
 }
 
-multi from-numeric-word-form( Str:D $spec, Str:D $lang = 'English', Bool :$number = True ) {
+multi from-numeric-word-form( Str:D $spec, Str:D $lang where $lang.lc eq 'automatic', Bool :$number = True, :$pair = False ) {
 
-    die ('Unknown language. The known languages are: ' ~ %langToAction.keys.sort.join(', ') ~ '.')
+    my $res = Nil;
+
+    my %langs = %langToRole.keys (-) %langToRoleExtended.keys;
+
+    for %langs.keys -> $l {
+        quietly {
+            $res = from-numeric-word-form($spec, $l, :$number, :$pair);
+        }
+        last if $res;
+    }
+
+    warn 'Cannot parse the given word form with automatic language determination.' unless $res;
+    $res
+}
+
+multi from-numeric-word-form( Str:D $spec, Str:D $lang = 'english', Bool :$number = True, :$pair = False ) {
+
+    die ('The second argument is expecte to be one of: \'automatic\', \'' ~ %langToAction.keys.sort.join('\', \'') ~ '\'.')
     unless %langToAction{$lang.lc}:exists;
 
     my $parserObj = WordFormParser but %langToRole{$lang.lc};
     my $res = $parserObj.parse( $spec.lc, rule => 'numeric-word-form');
 
     if not ( $res and $res.Str.chars > 0 ) {
-        note 'Cannot parse the given word form with the specified language.';
+        warn 'Cannot parse the given word form with the specified language.';
         return Nil;
     }
 
@@ -79,7 +105,9 @@ multi from-numeric-word-form( Str:D $spec, Str:D $lang = 'English', Bool :$numbe
             rule => 'numeric-word-form',
             actions => %langToAction{$lang.lc}.new ).made;
 
-    $number ?? $res !! $res.Str
+    $res = $number ?? $res !! $res.Str;
+
+    $pair ?? ($lang => $res) !! $res
 }
 
 #===========================================================
@@ -125,10 +153,10 @@ sub int-name (Int:D $num, Str:D $lang) {
     * C<$num> A number to be converted.
     * C<$lang> A string for the language the word form is written in.
 )
-proto to-numeric-word-form( Int:D $num, Str:D $lang = 'English' ) is export {*}
+proto to-numeric-word-form( Int:D $num, Str:D $lang = 'english' ) is export {*}
 #| Only conversion to English is implemented.
 
-multi to-numeric-word-form( Int:D $num, Str:D $lang = 'English' ) {
+multi to-numeric-word-form( Int:D $num, Str:D $lang = 'english' ) {
 
     #die 'Unknown language.' unless %langToX{$lang.lc}:exists;
 
