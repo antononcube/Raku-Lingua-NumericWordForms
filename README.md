@@ -88,7 +88,7 @@ For more examples see the file
 #### Type of the result
 
 The returned result can be an `Int` object or a `Str` object -- that is controlled with
-the adverb `number` (which be default is `True`.). Here is an example:
+the adverb `number` (which by default is `True`.) Here is an example:
 
 ```perl6
 my $res = from-numeric-word-form('one thousand and twenty three'); 
