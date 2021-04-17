@@ -141,7 +141,7 @@ grammars and roles outside of this package.
 
 The following TODO items are ordered by priority, the most important are on top. 
  
-1. [ ] Expand parsing beyond 1 trillion
+1. [ ] Expand parsing beyond trillions
 
 2. [ ] Automatic determination of the language
 
@@ -151,13 +151,16 @@ The following TODO items are ordered by priority, the most important are on top.
    - [ ] Russian
    - [ ] General algorithm
    
-4. [ ] Implement parsing of ordinal numeric word forms 
+4. [ ] Full, consistent Persian numbers parsing. 
+   - Currently, Persian number parsing works only for numbers less than 101.  
+   
+5. [ ] Implement parsing of ordinal numeric word forms 
 
-5. [ ] Implement parsing of year "shortcut" word forms, like "twenty o three" 
+6. [ ] Implement parsing of year "shortcut" word forms, like "twenty o three" 
 
-6. [ ] Implement parsing of numeric word forms for rationals, like "five twelfths" 
+7. [ ] Implement parsing of numeric word forms for rationals, like "five twelfths" 
 
-7. [X] Translation function (from one language to another)
+8. [X] Translation function (from one language to another)
 
 ------
 
