@@ -52,6 +52,8 @@ zef install https://github.com/antononcube/Raku-Lingua-NumericWordForms.git
 
 ## Examples
 
+### Generation 
+
 Generation of numeric word forms:
 
 ```perl6
@@ -63,6 +65,8 @@ say to-numeric-word-form(8093, 'Russian');   # not implemented yet
 Here is a screenshot of the results:
 
 ![to-demo](./documents/diagrams/to-numeric-form-demo-Raku-REPL.png)
+
+### Interpretation
 
 Interpretation of numeric word forms:
 
@@ -80,6 +84,20 @@ Here is a screenshot of the results:
 
 For more examples see the file 
 [NumericWordForms-examples.raku](./examples/NumericWordForms-examples.raku).
+
+#### Type of the result
+
+The returned result can be an `Int` object or a `Str` object -- that is controlled with
+the adverb `number` (which be default is `True`.). Here is an example:
+
+```perl6
+my $res = from-numeric-word-form('one thousand and twenty three'); 
+say $res, ' ', $res.WHAT;
+$res = from-numeric-word-form('one thousand and twenty three', :!number); 
+say $res, ' ', $res.WHAT;
+```
+
+### Translation
 
 Translation from one language to another:
 
