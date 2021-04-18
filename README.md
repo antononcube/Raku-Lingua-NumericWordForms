@@ -82,6 +82,13 @@ Here is a screenshot of the results:
 
 ![from-demo](./documents/diagrams/from-numeric-form-demo-Raku-REPL.png)
 
+The function `from-numeric-word-form` can also take a list or array of strings as a first argument.
+Here is an example:
+
+```perl6
+say from-numeric-word-form(['mil veintitrés', 'dos mil setenta y dos'], 'Spanish');
+```
+
 For more examples see the file 
 [NumericWordForms-examples.raku](./examples/NumericWordForms-examples.raku).
 
@@ -97,15 +104,17 @@ $res = from-numeric-word-form('one thousand and twenty three', :!number);
 say $res, ' ', $res.WHAT;
 ```
 
-#### Automatic language determination
+#### Automatic language detection
 
-Automatic language determination is invoked if the second argument is 'Automatic`:
+Automatic language detection is invoked if the second argument is 'Automatic' or not specified:
 
 ```perl6
-say from-numeric-word-form('tysiąc dwadzieścia trzy', 'Automatic'):pair;
+say from-numeric-word-form('tysiąc dwadzieścia trzy', 'Automatic'):p;
+say from-numeric-word-form(['tysiąc dwadzieścia trzy', 'twenty three']):p;
 ```
 
-The adverb `:pair` specifies whether the result should be a pair with the language of the word form as a key.
+The adverb `:p` specifies whether the result should be a `Pair` object or a `List` of `Pair` objects
+with the detected languages as keys.
 
 ### Translation
 
