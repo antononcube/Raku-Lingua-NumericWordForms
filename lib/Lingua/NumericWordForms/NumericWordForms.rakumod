@@ -57,37 +57,50 @@ grammar WordFormParser
 
 #-----------------------------------------------------------
 #|( Convert from a numeric word form to a number.
-    * C<$spec> A string to be converted.
+    * C<$spec> or C<@specs> A string or a list of strings to be converted.
     * C<$lang> A string for the language the word form is written in.
     * C<:$number> A boolean adverb whether the result should be an C<Int> object or a C<Str> object.
-    & C<:$pair> A boolean adverb whether the result should be a pair with the language of the word form as a key.
+    & C<:$p> A boolean adverb whether the result should be a pair with the language of the word form as a key.
 )
-proto from-numeric-word-form( Str:D $spec, Str:D $lang = 'english', Bool :$number = True, :$pair = False ) is export {*}
+proto from-numeric-word-form( | ) is export {*}
 
-multi from-numeric-word-form( Str @specs, Str:D $lang = 'english', Bool :$number = True, :$pair = False ) {
+multi from-numeric-word-form( @specs, Bool :$number = True, :$p = False ) {
+    from-numeric-word-form( @specs, 'automatic', :$number, :$p )
+}
+
+multi from-numeric-word-form( @specs, Str:D $lang, Bool :$number = True, :$p = False ) {
     do for @specs -> $s {
-        from-numeric-word-form($s, $lang, :$number, :$pair)
+        from-numeric-word-form($s, $lang, :$number, :$p)
     }
 }
 
-multi from-numeric-word-form( Str:D $spec, Str:D $lang where $lang.lc eq 'automatic', Bool :$number = True, :$pair = False ) {
+multi from-numeric-word-form( Str:D $spec, Bool :$number = True, :$p = False ) {
+    from-numeric-word-form( $spec, 'automatic', :$number, :$p )
+}
+
+multi from-numeric-word-form( Str:D $spec, Str:D $lang where $lang.lc eq 'automatic', Bool :$number = True, :$p = False ) {
 
     my $res = Nil;
 
     my %langs = %langToRole.keys (-) %langToRoleExtended.keys;
 
-    for %langs.keys -> $l {
+    # Optimization: assuming that English is the most frequent language.
+    %langs = %langs (-) 'english';
+    my @langs = %langs.keys;
+    @langs.prepend(<english>);
+
+    for @langs -> $l {
         quietly {
-            $res = from-numeric-word-form($spec, $l, :$number, :$pair);
+            $res = from-numeric-word-form($spec, $l, :$number, :$p);
         }
-        last if $res;
+        last if $res.defined;
     }
 
-    warn 'Cannot parse the given word form with automatic language determination.' unless $res;
+    warn 'Cannot parse the given word form using automatic language detection.' unless $res.defined;
     $res
 }
 
-multi from-numeric-word-form( Str:D $spec, Str:D $lang = 'english', Bool :$number = True, :$pair = False ) {
+multi from-numeric-word-form( Str:D $spec, Str:D $lang, Bool :$number = True, :$p = False ) {
 
     die ('The second argument is expecte to be one of: \'automatic\', \'' ~ %langToAction.keys.sort.join('\', \'') ~ '\'.')
     unless %langToAction{$lang.lc}:exists;
@@ -107,7 +120,7 @@ multi from-numeric-word-form( Str:D $spec, Str:D $lang = 'english', Bool :$numbe
 
     $res = $number ?? $res !! $res.Str;
 
-    $pair ?? ($lang => $res) !! $res
+    $p ?? ($lang => $res) !! $res
 }
 
 #===========================================================

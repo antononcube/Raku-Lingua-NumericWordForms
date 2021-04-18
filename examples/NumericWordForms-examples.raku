@@ -22,8 +22,11 @@ use Lingua::NumericWordForms;
 #'six hundred million',
 #'thirteen hundred ninety nine million');
 
-#my $spec = 'tysiąc dwadzieścia trzy';
-#say from-numeric-word-form( $spec, 'automatic'):pair:!number;
+my @specs = ('tysiąc dwadzieścia trzy',
+             'un mil ciento seis',
+             'six hundred million eight hundred and twelve',
+             'триста и две хиляди и трийсет',);
+say from-numeric-word-form(@specs):p:!number;
 
 #my $spec = 'tysiąc dwadzieścia trzy';
 #say 'word form : ' , $spec;
@@ -55,15 +58,15 @@ my @commands = (
 'седемдесе и пет милиона, триста и осем хиляди и двеста петдесе и три'
 );
 
-for @commands -> $c {
-    say "=" x 60;
-    say $c;
-    my $res = from-numeric-word-form($c, 'Automatic', :number, :pair);
-    if $res {
-        say "-" x 40;
-        say 'from ', $res.key, ' word form: ', $res.value ;
-        say 'to English word form : ', to-numeric-word-form($res.value, 'English');
-    }
-};
+#for @commands -> $c {
+#    say "=" x 60;
+#    say $c;
+#    my $res = from-numeric-word-form($c, 'Automatic', :number, :p);
+#    if $res {
+#        say "-" x 40;
+#        say 'from ', $res.key, ' word form: ', $res.value ;
+#        say 'to English word form : ', to-numeric-word-form($res.value, 'English');
+#    }
+#};
 
 
