@@ -1,6 +1,6 @@
 use v6;
 
-# The first version of this role/grammar was made in 2018 using Mathematica and ENBF.
+# The first version of this role/grammar was made in 2018 using Mathematica and EBNF.
 # See this file:
 #   https://github.com/antononcube/ConversationalAgents/blob/master/EBNF/General/Mathematica/WordedNumbersGrammar.m
 
