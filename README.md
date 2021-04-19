@@ -173,11 +173,16 @@ The following TODO items are ordered by priority, the most important are on top.
 4. [ ] Full, consistent Persian numbers parsing. 
    - Currently, Persian number parsing works only for numbers less than 101.  
    
-5. [ ] Implement parsing of ordinal numeric word forms 
+5. [X] General strategy for parsing and interpretation of 
+   numeric word forms of East Asia languages  
+   - Those languages use groupings based on 10^4 instead of 10^3. 
+   - [X] Implementation for Japanese.
+   
+6. [ ] Implement parsing of ordinal numeric word forms 
 
-6. [ ] Implement parsing of year "shortcut" word forms, like "twenty o three" 
+7. [ ] Implement parsing of year "shortcut" word forms, like "twenty o three" 
 
-7. [ ] Implement parsing of numeric word forms for rationals, like "five twelfths" 
+8. [ ] Implement parsing of numeric word forms for rationals, like "five twelfths" 
 
 8. [X] Translation function (from one language to another)
 
