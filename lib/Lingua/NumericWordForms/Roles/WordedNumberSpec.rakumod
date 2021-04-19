@@ -6,25 +6,53 @@ use v6;
 
 role Lingua::NumericWordForms::Roles::WordedNumberSpec {
 
-    rule numeric-word-form { <worded_number_up_to_quad> }
+    proto token numeric-word-form {*}
+    rule numeric-word-form:sym<General> { <worded_number_up_to_quad> }
 
+    ## Separators and conjunctions
+    proto token preceding-number-separator {*}
+    regex preceding-number-separator:sym<General>  { \h+ <worded-number-and-conjunction> \h+ | \h* ',' \h+ | \h+ }
+
+    proto token worded-number-and-conjunction {*}
+    token worded-number-and-conjunction:sym<General> {'and'}
+
+    token hyphen-symbol { '-' | '‐' }
+
+    ## Hundreds
     proto token worded_number_100s {*}
     regex worded_number_100s:sym<General> { <name_1_to_19> \h+ <name_of_100> | <name_of_100> }
 
+    proto token worded_number_up_to_100 {*}
+    regex worded_number_up_to_100:sym<General> { <name_of_10s> [ [ \h* <.hyphen-symbol> \h* | \h+ ]? <name_1_to_10> ]? || <name_up_to_19> }
+
+    ## These are 10^3 based groupings (most/all Indo-European languages)
     regex worded_number_1000s    { [ <worded_number_up_to_1000>    \h+ ]? <name_of_1000> }
     regex worded_number_1000000s { [ <worded_number_up_to_1000000> \h+ ]? <name_of_1000000> }
     regex worded_number_bils     { [ <worded_number_up_to_bil>     \h+ ]? <name_of_bil> }
     regex worded_number_trils    { [ <worded_number_up_to_tril>    \h+ ]? <name_of_tril> }
 
-    proto token worded_number_up_to_100 {*}
-    regex worded_number_up_to_100:sym<General> { <name_of_10s> [ [ \h* <.hyphen-symbol> \h* | \h+ ]? <name_1_to_10> ]? || <name_up_to_19> }
+    regex worded_number_up_to_1000    { <worded_number_100s>      [ <.preceding-number-separator>? <worded_number_up_to_100> ]?     || <worded_number_up_to_100> }
+    regex worded_number_up_to_1000000 { <worded_number_1000s>     [ <.preceding-number-separator>? <worded_number_up_to_1000> ]?    || <worded_number_up_to_1000> }
+    regex worded_number_up_to_bil     { <worded_number_1000000s>  [ <.preceding-number-separator>? <worded_number_up_to_1000000> ]? || <worded_number_up_to_1000000> }
+    regex worded_number_up_to_tril    { <worded_number_bils>      [ <.preceding-number-separator>? <worded_number_up_to_bil> ]?     || <worded_number_up_to_bil> }
+    regex worded_number_up_to_quad    { <worded_number_trils>     [ <.preceding-number-separator>? <worded_number_up_to_tril> ]?    || <worded_number_up_to_tril> }
 
-    regex worded_number_up_to_1000    { <worded_number_100s>      [ [ [ \h+ <.worded-number-and-conjunction> \h+ ] | \h* ',' \h+ | \h+ ]? <worded_number_up_to_100> ]?     || <worded_number_up_to_100> }
-    regex worded_number_up_to_1000000 { <worded_number_1000s>     [ [ [ \h+ <.worded-number-and-conjunction> \h+ ] | \h* ',' \h+ | \h+ ]? <worded_number_up_to_1000> ]?    || <worded_number_up_to_1000> }
-    regex worded_number_up_to_bil     { <worded_number_1000000s>  [ [ [ \h+ <.worded-number-and-conjunction> \h+ ] | \h* ',' \h+ | \h+ ]? <worded_number_up_to_1000000> ]? || <worded_number_up_to_1000000> }
-    regex worded_number_up_to_tril    { <worded_number_bils>      [ [ [ \h+ <.worded-number-and-conjunction> \h+ ] | \h* ',' \h+ | \h+ ]? <worded_number_up_to_bil> ]?     || <worded_number_up_to_bil> }
-    regex worded_number_up_to_quad    { <worded_number_trils>     [ [ [ \h+ <.worded-number-and-conjunction> \h+ ] | \h* ',' \h+ | \h+ ]? <worded_number_up_to_tril> ]?    || <worded_number_up_to_tril> }
+    ## These are 10^4 based groupings (East Asia languages)
+    ## sen = 10^3, man = 10^4, oku = 10^8, cho = 10^12, kei = 10^16
+    ## sen = thousand, man = myriad, cho = trillion
+    regex worded_number_sens     { [ <worded_number_up_to_sen>     \h* ]? <name_of_sen> }
+    regex worded_number_mans     { [ <worded_number_up_to_man>     \h* ]? <name_of_man> }
+    regex worded_number_okus     { [ <worded_number_up_to_oku>     \h* ]? <name_of_oku> }
+    regex worded_number_chos     { [ <worded_number_up_to_cho>     \h* ]? <name_of_cho> }
+    regex worded_number_keis     { [ <worded_number_up_to_kei>     \h* ]? <name_of_kei> }
 
+    regex worded_number_up_to_sen     { <worded_number_100s>      [ <.preceding-number-separator>? <worded_number_up_to_100> ]?     || <worded_number_up_to_100> }
+    regex worded_number_up_to_man     { <worded_number_sens>     [ <.preceding-number-separator>? <worded_number_up_to_sen> ]?      || <worded_number_up_to_sen> }
+    regex worded_number_up_to_oku     { <worded_number_mans>      [ <.preceding-number-separator>? <worded_number_up_to_man> ]?     || <worded_number_up_to_man> }
+    regex worded_number_up_to_cho     { <worded_number_okus>      [ <.preceding-number-separator>? <worded_number_up_to_oku> ]?     || <worded_number_up_to_oku> }
+    regex worded_number_up_to_kei     { <worded_number_chos>      [ <.preceding-number-separator>? <worded_number_up_to_cho> ]?     || <worded_number_up_to_cho> }
+
+    ## Small numbers
     token name_1_to_10 { <name_of_1> | <name_of_2> | <name_of_3> | <name_of_4> | <name_of_5> | <name_of_6> | <name_of_7> | <name_of_8> | <name_of_9> | <name_of_10> }
     token name_2_to_9  {               <name_of_2> | <name_of_3> | <name_of_4> | <name_of_5> | <name_of_6> | <name_of_7> | <name_of_8> | <name_of_9> }
     token name_1_to_19 {
@@ -157,6 +185,9 @@ role Lingua::NumericWordForms::Roles::WordedNumberSpec {
     proto token name_of_1000 {*}
     token name_of_1000:sym<General> {'thousand'}
 
+    proto token name_of_10000 {*}
+    token name_of_10000:sym<General> {'myriad'}
+
     proto token name_of_1000000 {*}
     token name_of_1000000:sym<General> {'million'}
 
@@ -166,8 +197,15 @@ role Lingua::NumericWordForms::Roles::WordedNumberSpec {
     proto token name_of_tril {*}
     token name_of_tril:sym<General> {'trillion'}
 
-    proto token worded-number-and-conjunction {*}
-    token worded-number-and-conjunction:sym<General> {'and'}
+    proto token name_of_sen {*}
+    token name_of_sen:sym<General> {'sen'}
 
-    token hyphen-symbol { '-' | '‐' }
+    proto token name_of_man {*}
+    token name_of_man:sym<General> {'man'}
+
+    proto token name_of_oku {*}
+    token name_of_oku:sym<General> {'oku'}
+
+    proto token name_of_cho {*}
+    token name_of_cho:sym<General> {'cho'}
 }

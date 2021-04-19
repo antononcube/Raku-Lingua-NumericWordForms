@@ -4,12 +4,14 @@ use lib './lib';
 use lib '.';
 
 use Lingua::NumericWordForms;
-use Lingua::NumericWordForms::Roles::English::WordedNumberSpec;
 use Lingua::NumericWordForms::Roles::Bulgarian::WordedNumberSpec;
+use Lingua::NumericWordForms::Roles::English::WordedNumberSpec;
+use Lingua::NumericWordForms::Roles::Japanese::WordedNumberSpec;
 use Lingua::NumericWordForms::Roles::Russian::WordedNumberSpec;
 
 use Lingua::NumericWordForms::Actions::Bulgarian::WordedNumberSpec;
 use Lingua::NumericWordForms::Actions::English::WordedNumberSpec;
+use Lingua::NumericWordForms::Actions::Japanese::WordedNumberSpec;
 use Lingua::NumericWordForms::Actions::Russian::WordedNumberSpec;
 
 #============================================================
@@ -23,6 +25,13 @@ grammar English-ParseObj
 grammar Bulgarian-ParseObj
         does Lingua::NumericWordForms::Roles::WordedNumberSpec
         does Lingua::NumericWordForms::Roles::Bulgarian::WordedNumberSpec {
+
+    rule TOP { <numeric-word-form> }
+};
+
+grammar Japanes-ParseObj
+        does Lingua::NumericWordForms::Roles::WordedNumberSpec
+        does Lingua::NumericWordForms::Roles::Japanese::WordedNumberSpec {
 
     rule TOP { <numeric-word-form> }
 };
@@ -78,3 +87,23 @@ say $spec, ' : ',
         rule => 'numeric-word-form',
         actions => Lingua::NumericWordForms::Actions::Bulgarian::WordedNumberSpec.new).made;
 
+
+#============================================================
+say "\n";
+say '=' x 30, '  Japanese  ', '=' x 30;
+
+$spec = '一万七百八十三';
+say $spec, ' : ',
+        Japanes-ParseObj.parse( $spec,
+                rule => 'numeric-word-form',
+                actions => Lingua::NumericWordForms::Actions::Japanese::WordedNumberSpec.new ).made;
+
+say "-" x 60;
+
+$spec = '九千五百万';
+say $spec, ' : ',
+        Japanes-ParseObj.parse( $spec,
+        rule => 'numeric-word-form',
+        actions => Lingua::NumericWordForms::Actions::Japanese::WordedNumberSpec.new ).made;
+
+say "-" x 60;

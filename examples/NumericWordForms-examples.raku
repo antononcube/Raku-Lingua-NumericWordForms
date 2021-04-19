@@ -22,7 +22,8 @@ use Lingua::NumericWordForms;
 #'six hundred million',
 #'thirteen hundred ninety nine million');
 
-my @specs = ('tysiąc dwadzieścia trzy',
+my @specs = ('二十万六十五',
+             'tysiąc dwadzieścia trzy',
              'un mil ciento seis',
              'six hundred million eight hundred and twelve',
              'триста и две хиляди и трийсет',);
@@ -37,6 +38,7 @@ say from-numeric-word-form(@specs):p:!number;
 #say 'translation : ', translate-numeric-word-form( $spec, 'Spanish' => 'English' );
 
 my @commands = (
+'二十六十五',
 'چهل و هشت',
 'صد و بیست و پنج',
 'setecientos treinta y un',

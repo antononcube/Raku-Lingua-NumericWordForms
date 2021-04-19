@@ -2,13 +2,15 @@ use v6;
 
 class Lingua::NumericWordForms::Actions::WordedNumberSpec {
 
-    method numeric-word-form($/)     { make $/.values[0].made }
+    method numeric-word-form:sym<General>($/)     { make $/.values[0].made }
 
     method worded_number_100s:sym<General>($/) { make $<name_1_to_19>.made * 100 }
 
-    method worded_number_1000s($/)    { make $<worded_number_up_to_1000>    ?? $<worded_number_up_to_1000>.made * 1_000        !! 1_000 }
-    method worded_number_1000000s($/) { make $<worded_number_up_to_1000000> ?? $<worded_number_up_to_1000000>.made * 1_000_000 !! 1_000_000 }
-    method worded_number_bils($/)     { make $<worded_number_up_to_bil>     ?? $<worded_number_up_to_bil>.made * 1_000_000_000 !! 1_000_000_000 }
+    ## These are 10^3 based groupings (most/all Indo-European languages)
+    method worded_number_1000s($/)    { make $<worded_number_up_to_1000>    ?? $<worded_number_up_to_1000>.made    * 1_000             !! 1_000 }
+    method worded_number_1000000s($/) { make $<worded_number_up_to_1000000> ?? $<worded_number_up_to_1000000>.made * 1_000_000         !! 1_000_000 }
+    method worded_number_bils($/)     { make $<worded_number_up_to_bil>     ?? $<worded_number_up_to_bil>.made     * 1_000_000_000     !! 1_000_000_000 }
+    method worded_number_trils($/)    { make $<worded_number_up_to_tril>    ?? $<worded_number_up_to_tril>.made    * 1_000_000_000_000 !! 1_000_000_000_000 }
 
     method worded_number_up_to_100:sym<General>($/) {
         if $<name_of_10s> and $<name_1_to_10> {
@@ -70,6 +72,63 @@ class Lingua::NumericWordForms::Actions::WordedNumberSpec {
         }
     }
 
+    ## These are 10^4 based groupings (East Asia languages)
+    method worded_number_sens($/)     { make $<worded_number_up_to_sen>     ?? $<worded_number_up_to_sen>.made     * 1_000             !! 1_000 }
+    method worded_number_mans($/)     { make $<worded_number_up_to_man>     ?? $<worded_number_up_to_man>.made     * 10_000            !! 10_000 }
+    method worded_number_okus($/)     { make $<worded_number_up_to_oku>     ?? $<worded_number_up_to_oku>.made     * 100_000_000       !! 100_000_000 }
+    method worded_number_chos($/)     { make $<worded_number_up_to_cho>     ?? $<worded_number_up_to_cho>.made     * 1_000_000_000_000 !! 1_000_000_000_000 }
+
+    method worded_number_up_to_sen($/) {
+        if $<worded_number_100s> and $<worded_number_up_to_100> {
+            make $<worded_number_100s>.made + $<worded_number_up_to_100>.made
+        } elsif $<worded_number_100s> {
+            make $<worded_number_100s>.made
+        } else {
+            make $<worded_number_up_to_100>.made
+        }
+    }
+
+    method worded_number_up_to_man($/) {
+        if $<worded_number_sens> and $<worded_number_up_to_sen> {
+            make $<worded_number_sens>.made + $<worded_number_up_to_sen>.made
+        } elsif $<worded_number_sens> {
+            make $<worded_number_sens>.made
+        } else {
+            make $<worded_number_up_to_sen>.made
+        }
+    }
+
+    method worded_number_up_to_oku($/) {
+        if $<worded_number_mans> and $<worded_number_up_to_man> {
+            make $<worded_number_mans>.made + $<worded_number_up_to_man>.made
+        } elsif $<worded_number_mans> {
+            make $<worded_number_mans>.made
+        } else {
+            make $<worded_number_up_to_man>.made
+        }
+    }
+
+    method worded_number_up_to_cho($/) {
+        if $<worded_number_okus> and $<worded_number_up_to_oku> {
+            make $<worded_number_okus>.made + $<worded_number_up_to_oku>.made
+        } elsif $<worded_number_okus> {
+            make $<worded_number_okus>.made
+        } else {
+            make $<worded_number_up_to_oku>.made
+        }
+    }
+
+    method worded_number_up_to_kei($/) {
+        if $<worded_number_chos> and $<worded_number_up_to_cho> {
+            make $<worded_number_chos>.made + $<worded_number_up_to_cho>.made
+        } elsif $<worded_number_chos> {
+            make $<worded_number_chos>.made
+        } else {
+            make $<worded_number_up_to_cho>.made
+        }
+    }
+
+    # Small numbers
     method name_1_to_10($/)  { make $/.values[0].made }
     method name_2_to_9($/)   { make $/.values[0].made }
     method name_1_to_19($/)  { make $/.values[0].made }
@@ -119,7 +178,12 @@ class Lingua::NumericWordForms::Actions::WordedNumberSpec {
     method name_of_100:sym<General>($/) {make 100}
     method suffix_for_100:sym<General>($/) {make 100}
     method name_of_1000:sym<General>($/) {make 1_000}
+    method name_of_10000:sym<General>($/) {make 10_000}
     method name_of_1000000:sym<General>($/) {make 1_000_000}
     method name_of_bil:sym<General>($/) {make 1_000_000_000}
     method name_of_tril:sym<General>($/) {make 1_000_000_000_000}
+    method name_of_sen:sym<General>($/) {make 1_000}
+    method name_of_man:sym<General>($/) {make 10_000}
+    method name_of_oku:sym<General>($/) {make 100_000_000}
+    method name_of_cho:sym<General>($/) {make 1_000_000_000_000}
 }

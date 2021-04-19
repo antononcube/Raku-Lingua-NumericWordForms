@@ -2,6 +2,7 @@ unit module Lingua::NumericWordForms;
 
 use Lingua::NumericWordForms::Roles::Bulgarian::WordedNumberSpec;
 use Lingua::NumericWordForms::Roles::English::WordedNumberSpec;
+use Lingua::NumericWordForms::Roles::Japanese::WordedNumberSpec;
 use Lingua::NumericWordForms::Roles::Persian::WordedNumberSpec;
 use Lingua::NumericWordForms::Roles::Polish::WordedNumberSpec;
 use Lingua::NumericWordForms::Roles::Russian::WordedNumberSpec;
@@ -9,6 +10,7 @@ use Lingua::NumericWordForms::Roles::Spanish::WordedNumberSpec;
 
 use Lingua::NumericWordForms::Actions::Bulgarian::WordedNumberSpec;
 use Lingua::NumericWordForms::Actions::English::WordedNumberSpec;
+use Lingua::NumericWordForms::Actions::Japanese::WordedNumberSpec;
 use Lingua::NumericWordForms::Actions::Persian::WordedNumberSpec;
 use Lingua::NumericWordForms::Actions::Polish::WordedNumberSpec;
 use Lingua::NumericWordForms::Actions::Russian::WordedNumberSpec;
@@ -20,6 +22,7 @@ use Lingua::NumericWordForms::Actions::Spanish::WordedNumberSpec;
 my %langToAction =
     "bulgarian"      => Lingua::NumericWordForms::Actions::Bulgarian::WordedNumberSpec,
     "english"        => Lingua::NumericWordForms::Actions::English::WordedNumberSpec,
+    "japanese"       => Lingua::NumericWordForms::Actions::Japanese::WordedNumberSpec,
     "persian"        => Lingua::NumericWordForms::Actions::Persian::WordedNumberSpec,
     "polish"         => Lingua::NumericWordForms::Actions::Polish::WordedNumberSpec,
     "russian"        => Lingua::NumericWordForms::Actions::Russian::WordedNumberSpec,
@@ -29,13 +32,16 @@ my %langToActionExtended =
     "español"        => Lingua::NumericWordForms::Actions::Spanish::WordedNumberSpec,
     "български"      => Lingua::NumericWordForms::Actions::Bulgarian::WordedNumberSpec,
     "polski"         => Lingua::NumericWordForms::Actions::Polish::WordedNumberSpec,
-    "руский"         => Lingua::NumericWordForms::Actions::Russian::WordedNumberSpec;
+    "руский"         => Lingua::NumericWordForms::Actions::Russian::WordedNumberSpec,
+    "日本語"          => Lingua::NumericWordForms::Actions::Japanese::WordedNumberSpec;
+
 
 %langToAction = %langToAction , %langToActionExtended;
 
 my %langToRole =
     "bulgarian"      => Lingua::NumericWordForms::Roles::Bulgarian::WordedNumberSpec,
     "english"        => Lingua::NumericWordForms::Roles::English::WordedNumberSpec,
+    "japanese"       => Lingua::NumericWordForms::Roles::Japanese::WordedNumberSpec,
     "persian"        => Lingua::NumericWordForms::Roles::Persian::WordedNumberSpec,
     "polish"         => Lingua::NumericWordForms::Roles::Polish::WordedNumberSpec,
     "russian"        => Lingua::NumericWordForms::Roles::Russian::WordedNumberSpec,
@@ -45,7 +51,8 @@ my %langToRoleExtended =
     "español"        => Lingua::NumericWordForms::Roles::Spanish::WordedNumberSpec,
     "български"      => Lingua::NumericWordForms::Roles::Bulgarian::WordedNumberSpec,
     "polski"         => Lingua::NumericWordForms::Roles::Polish::WordedNumberSpec,
-    "руский"         => Lingua::NumericWordForms::Roles::Russian::WordedNumberSpec;
+    "руский"         => Lingua::NumericWordForms::Roles::Russian::WordedNumberSpec,
+    "日本語"          => Lingua::NumericWordForms::Roles::Japanese::WordedNumberSpec;
 
 %langToRole = %langToRole , %langToRoleExtended;
 
