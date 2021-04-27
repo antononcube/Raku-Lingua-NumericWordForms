@@ -28,7 +28,7 @@ role Lingua::NumericWordForms::Roles::Greek::WordedNumberSpec
     token name_of_14:sym<Greek> {'δεκατέσσερα'}
     token name_of_15:sym<Greek> {'δεκαπέντε'}
     token name_of_16:sym<Greek> {'δεκαέξι'}
-    token name_of_17:sym<Greek> {'δεκαεπτά'}
+    token name_of_17:sym<Greek> {'δεκαεπτά'| 'δεκαεφτά'}
     token name_of_18:sym<Greek> {'δεκαοκτώ'| 'δεκαοχτώ'}
     token name_of_19:sym<Greek> {'δεκαεννέα'| 'δεκαεννιά' }
     token name_of_20:sym<Greek> {'είκοσι'}
