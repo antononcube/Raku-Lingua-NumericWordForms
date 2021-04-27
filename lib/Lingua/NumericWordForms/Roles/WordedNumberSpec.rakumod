@@ -47,7 +47,7 @@ role Lingua::NumericWordForms::Roles::WordedNumberSpec {
     regex worded_number_keis     { [ <worded_number_up_to_kei>     \h* ]? <name_of_kei> }
 
     regex worded_number_up_to_sen     { <worded_number_100s>      [ <.preceding-number-separator>? <worded_number_up_to_100> ]?     || <worded_number_up_to_100> }
-    regex worded_number_up_to_man     { <worded_number_sens>     [ <.preceding-number-separator>? <worded_number_up_to_sen> ]?      || <worded_number_up_to_sen> }
+    regex worded_number_up_to_man     { <worded_number_sens>      [ <.preceding-number-separator>? <worded_number_up_to_sen> ]?     || <worded_number_up_to_sen> }
     regex worded_number_up_to_oku     { <worded_number_mans>      [ <.preceding-number-separator>? <worded_number_up_to_man> ]?     || <worded_number_up_to_man> }
     regex worded_number_up_to_cho     { <worded_number_okus>      [ <.preceding-number-separator>? <worded_number_up_to_oku> ]?     || <worded_number_up_to_oku> }
     regex worded_number_up_to_kei     { <worded_number_chos>      [ <.preceding-number-separator>? <worded_number_up_to_cho> ]?     || <worded_number_up_to_cho> }
