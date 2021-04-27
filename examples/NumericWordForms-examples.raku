@@ -22,7 +22,8 @@ use Lingua::NumericWordForms;
 #'six hundred million',
 #'thirteen hundred ninety nine million');
 
-my @specs = ('二十万六十五',
+my @specs = ('τετρακόσια είκοσι επτά',
+             '二十万六十五',
              'tysiąc dwadzieścia trzy',
              'un mil ciento seis',
              'six hundred million eight hundred and twelve',
