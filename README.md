@@ -188,6 +188,14 @@ The following TODO items are ordered by priority, the most important are on top.
 
 ------
 
+## Acknowledgements
+
+- Thanks to [spyrettas](https://github.com/spyrettas) for:
+  - Riding "shotgun" during the initial implementation of the Greek role, actions, and tests
+  - Proofreading and correcting Greek tests and role
+
+------
+
 ## References
 
 [AAr1] Anton Antonov, 
