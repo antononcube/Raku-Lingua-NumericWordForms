@@ -32,7 +32,7 @@ role Lingua::NumericWordForms::Roles::Russian::WordedNumberSpec
     token name_of_20:sym<Russian> {'двадцать'}
     token name_of_30:sym<Russian> {'тридцать'}
     token name_of_40:sym<Russian> {'сорок'}
-    token name_of_50:sym<Russian> {'пятьдесят'}
+    token name_of_50:sym<Russian> {'пятьдесят' | 'пятдесят' | 'пийсят'}
     token name_of_60:sym<Russian> {'шестьдесят'}
     token name_of_70:sym<Russian> {'семьдесят'}
     token name_of_80:sym<Russian> {'восемьдесят'}
