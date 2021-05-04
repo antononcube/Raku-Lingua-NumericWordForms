@@ -27,7 +27,7 @@ my @specs = ('τετρακόσια είκοσι επτά',
              'tysiąc dwadzieścia trzy',
              'un mil ciento seis',
              'six hundred million eight hundred and twelve',
-             'триста и две хиляди и трийсет',);
+             'триста и две хиляди и трийсет');
 say from-numeric-word-form(@specs):p:!number;
 
 #my $spec = 'tysiąc dwadzieścia trzy';
