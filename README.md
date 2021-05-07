@@ -169,24 +169,31 @@ The following TODO items are ordered by priority, the most important are on top.
    - [ ] Bulgarian
    - [ ] Russian
    - [ ] General algorithm
-   
-4. [ ] Full, consistent Persian numbers parsing. 
+    
+4. [ ] Documentation of the general programming approach.
+
+   - [ ] What are the main challenges?
+   - [ ] How the chosen software architecture decisions address them?
+   - [ ] Concrete implementations walk-through.
+   - [ ] How to implement / include a new language?
+   - [ ] How the random numbers test files were made?
+   - [ ] Profiling, limitations, alternatives.
+
+5. [ ] Full, consistent Persian numbers parsing. 
    - Currently, Persian number parsing works only for numbers less than 101.  
    
-5. [X] General strategy for parsing and interpretation of 
+6. [X] General strategy for parsing and interpretation of 
    numeric word forms of East Asia languages  
    - Those languages use groupings based on 10^4 instead of 10^3. 
    - [X] Implementation for Japanese.
    
-6. [ ] Implement parsing of ordinal numeric word forms 
+7. [ ] Implement parsing of ordinal numeric word forms 
 
-7. [ ] Implement parsing of year "shortcut" word forms, like "twenty o three" 
+8. [ ] Implement parsing of year "shortcut" word forms, like "twenty o three" 
 
-8. [ ] Implement parsing of numeric word forms for rationals, like "five twelfths" 
+9. [ ] Implement parsing of numeric word forms for rationals, like "five twelfths" 
 
-9. [X] Translation function (from one language to another)
-
-10. [ ] Documentation of general programming approach.
+10. [X] Translation function (from one language to another)
 
 ------
 
