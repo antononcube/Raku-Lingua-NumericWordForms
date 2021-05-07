@@ -184,7 +184,23 @@ The following TODO items are ordered by priority, the most important are on top.
 
 8. [ ] Implement parsing of numeric word forms for rationals, like "five twelfths" 
 
-8. [X] Translation function (from one language to another)
+9. [X] Translation function (from one language to another)
+
+10. [ ] Documentation of general programming approach.
+
+------
+
+# Collaboration notes
+
+- The **main rule** is that the main branch should always be installable and pass all of its tests.
+
+- From the main rule it follows that new features are developed in separate branches or forks.
+    
+- The easiest way to collaborate is to create and commit new test files or corrections 
+  to existing test files.
+  
+  - Then I would change the corresponding grammars rules and actions 
+    in order the package to pass the tests.
 
 ------
 
@@ -206,3 +222,9 @@ The following TODO items are ordered by priority, the most important are on top.
 
 [SS1] Larry Wall, Steve Schulze, 
 [Lingua::EN::Numbers](https://github.com/thundergnat/Lingua-EN-Numbers).
+
+------
+
+Anton Antonov   
+Florida, USA   
+April-May, 2021
