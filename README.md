@@ -208,6 +208,23 @@ The following TODO items are ordered by priority, the most important are on top.
   
   - Then I would change the corresponding grammars rules and actions 
     in order the package to pass the tests.
+    
+- Please use [*Conventional Commits* (CC)](https://www.conventionalcommits.org/en/v1.0.0/). 
+  
+  - Here is the CC short form stencil (in Raku):
+    `<type> ['(' <scope> ')']? ':' <description>`.
+      
+  - See the recent commits in this repository for examples.
+    
+  - Here are additional examples of CC messages (each line is a separate message):
+ 
+```text  
+feat:Implemented the parsing of Danish numeric word forms.
+docs:Added documentation of right-to-left word forms parsing.
+fix(Persian):Corrected tests for numbers larger that 1000.
+test:Added new corner cases tests.
+test(Ukrainian):Added new tests.
+```   
 
 ------
 
