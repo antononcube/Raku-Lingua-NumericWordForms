@@ -161,7 +161,7 @@ my @M = (<0 thousand>,
     'cent').flat X~ 'illion')).flat;
 
 sub int-name (Int:D $num, Str:D $lang) {
-    if $num.substr(0,1) eq '-' { return "negative {int-name($num.substr(1))}" }
+    if $num.substr(0,1) eq '-' { return "negative {int-name($num.substr(1), $lang)}" }
     if $num eq '0' { return @I[0] }
     my $m = 0;
     return join ', ', reverse gather for $num.flip.comb(/\d ** 1..3/) {
