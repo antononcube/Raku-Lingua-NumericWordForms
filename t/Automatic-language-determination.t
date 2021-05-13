@@ -5,7 +5,7 @@ use lib '.';
 
 use Lingua::NumericWordForms;
 
-plan 8;
+plan 9;
 
 #-----------------------------------------------------------
 # Automatic language determination
@@ -55,5 +55,10 @@ is from-numeric-word-form(@specs, :p, :!number).WHAT,
         List,
         'list of word forms in different languages';
 
+## 9
+my $spec = 'τετρακόσια είκοσι επτά; un mil ciento seis; триста и две хиляди и трийсет';
+is from-numeric-word-form($spec, :p, :!number).WHAT,
+        List,
+        'string with ;-separated word forms in different languages';
 
 done-testing;

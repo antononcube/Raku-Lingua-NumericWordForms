@@ -76,6 +76,11 @@ grammar WordFormParser
     }
 
 #-----------------------------------------------------------
+sub has-semicolon (Str $word) {
+    return defined index $word, ';';
+}
+
+#-----------------------------------------------------------
 #|( Convert from a numeric word form to a number.
     * C<$spec> or C<@specs> A string or a list of strings to be converted.
     * C<$lang> A string for the language the word form is written in.
@@ -98,7 +103,14 @@ multi from-numeric-word-form( Str:D $spec, Bool :$number = True, :$p = False ) {
     from-numeric-word-form( $spec, 'automatic', :$number, :$p )
 }
 
-multi from-numeric-word-form( Str:D $spec, Str:D $lang where $lang.lc eq 'automatic', Bool :$number = True, :$p = False ) {
+multi from-numeric-word-form( Str:D $spec where has-semicolon($spec), Str:D $lang where $lang.lc eq 'automatic', Bool :$number = True, :$p = False ) {
+
+    my @speLines = $spec.trim.split(/ ';' \s* /).map({ $_.trim });
+
+    from-numeric-word-form( @speLines, $lang, :$number, :$p)
+}
+
+multi from-numeric-word-form( Str:D $spec where not has-semicolon($spec), Str:D $lang where $lang.lc eq 'automatic', Bool :$number = True, :$p = False ) {
 
     my $res = Nil;
 

@@ -22,6 +22,9 @@ use Lingua::NumericWordForms;
 #'six hundred million',
 #'thirteen hundred ninety nine million');
 
+my $spec = 'τετρακόσια είκοσι επτά; триста и две хиляди и трийсет';
+say from-numeric-word-form($spec):p:!number;
+
 my @specs = ('τετρακόσια είκοσι επτά',
              '二十万六十五',
              'tysiąc dwadzieścia trzy',
