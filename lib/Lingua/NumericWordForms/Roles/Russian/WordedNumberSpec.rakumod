@@ -39,6 +39,9 @@ role Lingua::NumericWordForms::Roles::Russian::WordedNumberSpec
     token name_of_90:sym<Russian> {'девяносто'}
     token name_of_100:sym<Russian> {'сто'}
     token suffix_for_100:sym<Russian>  {'ста' | 'сти' | 'сот'}
+    token name_of_500:sym<Russian> {'пятьсот' | 'пяццот'}
+    token name_of_600:sym<Russian> {'шестьсот' | 'шессот'}
+    token name_of_900:sym<Russian> {'девятьсот' | 'девяццот'}
     token name_of_1000:sym<Russian> { 'тысяч' | 'тысяча' | 'тысячи' | 'тыща' | 'тыщи' }
     token name_of_1000000:sym<Russian> {'миллион' | 'миллиона' | 'миллионов'}
     token name_of_bil:sym<Russian> {'миллиард' | 'миллиарда' | 'миллиардов'}
