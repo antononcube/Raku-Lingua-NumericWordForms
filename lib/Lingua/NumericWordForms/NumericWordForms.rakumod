@@ -198,8 +198,12 @@ sub int-name (Int:D $num, Str:D $lang) {
     * C<$num> A number to be converted.
     * C<$lang> A string for the language the word form is written in.
 )
-proto to-numeric-word-form( Int:D $num, Str:D $lang = 'english' ) is export {*}
+proto to-numeric-word-form( $num, Str:D $lang = 'english' ) is export {*}
 #| Only conversion to English is implemented.
+
+multi to-numeric-word-form( Str:D $num, Str:D $lang = 'english' ) {
+    to-numeric-word-form( $num.Int, $lang )
+}
 
 multi to-numeric-word-form( Int:D $num, Str:D $lang = 'english' ) {
 
@@ -209,6 +213,14 @@ multi to-numeric-word-form( Int:D $num, Str:D $lang = 'english' ) {
 
     int-name($num, $lang.lc)
 }
+
+multi to-numeric-word-form( @nums, Str:D $lang = 'english' ) {
+
+    note "Using English, not $lang." unless $lang.lc eq "english";
+
+    @nums.map({ to-numeric-word-form($_, $lang.lc) })
+}
+
 
 #===========================================================
 # Translation
