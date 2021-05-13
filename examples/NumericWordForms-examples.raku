@@ -22,6 +22,8 @@ use Lingua::NumericWordForms;
 #'six hundred million',
 #'thirteen hundred ninety nine million');
 
+say to-numeric-word-form('123;232; 898_934');
+
 say to-numeric-word-form([123, '232', 898_934]);
 
 my $spec = 'τετρακόσια είκοσι επτά; триста и две хиляди и трийсет';

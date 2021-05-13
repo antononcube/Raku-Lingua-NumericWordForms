@@ -201,7 +201,14 @@ sub int-name (Int:D $num, Str:D $lang) {
 proto to-numeric-word-form( $num, Str:D $lang = 'english' ) is export {*}
 #| Only conversion to English is implemented.
 
-multi to-numeric-word-form( Str:D $num, Str:D $lang = 'english' ) {
+multi to-numeric-word-form( Str:D $spec where has-semicolon($spec), Str:D $lang = 'english' ) {
+
+    my @nums = $spec.trim.split(/ ';' \s* /).map({ $_.trim });
+
+    to-numeric-word-form( @nums, $lang )
+}
+
+multi to-numeric-word-form( Str:D $num where not has-semicolon($num), Str:D $lang = 'english' ) {
     to-numeric-word-form( $num.Int, $lang )
 }
 
