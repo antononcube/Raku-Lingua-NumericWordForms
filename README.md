@@ -66,6 +66,23 @@ Here is a screenshot of the results:
 
 ![to-demo](./documents/diagrams/to-numeric-form-demo-Raku-REPL.png)
 
+The first argument of `to-numeric-word-form` can be:
+
+- An integer
+- A string that can be parsed into an integer
+- A string of numbers separated by ";"
+- A list of numbers or strings
+
+Here are examples of the latter two:
+
+```perl6
+say to-numeric-word-form('123; 232; 898_934').join('; ');
+# one hundred twenty three; two hundred thirty two; eight hundred ninety eight thousand, nine hundred thirty four
+
+say to-numeric-word-form([321, '992', 100_904]).join('; ');
+# three hundred twenty one; nine hundred ninety two; one hundred thousand, nine hundred four
+```
+
 ### Interpretation
 
 Interpretation of numeric word forms:
@@ -82,11 +99,25 @@ Here is a screenshot of the results:
 
 ![from-demo](./documents/diagrams/from-numeric-form-demo-Raku-REPL.png)
 
-The function `from-numeric-word-form` can also take a list or array of strings as a first argument.
-Here is an example:
+The function `from-numeric-word-form` can take as a first argument:
+
+- A string that is a numeric word form
+  
+- A string comprised of numeric word forms separated by ";"
+  
+- A list or an array of strings 
+
+Here are corresponding examples:
 
 ```perl6
-say from-numeric-word-form(['mil veintitrés', 'dos mil setenta y dos'], 'Spanish');
+‌‌say from-numeric-word-form('twenty six');
+# 26
+
+say from-numeric-word-form(['mil veintitrés', 'dos mil setenta y dos']);
+# (1023 2072)
+
+say from-numeric-word-form('two hundred and five; триста четиридесет и две; 二十万六十五'):p;
+# (english => 205 bulgarian => 342 japanese => 200065)
 ```
 
 For more examples see the file 
@@ -100,8 +131,11 @@ the adverb `number` (which by default is `True`.) Here is an example:
 ```perl6
 my $res = from-numeric-word-form('one thousand and twenty three'); 
 say $res, ' ', $res.WHAT;
+# 1023 (Int)
+
 $res = from-numeric-word-form('one thousand and twenty three', :!number); 
 say $res, ' ', $res.WHAT;
+# 1023 (Str)
 ```
 
 #### Automatic language detection
@@ -110,7 +144,10 @@ Automatic language detection is invoked if the second argument is 'Automatic' or
 
 ```perl6
 say from-numeric-word-form('tysiąc dwadzieścia trzy', 'Automatic'):p;
+# polish => 1023
+
 say from-numeric-word-form(['tysiąc dwadzieścia trzy', 'twenty three']):p;
+# (polish => 1023 english => 23)
 ```
 
 The adverb `:p` specifies whether the result should be a `Pair` object or a `List` of `Pair` objects

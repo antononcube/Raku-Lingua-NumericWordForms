@@ -81,7 +81,7 @@ sub has-semicolon (Str $word) {
 }
 
 #-----------------------------------------------------------
-#|( Convert from a numeric word form to a number.
+#|( Convert numeric word forms into numbers.
     * C<$spec> or C<@specs> A string or a list of strings to be converted.
     * C<$lang> A string for the language the word form is written in.
     * C<:$number> A boolean adverb whether the result should be an C<Int> object or a C<Str> object.
@@ -194,8 +194,8 @@ sub int-name (Int:D $num, Str:D $lang) {
 }
 
 #-----------------------------------------------------------
-#|( Convert a number into a numeric word form.
-    * C<$num> A number to be converted.
+#|( Convert numbers into numeric word forms.
+    * C<$num> A number, a string, or a list of strings and/or numbers to be converted.
     * C<$lang> A string for the language the word form is written in.
 )
 proto to-numeric-word-form( $num, Str:D $lang = 'english' ) is export {*}
