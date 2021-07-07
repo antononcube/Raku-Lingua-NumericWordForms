@@ -1,6 +1,7 @@
 # Raku Lingua::NumericWordForms
 
 [![Build Status](https://travis-ci.com/antononcube/Raku-Lingua-NumericWordForms.svg?branch=main)](https://travis-ci.com/antononcube/Raku-Lingua-NumericWordForms)
+[![License: Artistic-2.0](https://img.shields.io/badge/License-Artistic%202.0-0298c3.svg)](https://opensource.org/licenses/Artistic-2.0)
 
 ## Introduction
 
@@ -33,16 +34,17 @@ pass testing, but they might have potentially many deficiencies.
 
 ## Installation
 
-**1.** Install Raku (Perl 6) : https://raku.org/downloads . 
+Installation from both sources use [zef installer](https://github.com/ugexe/zef)
+(which should be bundled with the "standard" [Rakudo](https://rakudo.org) installation file.)
 
-**2.** Make sure you have Zef Module Installer. 
- 
-   - Type in `zef --version` in the command line.
-   - Zef Module Installer can be installed from : https://github.com/ugexe/zef .
+To install the package from [Raku Modules / PAUSE](https://modules.raku.org)
+use the shell command:
 
-**3.** Open a command line program. (E.g. Terminal on Mac OS X.)
+```
+zef install Lingua::NumericWordForms
+```
 
-**4.** Run the command:
+To install the package from the GitHub repository use the shell command:
 
 ```
 zef install https://github.com/antononcube/Raku-Lingua-NumericWordForms.git
