@@ -34,7 +34,7 @@ pass testing, but they might have potentially many deficiencies.
 
 ## Installation
 
-Installation from both sources use [zef installer](https://github.com/ugexe/zef)
+Package installations from both sources use [zef installer](https://github.com/ugexe/zef)
 (which should be bundled with the "standard" [Rakudo](https://rakudo.org) installation file.)
 
 To install the package from [Raku Modules / PAUSE](https://modules.raku.org)
