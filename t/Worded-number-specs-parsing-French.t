@@ -1,0 +1,227 @@
+use Test;
+
+use lib './lib';
+use lib '.';
+
+use Lingua::NumericWordForms::Roles::French::WordedNumberSpec;
+use Lingua::NumericWordForms::Actions::French::WordedNumberSpec;
+
+grammar ParseObj
+        does Lingua::NumericWordForms::Roles::French::WordedNumberSpec {
+    rule TOP { <numeric-word-form>  }
+};
+
+sub parse-func(Str:D $spec) {
+    ParseObj.parse(
+            $spec.lc,
+            rule => 'numeric-word-form',
+            actions => Lingua::NumericWordForms::Actions::French::WordedNumberSpec.new).made,
+}
+
+#-----------------------------------------------------------
+# Worded number specifications parsing
+#-----------------------------------------------------------
+# The tests below are generated with the following Mathematica code:
+#SeedRandom[39902];
+#testLanguage = "French";
+#k = 6;
+#lsTestNumbers =
+#  Union[Join @@
+#    Map[RandomInteger[#, k] &, {{0, 19}, {20, 100}, {101,
+#       1000}, {1001, 10000}, {10001, 10^6}, {10^6, 10^9}, {10^9,
+#       10^12}}]];
+#Length[lsTestNumbers]
+#
+#lsSentences =
+#  Map[IntegerName[#, {"French", "Words"}] &, lsTestNumbers];
+#Shallow[lsSentences]
+#
+#StringRiffle[
+# MapThread[
+#  "## " <> #3 <> "\n" <> "is parse-func('" <> #1 <> "'), " <> #2 <>
+#    ",\n'" <> #1 <> "';" &, {lsSentences, ToString /@ lsTestNumbers,
+#   ToString /@ Range[Length[lsTestNumbers]]}], "\n\n"]
+
+
+plan 42;
+## 1
+is parse-func('zéro'), 0,
+        'zéro';
+
+## 2
+is parse-func('trois'), 3,
+        'trois';
+
+## 3
+is parse-func('quatre'), 4,
+        'quatre';
+
+## 4
+is parse-func('neuf'), 9,
+        'neuf';
+
+## 5
+is parse-func('dix-huit'), 18,
+        'dix-huit';
+
+## 6
+is parse-func('dix-neuf'), 19,
+        'dix-neuf';
+
+## 7
+is parse-func('vingt-et-un'), 21,
+        'vingt-et-un';
+
+## 8
+is parse-func('vingt-neuf'), 29,
+        'vingt-neuf';
+
+## 9
+is parse-func('cinquante-six'), 56,
+        'cinquante-six';
+
+## 10
+is parse-func('soixante-seize'), 76,
+        'soixante-seize';
+
+## 11
+is parse-func('quatre-vingt-cinq'), 85,
+        'quatre-vingt-cinq';
+
+## 12
+is parse-func('quatre-vingt-dix-sept'), 97,
+        'quatre-vingt-dix-sept';
+
+## 13
+is parse-func('cent soixante-trois'), 163,
+        'cent soixante-trois';
+
+## 14
+is parse-func('cent soixante-huit'), 168,
+        'cent soixante-huit';
+
+## 15
+is parse-func('deux cent quatre'), 204,
+        'deux cent quatre';
+
+## 16
+is parse-func('deux cent soixante'), 260,
+        'deux cent soixante';
+
+## 17
+is parse-func('quatre cent vingt-sept'), 427,
+        'quatre cent vingt-sept';
+
+## 18
+is parse-func('huit cent quatre'), 804,
+        'huit cent quatre';
+
+## 19
+is parse-func('deux mille soixante-douze'), 2072,
+        'deux mille soixante-douze';
+
+## 20
+is parse-func('deux mille deux cent vingt-huit'), 2228,
+        'deux mille deux cent vingt-huit';
+
+## 21
+is parse-func('cinq mille cinq cent vingt-huit'), 5528,
+        'cinq mille cinq cent vingt-huit';
+
+## 22
+is parse-func('cinq mille huit cent cinquante'), 5850,
+        'cinq mille huit cent cinquante';
+
+## 23
+is parse-func('six mille cinq cent huit'), 6508,
+        'six mille cinq cent huit';
+
+## 24
+is parse-func('sept mille quatre cent douze'), 7412,
+        'sept mille quatre cent douze';
+
+## 25
+is parse-func('deux cent quarante-cinq mille trois cent vingt-quatre'), 245324,
+        'deux cent quarante-cinq mille trois cent vingt-quatre';
+
+## 26
+is parse-func('six cent quinze mille deux cent quatre-vingt-dix-huit'), 615298,
+        'six cent quinze mille deux cent quatre-vingt-dix-huit';
+
+## 27
+is parse-func('sept cent trente-et-un mille cent six'), 731106,
+        'sept cent trente-et-un mille cent six';
+
+## 28
+is parse-func('huit cent vingt-trois mille huit cent vingt-quatre'), 823824,
+        'huit cent vingt-trois mille huit cent vingt-quatre';
+
+## 29
+is parse-func('huit cent quatre-vingt-onze mille huit cent soixante-et-onze'), 891871,
+        'huit cent quatre-vingt-onze mille huit cent soixante-et-onze';
+
+## 30
+is parse-func('neuf cent quarante-et-un mille cinq cent six'), 941506,
+        'neuf cent quarante-et-un mille cinq cent six';
+
+## 31
+is parse-func('cinquante-cinq millions trois cent quatre-vingt-dix mille cinq cent vingt-sept'), 55390527,
+        'cinquante-cinq millions trois cent quatre-vingt-dix mille cinq cent vingt-sept';
+
+## 32
+is parse-func('soixante-seize millions sept cent vingt-quatre mille quatre cent trente-six'), 76724436,
+        'soixante-seize millions sept cent vingt-quatre mille quatre cent trente-six';
+
+## 33
+is parse-func('deux cent quarante-sept millions cinq cent sept mille dix-huit'), 247507018,
+        'deux cent quarante-sept millions cinq cent sept mille dix-huit';
+
+## 34
+is parse-func('cinq cent seize millions sept cent cinquante-trois mille trois cent soixante-dix-huit'), 516753378,
+        'cinq cent seize millions sept cent cinquante-trois mille trois cent soixante-dix-huit';
+
+## 35
+is parse-func('huit cent quarante-deux millions sept cent quatre mille sept cent quatre-vingt-trois'), 842704783,
+        'huit cent quarante-deux millions sept cent quatre mille sept cent quatre-vingt-trois';
+
+## 36
+is parse-func('neuf cent quatre-vingt-huit millions neuf cent soixante-et-un mille trois cent vingt-quatre'), 988961324,
+        'neuf cent quatre-vingt-huit millions neuf cent soixante-et-un mille trois cent vingt-quatre';
+
+## 37
+is
+        parse-func('cinq cent quatre-vingt-sept milliards sept cent vingt-sept millions deux cent trente mille cent quatre-vingt-dix-neuf'),
+        587727230199,
+        'cinq cent quatre-vingt-sept milliards sept cent vingt-sept millions deux cent trente mille cent quatre-vingt-dix-neuf';
+
+## 38
+is
+        parse-func('six cent vingt-sept milliards cinq cent quatre-vingt millions neuf cent trente-cinq mille soixante-douze'),
+        627580935072,
+        'six cent vingt-sept milliards cinq cent quatre-vingt millions neuf cent trente-cinq mille soixante-douze';
+
+## 39
+is
+        parse-func('sept cent quatre-vingt-quatre milliards six cent trente millions sept cent trente-huit mille cent vingt'),
+        784630738120,
+        'sept cent quatre-vingt-quatre milliards six cent trente millions sept cent trente-huit mille cent vingt';
+
+## 40
+is
+        parse-func('huit cent quatre milliards trois cent quatre-vingt-dix-sept millions quatre cent seize mille sept cent trente-six'),
+        804397416736,
+        'huit cent quatre milliards trois cent quatre-vingt-dix-sept millions quatre cent seize mille sept cent trente-six';
+
+## 41
+is
+        parse-func('huit cent soixante-sept milliards cinq cent soixante-et-un millions trois cent quatre-vingt mille quatre cent quatorze'),
+        867561380414,
+        'huit cent soixante-sept milliards cinq cent soixante-et-un millions trois cent quatre-vingt mille quatre cent quatorze';
+
+## 42
+is
+        parse-func('neuf cent quatre-vingt milliards sept cent trente-six millions cent trente-huit mille huit cent trente-neuf'),
+        980736138839,
+        'neuf cent quatre-vingt milliards sept cent trente-six millions cent trente-huit mille huit cent trente-neuf';
+
+done-testing;
