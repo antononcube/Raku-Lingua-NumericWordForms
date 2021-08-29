@@ -56,7 +56,8 @@ class Lingua::NumericWordForms::Actions::Spanish::WordedNumberSpec
     method name_of_90:sym<Spanish>($/) {make 90}
     method name_of_100:sym<Spanish>($/) {make 100}
     method suffix_for_100:sym<Spanish>($/) {make 100}
-    method name_of_1000:sym<Spanish>($/) {make 1000}
-    method name_of_1000000:sym<Spanish>($/) {make 1000000}
-    method name_of_bil:sym<Spanish>($/) {make 1000000000}
+    method name_of_1000:sym<Spanish>($/) {make 1_000}
+    method name_of_1000000:sym<Spanish>($/) {make 1_000_000}
+    method name_of_bil:sym<Spanish>($/) {make 1_000_000_000}
+    method name_of_tril:sym<Spanish>($/) {make 1_000_000_000_000}
 }
