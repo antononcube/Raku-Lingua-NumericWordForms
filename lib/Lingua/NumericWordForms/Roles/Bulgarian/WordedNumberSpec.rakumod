@@ -9,17 +9,17 @@ role Lingua::NumericWordForms::Roles::Bulgarian::WordedNumberSpec
     
     regex worded_number_up_to_100:sym<Bulgarian> { <name_of_10s> [ [ \h* <.worded-number-and-conjunction> \h* | \h+ ]? <name_1_to_10> ]? || <name_up_to_19> }
 
-    token name_of_0:sym<Bulgarian>  {'нула'}
-    token name_of_1:sym<Bulgarian>  {'едно' | 'един'}
-    token name_of_2:sym<Bulgarian>  {'две'  | 'два'}
-    token name_of_3:sym<Bulgarian>  {'три'}
-    token name_of_4:sym<Bulgarian>  {'четири'}
-    token name_of_5:sym<Bulgarian>  {'пет'}
-    token name_of_6:sym<Bulgarian>  {'шест'}
-    token name_of_7:sym<Bulgarian>  {'седем'}
-    token name_of_8:sym<Bulgarian>  {'осем'}
-    token name_of_9:sym<Bulgarian>  {'девет'}
-    token name_of_10:sym<Bulgarian> {'десет'}
+    token name_of_0:sym<Bulgarian>  {'нула'   | 'нулев'    | 'нулева'}
+    token name_of_1:sym<Bulgarian>  {'едно'   | 'един'     | 'първи' | 'първа'}
+    token name_of_2:sym<Bulgarian>  {'две'    | 'два'      | 'втори' | 'втора'}
+    token name_of_3:sym<Bulgarian>  {'три'    | 'трети'    | 'трета'}
+    token name_of_4:sym<Bulgarian>  {'четири' | 'четвърти' | 'четвърта'}
+    token name_of_5:sym<Bulgarian>  {'пет'    | 'пети'     | 'пета'}
+    token name_of_6:sym<Bulgarian>  {'шест'   | 'шести'    | 'шеста'}
+    token name_of_7:sym<Bulgarian>  {'седем'  | 'седми'    | 'седма'}
+    token name_of_8:sym<Bulgarian>  {'осем'   | 'осми'     | 'осма'}
+    token name_of_9:sym<Bulgarian>  {'девет'  | 'девети'   | 'девета' }
+    token name_of_10:sym<Bulgarian> {'десет'  | 'десети'   | 'десета' }
     token name_of_11:sym<Bulgarian> {'единадесет'    | 'единайсе'    | 'единайсет'}
     token name_of_12:sym<Bulgarian> {'дванадесет'    | 'дванайсе'    | 'дванайсет'}
     token name_of_13:sym<Bulgarian> {'тринадесет'    | 'тринайсе'    | 'тринайсет'}
