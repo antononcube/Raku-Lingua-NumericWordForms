@@ -228,6 +228,14 @@ The following TODO items are ordered by priority, the most important are on top.
    
 7. [ ] Implement parsing of ordinal numeric word forms 
 
+   - [X] English, French, Greek, and Spanish
+   
+   - [ ] Bulgarian
+    
+   - [ ] Russia, Ukrainian, Polish
+   
+   - [ ] Japanese
+    
 8. [ ] Implement parsing of year "shortcut" word forms, like "twenty o three" 
 
 9. [ ] Implement parsing of numeric word forms for rationals, like "five twelfths" 
