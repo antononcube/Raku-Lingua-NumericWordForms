@@ -140,7 +140,7 @@ multi from-numeric-word-form( Str:D $spec where not has-semicolon($spec), Str:D 
 
 multi from-numeric-word-form( Str:D $spec, Str:D $lang, Bool :$number = True, :$p = False ) {
 
-    die ('The second argument is expecte to be one of: \'automatic\', \'' ~ %langToAction.keys.sort.join('\', \'') ~ '\'.')
+    die ('The second argument is expected to be one of: \'automatic\', \'' ~ %langToAction.keys.sort.join('\', \'') ~ '\'.')
     unless %langToAction{$lang.lc}:exists;
 
     my $parserObj = WordFormParser but %langToRole{$lang.lc};
