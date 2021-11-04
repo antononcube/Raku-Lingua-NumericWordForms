@@ -164,6 +164,7 @@ multi from-numeric-word-form( Str:D $spec, Str:D $lang, Bool :$number = True, :$
 #===========================================================
 # Generation
 #===========================================================
+proto int-name (Int:D $num, Str:D $lang) {*}
 
 #-----------------------------------------------------------
 ## Taken from: http://rosettacode.org/wiki/Number_names#Raku
@@ -178,7 +179,7 @@ my @M = (<0 thousand>,
     <dec vigint trigint quadragint quinquagint sexagint septuagint octogint nonagint>),
     'cent').flat X~ 'illion')).flat;
 
-sub int-name (Int:D $num, Str:D $lang) {
+multi int-name (Int:D $num, Str:D $lang) {
     if $num.substr(0,1) eq '-' { return "negative {int-name($num.substr(1), $lang)}" }
     if $num eq '0' { return @I[0] }
     my $m = 0;
@@ -200,12 +201,49 @@ sub int-name (Int:D $num, Str:D $lang) {
 }
 
 #-----------------------------------------------------------
+## Taken https://github.com/stmuk/p6-String-Koremutake
+
+my @phonemes = <ba be bi bo bu by da de di do du dy fa fe fi
+    fo fu fy ga ge gi go gu gy ha he hi ho hu hy ja je ji jo ju jy ka ke
+    ki ko ku ky la le li lo lu ly ma me mi mo mu my na ne ni no nu ny pa
+    pe pi po pu py ra re ri ro ru ry sa se si so su sy ta te ti to tu ty
+    va ve vi vo vu vy bra bre bri bro bru bry dra dre dri dro dru dry fra
+    fre fri fro fru fry gra gre gri gro gru gry pra pre pri pro pru pry
+    sta ste sti sto stu sty tra tre>;
+
+my %phoneme_to_number = @phonemes Z=> ^@phonemes.elems;
+my %number_to_phoneme = %phoneme_to_number.invert;
+
+say %number_to_phoneme;
+
+sub numbers-to-koremutake($numbers) {
+    my $string;
+    for @$numbers -> $n {
+        fail "0 <= $n <= 127" unless (0 <= $n) && ($n <= 127);
+        $string ~= %number_to_phoneme{$n};
+    }
+    return $string;
+}
+
+multi int-name (Int:D $integer is copy, 'koremutake' ) {
+    my @numbers;
+    @numbers = (0) if $integer == 0;
+
+    while ($integer != 0) {
+        @numbers.push( $integer % 128);
+        $integer = floor($integer/128);
+    }
+
+    return numbers-to-koremutake([reverse @numbers]);
+}
+
+#-----------------------------------------------------------
 #|( Convert numbers into numeric word forms.
     * C<$num> A number, a string, or a list of strings and/or numbers to be converted.
     * C<$lang> A string for the language the word form is written in.
 )
 proto to-numeric-word-form( $num, Str:D $lang = 'english' ) is export {*}
-#| Only conversion to English is implemented.
+#| Only conversion to English and Koremutake is implemented.
 
 multi to-numeric-word-form( Str:D $spec where has-semicolon($spec), Str:D $lang = 'english' ) {
 
@@ -222,16 +260,16 @@ multi to-numeric-word-form( Int:D $num, Str:D $lang = 'english' ) {
 
     #die 'Unknown language.' unless %langToX{$lang.lc}:exists;
 
-    note "Using English, not $lang." unless $lang.lc eq "english";
+    note "Using English, not $lang." unless $lang.lc (elem) <english koremutake>;
 
     int-name($num, $lang.lc)
 }
 
-multi to-numeric-word-form( @nums, Str:D $lang = 'english' ) {
+multi to-numeric-word-form( @nums, Str:D $lang = 'english' --> List) {
 
-    note "Using English, not $lang." unless $lang.lc eq "english";
+    note "Using English, not $lang." unless $lang.lc (elem) <english koremutake>;
 
-    @nums.map({ to-numeric-word-form($_, $lang.lc) })
+    @nums.map({ to-numeric-word-form($_, $lang.lc) }).List
 }
 
 
