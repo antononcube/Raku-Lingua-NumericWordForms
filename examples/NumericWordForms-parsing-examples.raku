@@ -22,19 +22,21 @@ use Lingua::NumericWordForms;
 #'six hundred million',
 #'thirteen hundred ninety nine million');
 
-say to-numeric-word-form('123;232; 898_934');
-
-say to-numeric-word-form([123, '232', 898_934]);
+# use sparrow to generate twenty tests for dfdd32 in bash and raku
+#
 
 my $spec = 'τετρακόσια είκοσι επτά; триста и две хиляди и трийсет';
 say from-numeric-word-form($spec):p:!number;
 
-my @specs = ('τετρακόσια είκοσι επτά',
+my @specs = ('двадесет и три',
+             'τετρακόσια είκοσι επτά',
              '二十万六十五',
              'tysiąc dwadzieścia trzy',
              'un mil ciento seis',
              'six hundred million eight hundred and twelve',
-             'триста и две хиляди и трийсет');
+             'one hundred twenty third',
+             'триста и две хиляди и трийсет',
+             'quatre-vingt-dix-neuf mille quatre-vingt-cinq');
 say from-numeric-word-form(@specs):p:!number;
 
 #my $spec = 'tysiąc dwadzieścia trzy';
