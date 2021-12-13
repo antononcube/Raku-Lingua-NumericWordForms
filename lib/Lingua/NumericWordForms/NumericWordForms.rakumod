@@ -214,8 +214,6 @@ my @phonemes = <ba be bi bo bu by da de di do du dy fa fe fi
 my %phoneme_to_number = @phonemes Z=> ^@phonemes.elems;
 my %number_to_phoneme = %phoneme_to_number.invert;
 
-say %number_to_phoneme;
-
 sub numbers-to-koremutake($numbers) {
     my $string;
     for @$numbers -> $n {
