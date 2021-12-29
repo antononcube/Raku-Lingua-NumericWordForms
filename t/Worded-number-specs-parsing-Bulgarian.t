@@ -35,7 +35,7 @@ plan 42;
 #Length[lsTestNumbers]
 #
 #lsSentences =
-#  Map[IntegerName[#, {"Bulgarian", "Words"}] &, lsTestNumbers];
+#  Map[IntegerName[#, {testLanguage, "Words"}] &, lsTestNumbers];
 #Shallow[lsSentences]
 #
 #StringRiffle[
