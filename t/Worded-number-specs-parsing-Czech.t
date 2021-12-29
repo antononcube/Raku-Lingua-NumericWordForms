@@ -201,33 +201,33 @@ is parse-func('devět set osmdesát osm miliónů devět set šedesát jedna tis
         'devět set osmdesát osm miliónů devět set šedesát jedna tisíc tři sta dvacet čtyři';
 
 ## 37
-is parse-func('pět set osmdesát sedm miliardů sedm set dvacet sedm miliónů dvě stě třicet tisíc sto devadesát devět'),
+is parse-func('pět set osmdesát sedm miliard sedm set dvacet sedm miliónů dvě stě třicet tisíc sto devadesát devět'),
         587727230199,
-        'pět set osmdesát sedm miliardů sedm set dvacet sedm miliónů dvě stě třicet tisíc sto devadesát devět';
+        'pět set osmdesát sedm miliard sedm set dvacet sedm miliónů dvě stě třicet tisíc sto devadesát devět';
 
 ## 38
-is parse-func('šest set dvacet sedm miliardů pět set osmdesát miliónů devět set třicet pět tisíc sedmdesát dva'),
+is parse-func('šest set dvacet sedm miliard pět set osmdesát miliónů devět set třicet pět tisíc sedmdesát dva'),
         627580935072,
-        'šest set dvacet sedm miliardů pět set osmdesát miliónů devět set třicet pět tisíc sedmdesát dva';
+        'šest set dvacet sedm miliard pět set osmdesát miliónů devět set třicet pět tisíc sedmdesát dva';
 
 ## 39
-is parse-func('sedm set osmdesát čtyři miliardů šest set třicet miliónů sedm set třicet osm tisíc sto dvacet'),
+is parse-func('sedm set osmdesát čtyři miliardy šest set třicet miliónů sedm set třicet osm tisíc sto dvacet'),
         784630738120,
-        'sedm set osmdesát čtyři miliardů šest set třicet miliónů sedm set třicet osm tisíc sto dvacet';
+        'sedm set osmdesát čtyři miliardy šest set třicet miliónů sedm set třicet osm tisíc sto dvacet';
 
 ## 40
-is parse-func('osm set čtyři miliardů tři sta devadesát sedm miliónů čtyři sta šestnáct tisíc sedm set třicet šest'),
+is parse-func('osm set čtyři miliardy tři sta devadesát sedm miliónů čtyři sta šestnáct tisíc sedm set třicet šest'),
         804397416736,
-        'osm set čtyři miliardů tři sta devadesát sedm miliónů čtyři sta šestnáct tisíc sedm set třicet šest';
+        'osm set čtyři miliardy tři sta devadesát sedm miliónů čtyři sta šestnáct tisíc sedm set třicet šest';
 
 ## 41
-is parse-func('osm set šedesát sedm miliardů pět set šedesát jeden miliónů tři sta osmdesát tisíc čtyři sta čtrnáct'),
+is parse-func('osm set šedesát sedm miliard pět set šedesát jeden miliónů tři sta osmdesát tisíc čtyři sta čtrnáct'),
         867561380414,
-        'osm set šedesát sedm miliardů pět set šedesát jeden miliónů tři sta osmdesát tisíc čtyři sta čtrnáct';
+        'osm set šedesát sedm miliard pět set šedesát jeden miliónů tři sta osmdesát tisíc čtyři sta čtrnáct';
 
 ## 42
-is parse-func('devět set osmdesát miliardů sedm set třicet šest miliónů sto třicet osm tisíc osm set třicet devět'),
+is parse-func('devět set osmdesát miliard sedm set třicet šest miliónů sto třicet osm tisíc osm set třicet devět'),
         980736138839,
-        'devět set osmdesát miliardů sedm set třicet šest miliónů sto třicet osm tisíc osm set třicet devět';
+        'devět set osmdesát miliard sedm set třicet šest miliónů sto třicet osm tisíc osm set třicet devět';
 
 done-testing;
