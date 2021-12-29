@@ -10,8 +10,8 @@ role Lingua::NumericWordForms::Roles::Czech::WordedNumberSpec
     regex worded_number_up_to_100:sym<Czech> { <name_of_10s> [ [ \h* <.worded-number-and-conjunction> \h* | \h+ ]? <name_1_to_10> ]? || <name_up_to_19> }
 
     token name_of_0:sym<Czech> {'nula' | 'nula'}
-    token name_of_1:sym<Czech> {'jeden' | 'jeden'}
-    token name_of_2:sym<Czech> {'dva' | 'dva'}
+    token name_of_1:sym<Czech> {'jeden' | 'jedna'}
+    token name_of_2:sym<Czech> {'dva' | 'dva' | 'dvě' }
     token name_of_3:sym<Czech> {'tři' | 'tři'}
     token name_of_4:sym<Czech> {'čtyři' | 'čtyři'}
     token name_of_5:sym<Czech> {'pět' | 'pět'}
@@ -37,12 +37,12 @@ role Lingua::NumericWordForms::Roles::Czech::WordedNumberSpec
     token name_of_70:sym<Czech> {'sedmdesát' | 'sedmdesát'}
     token name_of_80:sym<Czech> {'osmdesát' | 'osmdesát'}
     token name_of_90:sym<Czech> {'devadesát' | 'devadesát'}
-    token name_of_100:sym<Czech> {'sto' | 'sto'}
-    token name_of_1000:sym<Czech> {'jedna tisíc' | 'jedna tisíc'}
-    token name_of_10000:sym<Czech> {'deset tisíc' | 'deset tisíc'}
-    token name_of_1000000:sym<Czech> {'jeden milión' | 'jeden milión'}
-    token name_of_bil:sym<Czech> {'jeden miliarda' | 'jeden miliarda'}
-    token name_of_tril:sym<Czech> {'jeden bilión' | 'jeden bilión'}
+    token name_of_100:sym<Czech> {'sto' | 'stě' | 'sta' | 'set'}
+    token suffix_for_100:sym<Czech>  {'stě' | 'stě' | 'sta' | 'set'}
+    token name_of_1000:sym<Czech> {'tisíc' | 'tisíce' | 'jedna' 'tisíc' | 'jedna tisíc'}
+    token name_of_1000000:sym<Czech> {'jeden milión' | 'milión' | 'miliónů' | 'milion' }
+    token name_of_bil:sym<Czech> {'jeden miliarda' | 'miliarda' | 'miliardů' }
+    token name_of_tril:sym<Czech> {'jeden bilión' | 'jeden bilión' | 'bilión' | 'bilion'}
 
     token worded-number-and-conjunction:sym<Czech> {'a'}
 }
