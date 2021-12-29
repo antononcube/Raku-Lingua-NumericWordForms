@@ -41,7 +41,7 @@ role Lingua::NumericWordForms::Roles::Czech::WordedNumberSpec
     token suffix_for_100:sym<Czech>  {'stě' | 'stě' | 'sta' | 'set'}
     token name_of_1000:sym<Czech> {'tisíc' | 'tisíce' | 'jedna' 'tisíc' | 'jedna tisíc'}
     token name_of_1000000:sym<Czech> {'jeden milión' | 'milión' | 'miliónů' | 'milion' }
-    token name_of_bil:sym<Czech> {'jeden miliarda' | 'miliarda' | 'miliardů' }
+    token name_of_bil:sym<Czech> {'jeden miliarda' | 'miliarda' | 'miliardy' | 'miliard' | 'miliardů' }
     token name_of_tril:sym<Czech> {'jeden bilión' | 'jeden bilión' | 'bilión' | 'bilion'}
 
     token worded-number-and-conjunction:sym<Czech> {'a'}
