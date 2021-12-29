@@ -123,7 +123,7 @@ say from-numeric-word-form('two hundred and five; триста четириде�
 ```
 
 For more examples see the file 
-[NumericWordForms-examples.raku](./examples/NumericWordForms-examples.raku).
+[NumericWordForms-examples.raku](examples/NumericWordForms-parsing-examples.raku).
 
 #### Type of the result
 
@@ -232,7 +232,7 @@ The following TODO items are ordered by priority, the most important are on top.
    
    - [ ] Bulgarian
     
-   - [ ] Russia, Ukrainian, Polish
+   - [ ] Czech, Russian, Ukrainian, Polish
    
    - [ ] Japanese
     
@@ -280,7 +280,9 @@ test(Ukrainian):Added new tests.
 - Thanks to [spyrettas](https://github.com/spyrettas) for:
   - Riding "shotgun" during the initial implementation of the Greek role, actions, and tests
   - Proofreading and correcting Greek tests and role
-
+- Thanks to [Denis](https://github.com/DenisVCode) for:
+  - Proofreading the Czech language unit tests and suggesting corrections.
+    
 ------
 
 ## References
