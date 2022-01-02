@@ -6,6 +6,7 @@ use Lingua::NumericWordForms::Roles::English::WordedNumberSpec;
 use Lingua::NumericWordForms::Roles::French::WordedNumberSpec;
 use Lingua::NumericWordForms::Roles::Greek::WordedNumberSpec;
 use Lingua::NumericWordForms::Roles::Japanese::WordedNumberSpec;
+use Lingua::NumericWordForms::Roles::Koremutake::WordedNumberSpec;
 use Lingua::NumericWordForms::Roles::Persian::WordedNumberSpec;
 use Lingua::NumericWordForms::Roles::Polish::WordedNumberSpec;
 use Lingua::NumericWordForms::Roles::Russian::WordedNumberSpec;
@@ -18,6 +19,7 @@ use Lingua::NumericWordForms::Actions::English::WordedNumberSpec;
 use Lingua::NumericWordForms::Actions::French::WordedNumberSpec;
 use Lingua::NumericWordForms::Actions::Greek::WordedNumberSpec;
 use Lingua::NumericWordForms::Actions::Japanese::WordedNumberSpec;
+use Lingua::NumericWordForms::Actions::Koremutake::WordedNumberSpec;
 use Lingua::NumericWordForms::Actions::Persian::WordedNumberSpec;
 use Lingua::NumericWordForms::Actions::Polish::WordedNumberSpec;
 use Lingua::NumericWordForms::Actions::Russian::WordedNumberSpec;
@@ -34,6 +36,7 @@ my %langToAction =
     "french"         => Lingua::NumericWordForms::Actions::French::WordedNumberSpec,
     "greek"          => Lingua::NumericWordForms::Actions::Greek::WordedNumberSpec,
     "japanese"       => Lingua::NumericWordForms::Actions::Japanese::WordedNumberSpec,
+    "koremutake"     => Lingua::NumericWordForms::Actions::Koremutake::WordedNumberSpec,
     "persian"        => Lingua::NumericWordForms::Actions::Persian::WordedNumberSpec,
     "polish"         => Lingua::NumericWordForms::Actions::Polish::WordedNumberSpec,
     "russian"        => Lingua::NumericWordForms::Actions::Russian::WordedNumberSpec,
@@ -62,6 +65,7 @@ my %langToRole =
     "french"         => Lingua::NumericWordForms::Roles::French::WordedNumberSpec,
     "greek"          => Lingua::NumericWordForms::Roles::Greek::WordedNumberSpec,
     "japanese"       => Lingua::NumericWordForms::Roles::Japanese::WordedNumberSpec,
+    "koremutake"     => Lingua::NumericWordForms::Roles::Koremutake::WordedNumberSpec,
     "persian"        => Lingua::NumericWordForms::Roles::Persian::WordedNumberSpec,
     "polish"         => Lingua::NumericWordForms::Roles::Polish::WordedNumberSpec,
     "russian"        => Lingua::NumericWordForms::Roles::Russian::WordedNumberSpec,
@@ -206,39 +210,8 @@ multi int-name (Int:D $num, Str:D $lang) {
     }
 }
 
-#-----------------------------------------------------------
-## Taken https://github.com/stmuk/p6-String-Koremutake
-
-my @phonemes = <ba be bi bo bu by da de di do du dy fa fe fi
-    fo fu fy ga ge gi go gu gy ha he hi ho hu hy ja je ji jo ju jy ka ke
-    ki ko ku ky la le li lo lu ly ma me mi mo mu my na ne ni no nu ny pa
-    pe pi po pu py ra re ri ro ru ry sa se si so su sy ta te ti to tu ty
-    va ve vi vo vu vy bra bre bri bro bru bry dra dre dri dro dru dry fra
-    fre fri fro fru fry gra gre gri gro gru gry pra pre pri pro pru pry
-    sta ste sti sto stu sty tra tre>;
-
-my %phoneme_to_number = @phonemes Z=> ^@phonemes.elems;
-my %number_to_phoneme = %phoneme_to_number.invert;
-
-sub numbers-to-koremutake($numbers) {
-    my $string;
-    for @$numbers -> $n {
-        fail "0 <= $n <= 127" unless (0 <= $n) && ($n <= 127);
-        $string ~= %number_to_phoneme{$n};
-    }
-    return $string;
-}
-
 multi int-name (Int:D $integer is copy, 'koremutake' ) {
-    my @numbers;
-    @numbers = (0) if $integer == 0;
-
-    while ($integer != 0) {
-        @numbers.push( $integer % 128);
-        $integer = floor($integer/128);
-    }
-
-    return numbers-to-koremutake([reverse @numbers]);
+    return integer-to-koremutake($integer)
 }
 
 #-----------------------------------------------------------
