@@ -3,6 +3,8 @@
 [![Build Status](https://app.travis-ci.com/antononcube/Raku-Lingua-NumericWordForms.svg?branch=main)](https://app.travis-ci.com/github/antononcube/Raku-Lingua-NumericWordForms)
 [![License: Artistic-2.0](https://img.shields.io/badge/License-Artistic%202.0-0298c3.svg)](https://opensource.org/licenses/Artistic-2.0)
 
+:bulgaria: :czechia: :united_kingdom: :french: :greece: :japan: :iran: :poland: :russia: :ukraine:
+
 ## Introduction
 
 This repository provides a Raku package with functions for the 
