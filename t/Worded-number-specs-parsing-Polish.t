@@ -35,10 +35,10 @@ plan 42;
 #Length[lsTestNumbers]
 #
 #lsSentences =
-#  Map[IntegerName[#, {"Russian", "Words"}] &, lsTestNumbers];
+#  Map[IntegerName[#, {testLanguage, "Words"}] &, lsTestNumbers];
 #Shallow[lsSentences]
 #
-#StringRiffle[
+#txtTests = StringRiffle[
 # MapThread[
 #  "## " <> #3 <> "\n" <> "is parse-func('" <> #1 <> "'), " <> #2 <>
 #    ",\n'" <> #1 <> "';" &, {lsSentences, ToString /@ lsTestNumbers,
