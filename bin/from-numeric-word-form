@@ -1,0 +1,49 @@
+#!/usr/bin/env raku
+use v6.d;
+
+use Lingua::NumericWordForms;
+
+sub positional-of-pairs($expr) { $expr ~~ Positional && ([and] $expr.map({ $_ ~~ Pair })); }
+
+multi format-output(Str $format, $output) {
+    given $format.lc {
+        when $_ eq 'raku' && $output.elems == 1 { say $output[0].raku; }
+        #when positional-of-pairs($output) { say $output.map({ $_.key.Str ~ ' => ' ~ $_.value.Str }).join(', '); }
+        when $_ eq 'raku' && positional-of-pairs($output) { say $output.raku; }
+        when $_ (elem) <string text> && positional-of-pairs($output) { say $output.map({ $_.key.Str ~ ' => ' ~ $_.value.Str }).join(', '); }
+        when $output.elems == 1 { say $output[0]; }
+        when $_ (elem) <string text> { say $output.join(' '); }
+        when $_ (elem) <lines> && $output ~~ Positional { .say for $output.List; }
+        when $_ (elem) <lines> && positional-of-pairs($output) { .say for $output.pairs; }
+        default { say $output.raku; }
+    }
+}
+
+#| Interprets numeric word forms into numbers.
+multi sub MAIN(Str $text,                          #= Text to interpret to numbers.
+               Str :l(:$lang) = 'Automatic',       #= Language
+               Bool :p(:$pairs) = False,           #= Should Language-number pairs be returned or not?
+               Str :f(:$format) = 'text'           #= Output format one of 'text', 'lines', or 'raku'.
+               ) {
+    my @res = from-numeric-word-form($text, $lang, p => $pairs);
+    format-output($format, @res);
+}
+
+#| Takes a list of words to be a numeric word form and interprets it into a number.
+multi sub MAIN(*@words,                            #= Text to interpret to numbers.
+               Str :l(:$lang) = 'Automatic',       #= Language
+               Bool :p(:$pairs) = False,           #= Should Language-number pairs be returned or not?
+               Str :f(:$format) = 'text'           #= Output format one of 'text', 'lines', or 'raku'.
+               ) {
+    my @res = from-numeric-word-form( @words.join(' '), $lang, p => $pairs);
+    format-output($format, @res);
+}
+
+#| Interprets numeric word forms from a (pipeline) input.
+multi sub MAIN(Str :l(:$lang) = 'Automatic',       #= Language
+               Bool :p(:$pairs) = False,           #= Should Language-number pairs be returned or not?
+               Str :f(:$format) = 'text'           #= Output format one of 'text', 'lines', or 'raku'.
+               ) {
+    my $text = lines>>.trim.join(';');
+    format-output($format, from-numeric-word-form($text, $lang, p => $pairs));
+}
