@@ -105,6 +105,17 @@ sub has-semicolon (Str $word) {
 )
 proto from-numeric-word-form( | ) is export {*}
 
+multi from-numeric-word-form('language-roles') {
+    %langToRole;
+}
+multi from-numeric-word-form('languages', Bool :$group = False) {
+    if $group {
+        from-numeric-word-form('language-roles').pairs.classify({ $_.value }).map({ $_.value>>.key.List.sort });
+    } else {
+        from-numeric-word-form('language-roles').keys;
+    }
+}
+
 multi from-numeric-word-form( @specs, Bool :$number = True, :$p = False ) {
     from-numeric-word-form( @specs, 'automatic', :$number, :$p )
 }
