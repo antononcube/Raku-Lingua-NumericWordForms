@@ -108,6 +108,7 @@ proto from-numeric-word-form( | ) is export {*}
 multi from-numeric-word-form('language-roles') {
     %langToRole;
 }
+
 multi from-numeric-word-form('languages', Bool :$group = False) {
     if $group {
         from-numeric-word-form('language-roles').pairs.classify({ $_.value }).map({ $_.value>>.key.List.sort });
@@ -116,28 +117,28 @@ multi from-numeric-word-form('languages', Bool :$group = False) {
     }
 }
 
-multi from-numeric-word-form( @specs, Bool :$number = True, :$p = False ) {
+multi from-numeric-word-form( @specs, Bool :$number = True, Bool :$p = False ) {
     from-numeric-word-form( @specs, 'automatic', :$number, :$p )
 }
 
-multi from-numeric-word-form( @specs, Str:D $lang, Bool :$number = True, :$p = False ) {
+multi from-numeric-word-form( @specs, Str:D $lang, Bool :$number = True, Bool :$p = False ) {
     do for @specs -> $s {
         from-numeric-word-form($s, $lang, :$number, :$p)
     }
 }
 
-multi from-numeric-word-form( Str:D $spec, Bool :$number = True, :$p = False ) {
+multi from-numeric-word-form( Str:D $spec, Bool :$number = True, Bool :$p = False ) {
     from-numeric-word-form( $spec, 'automatic', :$number, :$p )
 }
 
-multi from-numeric-word-form( Str:D $spec where has-semicolon($spec), Str:D $lang where $lang.lc eq 'automatic', Bool :$number = True, :$p = False ) {
+multi from-numeric-word-form( Str:D $spec where has-semicolon($spec), Str:D $lang = 'automatic', Bool :$number = True, Bool :$p = False ) {
 
     my @speLines = $spec.trim.split(/ ';' \s* /).map({ $_.trim });
 
     from-numeric-word-form( @speLines, $lang, :$number, :$p)
 }
 
-multi from-numeric-word-form( Str:D $spec where not has-semicolon($spec), Str:D $lang where $lang.lc eq 'automatic', Bool :$number = True, :$p = False ) {
+multi from-numeric-word-form( Str:D $spec where not has-semicolon($spec), Str:D $lang where $lang.lc eq 'automatic', Bool :$number = True, Bool :$p = False ) {
 
     my $res = Nil;
 
@@ -159,7 +160,7 @@ multi from-numeric-word-form( Str:D $spec where not has-semicolon($spec), Str:D 
     $res
 }
 
-multi from-numeric-word-form( Str:D $spec, Str:D $lang, Bool :$number = True, :$p = False ) {
+multi from-numeric-word-form( Str:D $spec, Str:D $lang, Bool :$number = True, Bool :$p = False ) {
 
     die ('The second argument is expected to be one of: \'automatic\', \'' ~ %langToAction.keys.sort.join('\', \'') ~ '\'.')
     unless %langToAction{$lang.lc}:exists;
