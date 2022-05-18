@@ -1,0 +1,43 @@
+#!/usr/bin/env raku
+use v6.d;
+
+use Lingua::NumericWordForms;
+
+sub positional-of-pairs($expr) { $expr ~~ Positional && ([and] $expr.map({ $_ ~~ Pair })); }
+
+multi format-output(Str $format, $output) {
+    given $format.lc {
+        when $_ eq 'raku' && $output.elems == 1 { say $output[0].raku; }
+        when $output.elems == 1 { say $output[0]; }
+        when $_ (elem) <string text> { say $output.join('; '); }
+        when $_ (elem) <lines> { .say for $output.List; }
+        default { say $output.raku; }
+    }
+}
+
+#| Coverts numbers into numeric word forms.
+multi sub MAIN(Str $text,                          #= Text to interpret to numbers.
+               Str :l(:$lang) = 'English',         #= Language
+               Str :f(:$format) = 'text'           #= Output format one of 'text', 'lines', or 'raku'.
+               ) {
+    my @res = to-numeric-word-form($text, $lang);
+    format-output($format, @res);
+}
+#= Multiple numbers can be separated with ';'.
+
+#| Takes a list of numbers converts them into a list of numeric word forms.
+multi sub MAIN(*@words,                            #= Text to interpret to numbers.
+               Str :l(:$lang) = 'English',         #= Language
+               Str :f(:$format) = 'text'           #= Output format one of 'text', 'lines', or 'raku'.
+               ) {
+    my @res = to-numeric-word-form( @words.join(';'), $lang);
+    format-output($format, @res);
+}
+
+#| Converts numbers from a (pipeline) input into numeric word forms.
+multi sub MAIN(Str :l(:$lang) = 'English',         #= Language
+               Str :f(:$format) = 'text'           #= Output format one of 'text', 'lines', or 'raku'.
+               ) {
+    my $text = lines>>.trim.join(';');
+    format-output($format, to-numeric-word-form($text, $lang));
+}
