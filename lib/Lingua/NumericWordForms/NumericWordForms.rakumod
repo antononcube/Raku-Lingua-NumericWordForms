@@ -281,14 +281,18 @@ multi to-numeric-word-form( @nums, Str:D $lang = 'english' --> List) {
    * C<$spec> A string with a numeric word form.
    * C<$rule> A pair the specifies from which language to translate to which language.
 )
-proto translate-numeric-word-form( Str:D $spec, Pair $rule = ('English' => 'Bulgarian') ) is export {*}
-#| Only translation to English is implemented.
+proto translate-numeric-word-form( Str:D $spec, Pair $rule = ('automatic' => 'English') ) is export {*}
+#| Only translation to English and Koremutake is implemented.
 
-multi translate-numeric-word-form( Str:D $spec, Pair $rule = ('English' => 'Bulgarian') ) {
+multi translate-numeric-word-form( Str:D $spec, Pair $rule = ('automatic' => 'English') ) {
 
     my Int $num = from-numeric-word-form($spec, $rule.key, :number);
 
-    if $num { to-numeric-word-form($num, $rule.value) } else { Nil }
+    with $num {
+        to-numeric-word-form($num, $rule.value)
+    } else {
+        Nil
+    }
 }
 
 =begin pod
