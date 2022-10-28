@@ -52,23 +52,23 @@ sub integer-to-koremutake (Int:D $integer is copy) is export {
 sub koremutake-to-numbers($string --> Hash ) {
     my @numbers;
     my $phoneme;
-    my @chars = $string.split('');
+    my @chars = $string.comb;
 
-    while ( @chars ) {
+    while @chars {
+
         $phoneme ~= shift @chars;
         next unless $phoneme ~~ /<[aeiouy]>/;
         my $number = %phoneme_to_number{$phoneme};
 
-        if not $number.defined {
+        without $number {
             return %(:!Recognized, Numbers => @numbers )
         }
 
         @numbers.push($number);
-        $phoneme = "";
+        $phoneme = '';
     }
 
-    return %( :Recognized, Numbers => @numbers);
-
+    return %(Recognized => @numbers.elems > 0, Numbers => @numbers);
 }
 
 sub koremutake-to-integer(Str:D $string) is export {
