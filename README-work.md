@@ -70,13 +70,6 @@ say to-numeric-word-form(8093);
 say to-numeric-word-form(8093, 'Bulgarian'); # not implemented yet
 say to-numeric-word-form(8093, 'Russian');   # not implemented yet
 ```
-```
-#ERROR: Using English, not Bulgarian.
-#ERROR: Using English, not Russian.
-# eight thousand, ninety three
-# eight thousand, ninety three
-# eight thousand, ninety three
-```
 
 The first argument of `to-numeric-word-form` can be:
 
@@ -90,15 +83,9 @@ Here are examples of the latter two:
 ```perl6
 to-numeric-word-form('123; 232; 898_934').join('; ');
 ```
-```
-# one hundred twenty three; two hundred thirty two; eight hundred ninety eight thousand, nine hundred thirty four
-```
 
 ```perl6
 to-numeric-word-form([321, '992', 100_904]).join('; ');
-```
-```
-# three hundred twenty one; nine hundred ninety two; one hundred thousand, nine hundred four
 ```
 
 ### Interpretation
@@ -114,13 +101,6 @@ say from-numeric-word-form('tysiąc dwadzieścia trzy', 'Polish');
 say from-numeric-word-form('одна тысяча двадцать три', 'Russian');
 say from-numeric-word-form('mil veintitrés', 'Spanish');
 ```
-```
-# 1023
-# 1023
-# 1023
-# 1023
-# 1023
-```
 
 The function `from-numeric-word-form` can take as a first argument:
 
@@ -135,22 +115,13 @@ Here are corresponding examples:
 ```perl6
 from-numeric-word-form('twenty six');
 ```
-```
-# 26
-```
 
 ```perl6
 from-numeric-word-form(['mil veintitrés', 'dos mil setenta y dos']);
 ```
-```
-# (1023 2072)
-```
 
 ```perl6
 from-numeric-word-form('two hundred and five; триста четиридесет и две; 二十万六十五'):p;
-```
-```
-# (english => 205 bulgarian => 342 japanese => 200065)
 ```
 
 For more examples see the file 
@@ -160,9 +131,6 @@ Here we retrieve a list of all supported languages:
 
 ```perl6
 from-numeric-word-form('languages').sort
-```
-```
-# (bulgarian czech english español français french greek japanese korean koremutake persian polish polski portuguese português russian spanish ukrainian český ελληνικά български руский український 日本語 한국어)
 ```
 
 **Remark:** In the list above some languages appear twice, with both their English and native names.
@@ -176,16 +144,10 @@ the adverb `number` (which by default is `True`.) Here is an example:
 my $res = from-numeric-word-form('one thousand and twenty three'); 
 say $res, ' ', $res.WHAT;
 ```
-```
-# 1023 (Int)
-```
 
 ```perl6
 $res = from-numeric-word-form('one thousand and twenty three', :!number); 
 say $res, ' ', $res.WHAT;
-```
-```
-# 1023 (Str)
 ```
 
 #### Automatic language detection
@@ -195,15 +157,9 @@ Automatic language detection is invoked if the second argument is 'Automatic' or
 ```perl6
 say from-numeric-word-form('tysiąc dwadzieścia trzy', 'Automatic'):p;
 ```
-```
-# polish => 1023
-```
 
 ```perl6
 say from-numeric-word-form(['tysiąc dwadzieścia trzy', 'twenty three']):p;
-```
-```
-# (polish => 1023 english => 23)
 ```
 
 The adverb `:p` specifies whether the result should be a `Pair` object or a `List` of `Pair` objects
@@ -215,9 +171,6 @@ Translation from one language to another:
 
 ```perl6
 translate-numeric-word-form('хиляда двадесет и три', 'Bulgarian' => 'English');
-```
-```
-# one thousand, twenty three
 ```
 
 **Remark:** Currently that function translates to English and 
@@ -232,11 +185,6 @@ my $trRes = translate-numeric-word-form($numForm, 'automatic' => 'Koremutake');
 say "Given           : $numForm";
 say "To Koremutake   : $trRes";
 say "From Koremutake : {from-numeric-word-form($trRes)}";
-```
-```
-# Given           : три тысячи восемьсот девяносто
-# To Koremutake   : jami
-# From Koremutake : 3890
 ```
 
 ------
