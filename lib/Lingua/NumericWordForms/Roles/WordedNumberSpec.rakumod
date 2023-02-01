@@ -7,7 +7,7 @@ use v6;
 role Lingua::NumericWordForms::Roles::WordedNumberSpec {
 
     proto token numeric-word-form {*}
-    rule numeric-word-form:sym<General> { <worded_number_up_to_quad> }
+    regex numeric-word-form:sym<General> { <worded_number_up_to_quad> }
 
     ## Separators and conjunctions
     proto token preceding-number-separator {*}
