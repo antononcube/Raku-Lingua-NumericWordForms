@@ -9,9 +9,9 @@ role Lingua::NumericWordForms::Roles::Portuguese::WordedNumberSpec
 
     regex worded_number_up_to_100:sym<Portuguese> { <name_of_10s> [ [ \h* <.worded-number-and-conjunction> \h* | \h+ ]? <name_1_to_10> ]? || <name_up_to_29> }
 
-    token name_of_0:sym<Portuguese> {'zero' | 'zero'}
-    token name_of_1:sym<Portuguese> {'um' | 'um' | 'primeiro' | 'primeira'}
-    token name_of_2:sym<Portuguese> {'dois' | 'du' | 'segundo' | 'segunda' }
+    token name_of_0:sym<Portuguese> {'zero'}
+    token name_of_1:sym<Portuguese> {'um' | 'uma' | 'primeiro' | 'primeira'}
+    token name_of_2:sym<Portuguese> {'dois' | 'du' | 'duas' | 'segundo' | 'segunda' }
     token name_of_3:sym<Portuguese> {'três' | 'tre'}
     token name_of_4:sym<Portuguese> {'quatro' | 'quatro'}
     token name_of_5:sym<Portuguese> {'cinco' | 'quin'}
