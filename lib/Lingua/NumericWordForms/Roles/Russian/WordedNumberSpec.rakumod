@@ -10,9 +10,9 @@ role Lingua::NumericWordForms::Roles::Russian::WordedNumberSpec
     regex worded_number_up_to_100:sym<Russian> { <name_of_10s> [ [ \h* <.worded-number-and-conjunction> \h* | \h+ ]? <name_1_to_10> ]? || <name_up_to_19> }
 
     token name_of_0:sym<Russian> {'ноль'}
-    token name_of_1:sym<Russian> {'один' | 'одна'}
-    token name_of_2:sym<Russian> {'два' | 'две'}
-    token name_of_3:sym<Russian> {'три'}
+    token name_of_1:sym<Russian> {'один' | 'одна' | 'первый' | 'первая'}
+    token name_of_2:sym<Russian> {'два' | 'две' | 'второй' | 'вторая'}
+    token name_of_3:sym<Russian> {'три' | 'третий' | 'третья'}
     token name_of_4:sym<Russian> {'четыре'}
     token name_of_5:sym<Russian> {'пять'}
     token name_of_6:sym<Russian> {'шесть'}
