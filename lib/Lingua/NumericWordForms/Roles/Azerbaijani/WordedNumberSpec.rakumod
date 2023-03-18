@@ -42,4 +42,6 @@ role Lingua::NumericWordForms::Roles::Azerbaijani::WordedNumberSpec
     token name_of_1000000:sym<Azerbaijani> { 'milyon' | 'милжон' }
     token name_of_bil:sym<Azerbaijani> { 'milyard' | 'милжар' }
     token name_of_tril:sym<Azerbaijani> { 'trilyon' | 'трилжон' }
+
+    token worded-number-and-conjunction:sym<Azerbaijani> {'və'}
 }
