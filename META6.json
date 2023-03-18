@@ -1,7 +1,7 @@
 {
   "name": "Lingua::NumericWordForms",
   "description": "Lingua::NumericWordForms has generators, parsers, and interpreters of numeric word forms in different languages.",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "perl": "6.d",
   "authors": [
     "Anton Antonov"
