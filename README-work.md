@@ -2,7 +2,7 @@
 
 [![License: Artistic-2.0](https://img.shields.io/badge/License-Artistic%202.0-0298c3.svg)](https://opensource.org/licenses/Artistic-2.0)
 
-:bulgaria: 🇨🇿 🇬🇧 🇫🇷 :greece: 🇯🇵 :iran: :poland: 🇵🇹 🇷🇺 🇪🇸 :ukraine:
+🇦🇿 :bulgaria: 🇨🇿 🇬🇧 🇫🇷 :greece: 🇯🇵 :iran: :poland: 🇵🇹 🇷🇺 🇪🇸 :ukraine:
 
 ## Introduction
 
@@ -43,13 +43,13 @@ Package installations from both sources use [zef installer](https://github.com/u
 
 To install the package via Zef's ecosystem use the shell command:
 
-```shell
+```
 zef install Lingua::NumericWordForms
 ```
 
 To install the package from the GitHub repository use the shell command:
 
-```shell
+```
 zef install https://github.com/antononcube/Raku-Lingua-NumericWordForms.git
 ```
 
@@ -262,6 +262,8 @@ The following TODO items are ordered by priority, the most important are on top.
    
    - [X] Portuguese
    
+   - [X] Azerbaijani
+   
    - [ ] Korean
    
      - Implemented to a point.
@@ -271,6 +273,7 @@ The following TODO items are ordered by priority, the most important are on top.
      - Implemented to a point.
    
    - [ ] Sanskrit
+   
        
 8. [ ] Implement parsing of year "shortcut" word forms, like "twenty o three" 
 
