@@ -54,6 +54,7 @@ my %langToAction =
 
 
 my %langToActionExtended =
+    "azərbaycan"     => Lingua::NumericWordForms::Actions::Azerbaijani::WordedNumberSpec,
     "český"          => Lingua::NumericWordForms::Actions::Czech::WordedNumberSpec,
     "español"        => Lingua::NumericWordForms::Actions::Spanish::WordedNumberSpec,
     "français"       => Lingua::NumericWordForms::Actions::French::WordedNumberSpec,
@@ -87,6 +88,7 @@ my %langToRole =
     "ukrainian"      => Lingua::NumericWordForms::Roles::Ukrainian::WordedNumberSpec;
 
 my %langToRoleExtended =
+    "azərbaycan"     => Lingua::NumericWordForms::Roles::Azerbaijani::WordedNumberSpec,
     "český"          => Lingua::NumericWordForms::Roles::Czech::WordedNumberSpec,
     "español"        => Lingua::NumericWordForms::Roles::Spanish::WordedNumberSpec,
     "français"       => Lingua::NumericWordForms::Roles::French::WordedNumberSpec,
