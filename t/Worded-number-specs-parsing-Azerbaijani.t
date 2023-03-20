@@ -69,20 +69,20 @@ is parse-func('doxsan yeddi'), 97,
         'doxsan yeddi';
 
 ## 13
-is parse-func('bir yüz atmış üç'), 163,
-        'bir yüz atmış üç';
+is parse-func('bir yüz altmış üç'), 163,
+        'bir yüz altmış üç';
 
 ## 14
-is parse-func('bir yüz atmış səkkiz'), 168,
-        'bir yüz atmış səkkiz';
+is parse-func('bir yüz altmış səkkiz'), 168,
+        'bir yüz altmış səkkiz';
 
 ## 15
 is parse-func('iki yüz dörd'), 204,
         'iki yüz dörd';
 
 ## 16
-is parse-func('iki yüz atmış'), 260,
-        'iki yüz atmış';
+is parse-func('iki yüz altmış'), 260,
+        'iki yüz altmış';
 
 ## 17
 is parse-func('dörd yüz iyirmi yeddi'), 427,
@@ -161,8 +161,8 @@ is parse-func('səkkiz yüz qırx iki milyon yeddi yüz dörd min yeddi yüz sə
         'səkkiz yüz qırx iki milyon yeddi yüz dörd min yeddi yüz səqsən üç';
 
 ## 36
-is parse-func('doqquz yüz səqsən səkkiz milyon doqquz yüz atmış bir min üç yüz iyirmi dörd'), 988961324,
-        'doqquz yüz səqsən səkkiz milyon doqquz yüz atmış bir min üç yüz iyirmi dörd';
+is parse-func('doqquz yüz səqsən səkkiz milyon doqquz yüz altmış bir min üç yüz iyirmi dörd'), 988961324,
+        'doqquz yüz səqsən səkkiz milyon doqquz yüz altmış bir min üç yüz iyirmi dörd';
 
 ## 37
 is parse-func('beş yüz səqsən yeddi milyard yeddi yüz iyirmi yeddi milyon iki yüz otuz min bir yüz doxsan doqquz'),
@@ -184,9 +184,9 @@ is parse-func('səkkiz yüz dörd milyard üç yüz doxsan yeddi milyon dörd y�
         'səkkiz yüz dörd milyard üç yüz doxsan yeddi milyon dörd yüz on altı min yeddi yüz otuz altı';
 
 ## 41
-is parse-func('səkkiz yüz atmış yeddi milyard beş yüz atmış bir milyon üç yüz səqsən min dörd yüz on dörd'),
+is parse-func('səkkiz yüz altmış yeddi milyard beş yüz altmış bir milyon üç yüz səqsən min dörd yüz on dörd'),
         867561380414,
-        'səkkiz yüz atmış yeddi milyard beş yüz atmış bir milyon üç yüz səqsən min dörd yüz on dörd';
+        'səkkiz yüz altmış yeddi milyard beş yüz altmış bir milyon üç yüz səqsən min dörd yüz on dörd';
 
 ## 42
 is parse-func('doqquz yüz səqsən milyard yeddi yüz otuz altı milyon bir yüz otuz səkkiz min səkkiz yüz otuz doqquz'),
