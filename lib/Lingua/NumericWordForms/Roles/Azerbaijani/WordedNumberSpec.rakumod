@@ -31,7 +31,7 @@ role Lingua::NumericWordForms::Roles::Azerbaijani::WordedNumberSpec
     token name_of_30:sym<Azerbaijani> { 'otuz' | 'отуз' }
     token name_of_40:sym<Azerbaijani> { 'qırx' | 'qырx' }
     token name_of_50:sym<Azerbaijani> { 'əlli' | 'әлли' }
-    token name_of_60:sym<Azerbaijani> { 'atmış' | 'алтмыш' }
+    token name_of_60:sym<Azerbaijani> { 'altmış' | 'алтмыш' }
     token name_of_70:sym<Azerbaijani> { 'yetmiş' | 'жетмиш' }
     token name_of_80:sym<Azerbaijani> { 'səqsən' | 'сәксән' }
     token name_of_90:sym<Azerbaijani> { 'doxsan' | 'доxсан' }
