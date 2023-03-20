@@ -18,7 +18,7 @@ sub parse-func(Str:D $spec) {
             actions => Lingua::NumericWordForms::Actions::Azerbaijani::WordedNumberSpec.new).made,
 }
 
-plan 42;
+plan 43;
 
 ## 1
 is parse-func('sıfır'), 0,
