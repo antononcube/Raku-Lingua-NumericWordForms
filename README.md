@@ -162,7 +162,7 @@ Here we retrieve a list of all supported languages:
 from-numeric-word-form('languages').sort
 ```
 ```
-# (azerbaijani azərbaycan bulgarian czech english español français french greek japanese korean koremutake persian polish polski portuguese português russian spanish ukrainian český ελληνικά български руский український 日本語 한국어)
+# (azerbaijani azərbaycan bulgarian czech english español français french greek japanese korean koremutake persian polish polski portuguese português russian spanish ukrainian český ελληνικά български русский українська 日本語 한국어)
 ```
 
 **Remark:** In the list above some languages appear twice, with both their English and native names.
