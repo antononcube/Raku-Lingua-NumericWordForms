@@ -9,11 +9,11 @@ use v6.d;
 # https://github.com/antononcube/Raku-Lingua-NumericWordForms
 
 class Lingua::NumericWordForms::Generators::Bulgarian {
-    has Str $.locale = 'bg';
-    has Str $.lang = 'Bulgarian';
-    has Str $.lang-native = 'Български';
+    has Str $.locale is rw = 'bg';
+    has Str $.lang is rw = 'Bulgarian';
+    has Str $.lang-native is rw = 'Български';
 
-    has %!misc-strings = (
+    has %.misc-strings = (
     'deset' => 'десет',
     'edinadeset' => 'единадесет',
     'na' => 'на',
@@ -23,21 +23,21 @@ class Lingua::NumericWordForms::Generators::Bulgarian {
     'hiliadi' => 'хиляди',
     );
 
-    has %!digits =
+    has %.digits =
             0 => [Nil, 'едно', 'две', 'три', 'четири', 'пет', 'шест', 'седем', 'осем', 'девет'],
             1 => [Nil, 'един', 'два', Nil, Nil, Nil, Nil, Nil, Nil, Nil],
             -1 => [Nil, 'една', Nil, Nil, Nil, Nil, Nil, Nil, Nil, Nil];
 
-    has Bool $!digits-initialized = False;
-    has Bool $!last-and = False;
-    has Str $!zero = 'нула';
-    has Str $!infinity = 'безкрайност';
-    has Str $!and = 'и';
-    has Str $!sep = ' ';
-    has Str $!minus = 'минус';
-    has Str $!plural = 'а';
+    has Bool $.digits-initialized is rw = False;
+    has Bool $.last-and is rw = False;
+    has Str $.zero is rw = 'нула';
+    has Str $.infinity is rw = 'безкрайност';
+    has Str $.and is rw = 'и';
+    has Str $.sep is rw = ' ';
+    has Str $.minus is rw = 'минус';
+    has Str $.plural is rw = 'а';
 
-    has %!exponent = (
+    has %.exponent = (
     0 => '',
     3 => 'хиляда',
     6 => 'милион',

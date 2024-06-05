@@ -34,6 +34,7 @@ use Lingua::NumericWordForms::Actions::Ukrainian::WordedNumberSpec;
 
 # Generation
 use Lingua::NumericWordForms::Generators::Bulgarian;
+use Lingua::NumericWordForms::Generators::Russian;
 
 #===========================================================
 # Parsing
@@ -224,8 +225,11 @@ multi sub from-numeric-word-form( Str:D $spec,
 #===========================================================
 proto int-name (Int:D $num, Str:D $lang) {*}
 
-multi int-name (Int:D $integer is copy, 'bulgarian' ) {
-    my $obj = Lingua::NumericWordForms::Generators::Bulgarian.new;
+multi int-name (Int:D $integer is copy, Str:D $lang where $lang ∈ <bulgarian russian> ) {
+    my $obj = do given $lang {
+        when 'bulgarian' { Lingua::NumericWordForms::Generators::Bulgarian.new; }
+        when 'russian' { Lingua::NumericWordForms::Generators::Russian.new; }
+    };
 
     return $obj.generate($integer)
 }
@@ -296,14 +300,14 @@ multi sub to-numeric-word-form( Int:D $num, :$lang is copy = 'english' ) {
     if $lang.isa(Whatever) { $lang = 'english'; }
     #die 'Unknown language.' unless %langToX{$lang.lc}:exists;
 
-    note "Using English, not $lang." unless $lang.lc (elem) <bulgarian english koremutake>;
+    note "Using English, not $lang." unless $lang.lc (elem) <bulgarian english koremutake russian>;
 
     int-name($num, $lang.lc)
 }
 
 multi to-numeric-word-form( @nums, Str:D $lang = 'english' --> List) {
 
-    note "Using English, not $lang." unless $lang.lc (elem) <bulgarian english koremutake>;
+    note "Using English, not $lang." unless $lang.lc (elem) <bulgarian english koremutake russian>;
 
     @nums.map({ to-numeric-word-form($_, $lang.lc) }).List
 }

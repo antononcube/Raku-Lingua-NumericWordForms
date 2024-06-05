@@ -1,7 +1,7 @@
 {
   "name": "Lingua::NumericWordForms",
   "description": "Lingua::NumericWordForms has generators, parsers, and interpreters of numeric word forms in different languages.",
-  "version": "0.5.5",
+  "version": "0.5.6",
   "perl": "6.d",
   "authors": [
     "Anton Antonov"
@@ -29,6 +29,7 @@
     "Lingua::NumericWordForms::Actions::Ukrainian::WordedNumberSpec": "lib/Lingua/NumericWordForms/Actions/Ukrainian/WordedNumberSpec.rakumod",
     "Lingua::NumericWordForms::Actions::WordedNumberSpec": "lib/Lingua/NumericWordForms/Actions/WordedNumberSpec.rakumod",
     "Lingua::NumericWordForms::Generators::Bulgarian": "lib/Lingua/NumericWordForms/Generators/Bulgarian.rakumod",
+    "Lingua::NumericWordForms::Generators::Russian": "lib/Lingua/NumericWordForms/Generators/Russian.rakumod",
     "Lingua::NumericWordForms::Roles::Azerbaijani::WordedNumberSpec": "lib/Lingua/NumericWordForms/Roles/Azerbaijani/WordedNumberSpec.rakumod",
     "Lingua::NumericWordForms::Roles::Bulgarian::WordedNumberSpec": "lib/Lingua/NumericWordForms/Roles/Bulgarian/WordedNumberSpec.rakumod",
     "Lingua::NumericWordForms::Roles::Czech::WordedNumberSpec": "lib/Lingua/NumericWordForms/Roles/Czech/WordedNumberSpec.rakumod",
