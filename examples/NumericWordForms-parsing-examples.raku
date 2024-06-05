@@ -1,8 +1,5 @@
 use v6;
 
-use lib './lib';
-use lib '.';
-
 use Lingua::NumericWordForms;
 
 #my @commands = (
@@ -25,10 +22,13 @@ use Lingua::NumericWordForms;
 # use sparrow to generate twenty tests for dfdd32 in bash and raku
 #
 
+say from-numeric-word-form('languages'):group;
+
 my $spec = 'τετρακόσια είκοσι επτά; триста и две хиляди и трийсет';
 say from-numeric-word-form($spec):p:!number;
 
-my @specs = ('двадесет и три',
+my @specs = ('nagripru',
+             'двадесет и три',
              'τετρακόσια είκοσι επτά',
              '二十万六十五',
              'tysiąc dwadzieścia trzy',
