@@ -3,6 +3,8 @@
 [![MacOS](https://github.com/antononcube/Raku-Lingua-NumericWordForms/actions/workflows/macos.yml/badge.svg)](https://github.com/antononcube/Raku-Lingua-NumericWordForms/actions/workflows/macos.yml)
 [![Linux](https://github.com/antononcube/Raku-Lingua-NumericWordForms/actions/workflows/linux.yml/badge.svg)](https://github.com/antononcube/Raku-Lingua-NumericWordForms/actions/workflows/linux.yml)
 [![Win64](https://github.com/antononcube/Raku-Lingua-NumericWordForms/actions/workflows/windows.yml/badge.svg)](https://github.com/antononcube/Raku-Lingua-NumericWordForms/actions/workflows/windows.yml)
+[![https://raku.land/zef:antononcube/Lingua::NumericWordForms](https://raku.land/zef:antononcube/Lingua::NumericWordForms/badges/version)](https://raku.land/zef:antononcube/Lingua::NumericWordForms)
+[![https://raku.land/zef:antononcube/Lingua::NumericWordForms](https://raku.land/zef:antononcube/Lingua::NumericWordForms/badges/downloads)](https://raku.land/zef:antononcube/Lingua::NumericWordForms)
 [![License: Artistic-2.0](https://img.shields.io/badge/License-Artistic%202.0-0298c3.svg)](https://opensource.org/licenses/Artistic-2.0)
 
 🇦🇿 :bulgaria: 🇨🇿 🇬🇧 🇫🇷 :greece: 🇯🇵 :iran: :poland: 🇵🇹 🇷🇺 🇪🇸 :ukraine:
@@ -113,8 +115,8 @@ use Lingua::NumericWordForms;
 say from-numeric-word-form('one thousand and twenty three');
 say from-numeric-word-form('хиляда двадесет и три', 'Bulgarian');
 say from-numeric-word-form('tysiąc dwadzieścia trzy', 'Polish');
-say from-numeric-word-form('одна тысяча двадцать три', 'Russian');
-say from-numeric-word-form('mil veintitrés', 'Spanish');
+say from-numeric-word-form('одна тысяча двадцать три', lang => 'Russian');
+say from-numeric-word-form('mil veintitrés', lang => 'Spanish');
 ```
 ```
 # 1023
@@ -131,6 +133,9 @@ The function `from-numeric-word-form` can take as a first argument:
 - A string comprised of numeric word forms separated by ";"
   
 - A list or an array of strings 
+
+The language can be specified as a second positional argument or with the named argument "lang".
+In addition to the names of the supported languages the value of the language argument can be also `Whatever` or "Automatic".
 
 Here are corresponding examples:
 
@@ -192,13 +197,15 @@ say $res, ' ', $res.WHAT;
 
 #### Automatic language detection
 
-Automatic language detection is invoked if the second argument is 'Automatic' or not specified:
+Automatic language detection is invoked if the second argument is `Whatever` or "Automatic":
 
 ```perl6
-say from-numeric-word-form('tysiąc dwadzieścia trzy', 'Automatic'):p;
+say from-numeric-word-form('tysiąc dwadzieścia trzy', Whatever):p;
+say from-numeric-word-form('триста двадесет и три', lang => 'Automatic'):p;
 ```
 ```
 # polish => 1023
+# bulgarian => 323
 ```
 
 ```perl6
@@ -208,7 +215,7 @@ say from-numeric-word-form(['tysiąc dwadzieścia trzy', 'twenty three']):p;
 # (polish => 1023 english => 23)
 ```
 
-The adverb `:p` specifies whether the result should be a `Pair` object or a `List` of `Pair` objects
+The adverb `:pairs` (`:p`) specifies whether the result should be a `Pair` object or a `List` of `Pair` objects
 with the detected languages as keys.
 
 ### Translation
@@ -222,7 +229,14 @@ translate-numeric-word-form('хиляда двадесет и три', 'Bulgaria
 # one thousand, twenty three
 ```
 
-**Remark:** Currently that function translates to English and 
+```perl6
+translate-numeric-word-form('two hundred thousand and five', 'English' => 'Bulgarian');
+```
+```
+# двеста хиляди и пет
+```
+
+**Remark:** Currently that function translates to Bulgarian, English, and 
 [Koremutake](https://shorl.com/koremutake.php) 
 only.
 
@@ -230,7 +244,7 @@ Here is are Russian to Koremutake example:
 
 ```perl6
 my $numForm = "три тысячи восемьсот девяносто";
-my $trRes = translate-numeric-word-form($numForm, 'automatic' => 'Koremutake');
+my $trRes = translate-numeric-word-form($numForm, 'Automatic' => 'Koremutake');
 say "Given           : $numForm";
 say "To Koremutake   : $trRes";
 say "From Koremutake : {from-numeric-word-form($trRes)}";
@@ -239,6 +253,15 @@ say "From Koremutake : {from-numeric-word-form($trRes)}";
 # Given           : три тысячи восемьсот девяносто
 # To Koremutake   : jami
 # From Koremutake : 3890
+```
+
+The named arguments "from" and "to" can be also used:
+
+```perl6
+translate-numeric-word-form($numForm, from => Whatever, to => 'English');
+```
+```
+# three thousand, eight hundred ninety
 ```
 
 ------
