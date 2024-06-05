@@ -273,22 +273,27 @@ multi int-name (Int:D $integer is copy, 'koremutake' ) {
     * C<$num> A number, a string, or a list of strings and/or numbers to be converted.
     * C<$lang> A string for the language the word form is written in.
 )
-proto to-numeric-word-form( $num, Str:D $lang = 'english' ) is export {*}
+proto sub to-numeric-word-form($num, |) is export {*}
 #| Only conversion to English and Koremutake is implemented.
 
-multi to-numeric-word-form( Str:D $spec where has-semicolon($spec), Str:D $lang = 'english' ) {
+multi sub to-numeric-word-form( $spec, $lang = 'english' ) {
+    return to-numeric-word-form($spec, :$lang);
+}
+
+multi sub to-numeric-word-form( Str:D $spec where has-semicolon($spec), :$lang = 'english' ) {
 
     my @nums = $spec.trim.split(/ ';' \s* /).map({ $_.trim });
 
     to-numeric-word-form( @nums, $lang )
 }
 
-multi to-numeric-word-form( Str:D $num where not has-semicolon($num), Str:D $lang = 'english' ) {
+multi sub to-numeric-word-form( Str:D $num where not has-semicolon($num), :$lang = 'english' ) {
     to-numeric-word-form( $num.Int, $lang )
 }
 
-multi to-numeric-word-form( Int:D $num, Str:D $lang = 'english' ) {
+multi sub to-numeric-word-form( Int:D $num, :$lang is copy = 'english' ) {
 
+    if $lang.isa(Whatever) { $lang = 'english'; }
     #die 'Unknown language.' unless %langToX{$lang.lc}:exists;
 
     note "Using English, not $lang." unless $lang.lc (elem) <bulgarian english koremutake>;
@@ -311,15 +316,26 @@ multi to-numeric-word-form( @nums, Str:D $lang = 'english' --> List) {
    * C<$spec> A string with a numeric word form.
    * C<$rule> A pair the specifies from which language to translate to which language.
 )
-proto translate-numeric-word-form( Str:D $spec, Pair $rule = (Whatever => 'English') ) is export {*}
-#| Only translation to English and Koremutake is implemented.
+proto sub translate-numeric-word-form( Str:D $spec, |) is export {*}
+#| Only translation to Bulgarian, English, and Koremutake is implemented.
 
-multi translate-numeric-word-form( Str:D $spec, Pair $rule = (Whatever => 'English') ) {
+multi sub translate-numeric-word-form( Str:D $spec, Pair:D $rule = Pair.new('Automatic', 'English') ) {
 
     my Int $num = from-numeric-word-form($spec, $rule.key, :number);
 
     with $num {
         to-numeric-word-form($num, $rule.value)
+    } else {
+        Nil
+    }
+}
+
+multi sub translate-numeric-word-form( Str:D $spec, :$from is copy = Whatever, :$to is copy = 'English') {
+
+    my Int $num = from-numeric-word-form($spec, $from, :number);
+
+    with $num {
+        to-numeric-word-form($num, $to)
     } else {
         Nil
     }

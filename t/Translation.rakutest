@@ -7,7 +7,7 @@ use lib '.';
 
 use Lingua::NumericWordForms;
 
-plan 2;
+plan 3;
 
 ## 1
 my $numForm1 = "три тысячи восемьсот девяносто";
@@ -22,5 +22,12 @@ my $trRes2 = translate-numeric-word-form($numForm2, 'automatic' => 'Koremutake')
 my $num2 = from-numeric-word-form($trRes2);
 
 is $num2, 3890;
+
+## 3
+my $numForm3 = "три тысячи восемьсот девяносто";
+my $trRes3 = translate-numeric-word-form($numForm3, from => Whatever, to => 'Koremutake');
+my $num3 = from-numeric-word-form($trRes3);
+
+is $num3, 3890;
 
 done-testing;
