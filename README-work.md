@@ -60,15 +60,16 @@ zef install https://github.com/antononcube/Raku-Lingua-NumericWordForms.git
 ### Generation 
 
 The generation of numeric word forms is a *secondary* goal of this package.
-Currently only generation of English numeric word forms is implemented. 
-(I plan to implement Bulgarian word forms generation soon...)
+Currently only generation of Bulgarian, English, and [Koremutake](https://shorl.com/koremutake.php) 
+numeric word forms are implemented. 
+(I plan to implement Russian word forms generation soon...)
 Here are examples:
 
 ```perl6
 use Lingua::NumericWordForms;
 say to-numeric-word-form(8093);
-say to-numeric-word-form(8093, 'Bulgarian'); # not implemented yet
-say to-numeric-word-form(8093, 'Russian');   # not implemented yet
+say to-numeric-word-form(8093, 'Bulgarian');
+say to-numeric-word-form(8093, 'Koremutake');
 ```
 
 The first argument of `to-numeric-word-form` can be:
@@ -221,65 +222,66 @@ grammars and roles outside of this package.
 
 The following TODO items are ordered by priority, the most important are on top. 
  
-1. [ ] Expand parsing beyond trillions
+1. [ ] TODO Expand parsing beyond trillions
 
-2. [X] Automatic determination of the language
+2. [X] DONE Automatic determination of the language
 
-3. [ ] Word form generation:
-   - [X] English
-   - [ ] Bulgarian
-   - [ ] Russian
-   - [ ] General algorithm
+3. [ ] TODO Word form generation:
+   - [X] DONE Bulgarian
+   - [X] DONE English
+   - [X] DONE Koremutake
+   - [ ] TODO Russian
+   - [ ] TODO General algorithm
     
-4. [ ] Documentation of the general programming approach.
+4. [ ] TODO Documentation of the general programming approach.
 
-   - [ ] What are the main challenges?
-   - [ ] How the chosen software architecture decisions address them?
-   - [ ] Concrete implementations walk-through.
-   - [ ] How to implement / include a new language?
-   - [ ] How the random numbers test files were made?
-   - [ ] Profiling, limitations, alternatives.
+   - [ ] TODO What are the main challenges?
+   - [ ] TODO How the chosen software architecture decisions address them?
+   - [ ] TODO Concrete implementations walk-through.
+   - [ ] TODO How to implement / include a new language?
+   - [ ] TODO How the random numbers test files were made?
+   - [ ] TODO Profiling, limitations, alternatives.
 
-5. [ ] Full, consistent Persian numbers parsing. 
+5. [ ] TODO Full, consistent Persian numbers parsing. 
    - Currently, Persian number parsing works only for numbers less than 101.  
    
-6. [X] General strategy for parsing and interpretation of 
+6. [X] DONE General strategy for parsing and interpretation of 
    numeric word forms of East Asia languages  
    - Those languages use groupings based on 10^4 instead of 10^3. 
-   - [X] Implementation for Japanese.
+   - [X] DONE Implementation for Japanese.
    
-7. [ ] Implement parsing of ordinal numeric word forms 
+7. [ ] TODO Implement parsing of ordinal numeric word forms 
 
-   - [X] English, French, Greek, and Spanish
+   - [X] DONE English, French, Greek, and Spanish
    
-   - [X] Bulgarian
+   - [X] DONE Bulgarian
     
-   - [X] Czech, Russian, Ukrainian, Polish
+   - [X] DONE Czech, Russian, Ukrainian, Polish
    
-   - [X] Japanese
+   - [X] DONE Japanese
    
-   - [X] Koremutake
+   - [X] DONE Koremutake
    
-   - [X] Portuguese
+   - [X] DONE Portuguese
    
-   - [X] Azerbaijani
+   - [X] DONE Azerbaijani
    
-   - [ ] Korean
+   - [ ] TODO Korean
    
      - Implemented to a point.
      
-   - [ ] Persian
+   - [ ] TODO Persian
     
      - Implemented to a point.
    
-   - [ ] Sanskrit
+   - [ ] TODO Sanskrit
    
        
-8. [ ] Implement parsing of year "shortcut" word forms, like "twenty o three" 
+8. [ ] TODO Implement parsing of year "shortcut" word forms, like "twenty o three" 
 
-9. [ ] Implement parsing of numeric word forms for rationals, like "five twelfths" 
+9. [ ] TODO Implement parsing of numeric word forms for rationals, like "five twelfths" 
 
-10. [X] Translation function (from one language to another)
+10. [X] DONE Translation function (from one language to another)
 
 ------
 
