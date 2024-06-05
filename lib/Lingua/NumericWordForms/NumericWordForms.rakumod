@@ -124,13 +124,13 @@ sub has-semicolon (Str $word) {
     * C<:$number> A boolean adverb whether the result should be an C<Int> object or a C<Str> object.
     & C<:$p> A boolean adverb whether the result should be a pair with the language of the word form as a key.
 )
-proto from-numeric-word-form( | ) is export {*}
+proto sub from-numeric-word-form( | ) is export {*}
 
-multi from-numeric-word-form('language-roles') {
+multi sub from-numeric-word-form('language-roles') {
     %langToRole;
 }
 
-multi from-numeric-word-form('languages', Bool :$group = False) {
+multi sub from-numeric-word-form('languages', Bool :$group = False) {
     if $group {
         from-numeric-word-form('language-roles').pairs.classify({ $_.value }).map({ $_.value>>.key.List.sort });
     } else {
@@ -138,28 +138,35 @@ multi from-numeric-word-form('languages', Bool :$group = False) {
     }
 }
 
-multi from-numeric-word-form( @specs, Bool :$number = True, Bool :$p = False ) {
-    from-numeric-word-form( @specs, 'automatic', :$number, :$p )
+multi sub from-numeric-word-form(@specs, $lang, *%args) {
+    from-numeric-word-form(@specs, :$lang, |%args);
 }
 
-multi from-numeric-word-form( @specs, Str:D $lang, Bool :$number = True, Bool :$p = False ) {
+multi sub from-numeric-word-form(@specs, :$lang = Whatever, *%args) {
     do for @specs -> $s {
-        from-numeric-word-form($s, $lang, :$number, :$p)
+        from-numeric-word-form($s, :$lang, |%args);
     }
 }
 
-multi from-numeric-word-form( Str:D $spec, Bool :$number = True, Bool :$p = False ) {
-    from-numeric-word-form( $spec, 'automatic', :$number, :$p )
+multi sub from-numeric-word-form( Str:D $spec, $lang, *%args) {
+    from-numeric-word-form( $spec, :$lang, |%args);
 }
 
-multi from-numeric-word-form( Str:D $spec where has-semicolon($spec), Str:D $lang = 'automatic', Bool :$number = True, Bool :$p = False ) {
+multi sub from-numeric-word-form(
+        Str:D $spec where has-semicolon($spec),
+        :$lang = Whatever,
+        Bool :$number = True,
+        Bool :$p = False ) {
 
     my @speLines = $spec.trim.split(/ ';' \s* /).map({ $_.trim });
 
-    from-numeric-word-form( @speLines, $lang, :$number, :$p)
+    from-numeric-word-form( @speLines, :$lang, :$number, :$p)
 }
 
-multi from-numeric-word-form( Str:D $spec where not has-semicolon($spec), Str:D $lang where $lang.lc eq 'automatic', Bool :$number = True, Bool :$p = False ) {
+sub from-numeric-word-form-auto (
+        Str:D $spec where !has-semicolon($spec),
+        Bool :$number = True,
+        Bool :p(:$pairs) = False ) {
 
     my $res = Nil;
 
@@ -172,19 +179,27 @@ multi from-numeric-word-form( Str:D $spec where not has-semicolon($spec), Str:D 
 
     for @langs -> $l {
         quietly {
-            $res = from-numeric-word-form($spec, $l, :$number, :$p);
+            $res = from-numeric-word-form($spec, lang => $l, :$number, :$pairs);
         }
         last if $res.defined;
     }
 
     warn 'Cannot parse the given word form using automatic language detection.' unless $res.defined;
-    $res
+    return $res;
 }
 
-multi from-numeric-word-form( Str:D $spec, Str:D $lang, Bool :$number = True, Bool :$p = False ) {
+multi sub from-numeric-word-form( Str:D $spec,
+                                  :$lang is copy = Whatever,
+                                  Bool :$number = True,
+                                  Bool :p(:$pairs) = False ) {
 
-    die ('The second argument is expected to be one of: \'automatic\', \'' ~ %langToAction.keys.sort.join('\', \'') ~ '\'.')
-    unless %langToAction{$lang.lc}:exists;
+    if $lang.isa(Whatever) { $lang = 'automatic'; }
+    die "The second argument \$lang is expected to be Whatever, 'automatic', or one of '{%langToAction.keys.sort.join("', '")}'."
+    unless $lang ~~ Str:D && ($lang.lc eq 'automatic' || (%langToAction{$lang.lc}:exists));
+
+    if $lang.lc eq 'automatic' {
+        return from-numeric-word-form-auto($spec, :$number, :$pairs);
+    }
 
     my $parserObj = WordFormParser but %langToRole{$lang.lc};
     my $res = $parserObj.parse( $spec.lc, rule => 'numeric-word-form');
@@ -201,7 +216,7 @@ multi from-numeric-word-form( Str:D $spec, Str:D $lang, Bool :$number = True, Bo
 
     $res = $number ?? $res !! $res.Str;
 
-    $p ?? ($lang => $res) !! $res
+    $pairs ?? ($lang => $res) !! $res
 }
 
 #===========================================================
@@ -296,10 +311,10 @@ multi to-numeric-word-form( @nums, Str:D $lang = 'english' --> List) {
    * C<$spec> A string with a numeric word form.
    * C<$rule> A pair the specifies from which language to translate to which language.
 )
-proto translate-numeric-word-form( Str:D $spec, Pair $rule = ('automatic' => 'English') ) is export {*}
+proto translate-numeric-word-form( Str:D $spec, Pair $rule = (Whatever => 'English') ) is export {*}
 #| Only translation to English and Koremutake is implemented.
 
-multi translate-numeric-word-form( Str:D $spec, Pair $rule = ('automatic' => 'English') ) {
+multi translate-numeric-word-form( Str:D $spec, Pair $rule = (Whatever => 'English') ) {
 
     my Int $num = from-numeric-word-form($spec, $rule.key, :number);
 

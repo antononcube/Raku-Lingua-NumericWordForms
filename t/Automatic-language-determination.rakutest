@@ -1,23 +1,22 @@
 use Test;
 
-use lib './lib';
-use lib '.';
+use lib <. lib>;
 
 use Lingua::NumericWordForms;
 
-plan 10;
+plan *;
 
 #-----------------------------------------------------------
 # Automatic language determination
 #-----------------------------------------------------------
 
 ## 1
-is from-numeric-word-form('fifteen hundred', 'automatic', :p),
+is from-numeric-word-form('fifteen hundred', 'automatic', :pairs),
         (english => 1500),
         'fifteen hundred';
 
 ## 2
-is from-numeric-word-form('одна тысяча двадцать три', 'automatic', :p),
+is from-numeric-word-form('одна тысяча двадцать три', 'automatic'):p,
         (russian => 1023),
         'одна тысяча двадцать три';
 
@@ -66,5 +65,10 @@ my $spec2 = 'forty seven; eleven';
 is from-numeric-word-form($spec2, 'English', :p, :!number).WHAT,
         List,
         'string with ;-separated word forms in English';
+
+## 11
+is from-numeric-word-form($spec2, lang => 'English', :p, :!number).WHAT,
+        List,
+        'string with ;-separated word forms in English, :lang';
 
 done-testing;
