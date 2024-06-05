@@ -28,6 +28,7 @@
     "Lingua::NumericWordForms::Actions::Spanish::WordedNumberSpec": "lib/Lingua/NumericWordForms/Actions/Spanish/WordedNumberSpec.rakumod",
     "Lingua::NumericWordForms::Actions::Ukrainian::WordedNumberSpec": "lib/Lingua/NumericWordForms/Actions/Ukrainian/WordedNumberSpec.rakumod",
     "Lingua::NumericWordForms::Actions::WordedNumberSpec": "lib/Lingua/NumericWordForms/Actions/WordedNumberSpec.rakumod",
+    "Lingua::NumericWordForms::Generators::Bulgarian": "lib/Lingua/NumericWordForms/Generators/Bulgarian.rakumod",
     "Lingua::NumericWordForms::Roles::Azerbaijani::WordedNumberSpec": "lib/Lingua/NumericWordForms/Roles/Azerbaijani/WordedNumberSpec.rakumod",
     "Lingua::NumericWordForms::Roles::Bulgarian::WordedNumberSpec": "lib/Lingua/NumericWordForms/Roles/Bulgarian/WordedNumberSpec.rakumod",
     "Lingua::NumericWordForms::Roles::Czech::WordedNumberSpec": "lib/Lingua/NumericWordForms/Roles/Czech/WordedNumberSpec.rakumod",
