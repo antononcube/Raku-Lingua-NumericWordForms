@@ -19,6 +19,7 @@ class Lingua::NumericWordForms::Generators::Bulgarian {
     'na' => 'на',
     'sto' => 'сто',
     'sta' => 'ста',
+    'sta-set' => [2, 3],
     'stotin' => 'стотин',
     'hiliadi' => 'хиляди',
     );
@@ -195,7 +196,7 @@ class Lingua::NumericWordForms::Generators::Bulgarian {
         if $s {
             if $s == 1 {
                 @ret[1] = %!misc-strings<sto>;
-            } elsif $s == 2 || $s == 3 {
+            } elsif $s ∈ %!misc-strings<sta-set> {
                 @ret[1] = %!digits{0}[$s] ~ %!misc-strings<sta>;
             } else {
                 @ret[1] = %!digits{0}[$s] ~ %!misc-strings<stotin>;
