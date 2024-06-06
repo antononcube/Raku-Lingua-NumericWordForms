@@ -1,0 +1,62 @@
+use Test;
+
+use lib <. lib>;
+
+use Lingua::NumericWordForms;
+
+plan *;
+
+#-----------------------------------------------------------
+# Bulgarian numeric word form generation
+#-----------------------------------------------------------
+
+## 1
+is
+        to-numeric-word-form(1500, lang => 'Bulgarian'),
+        'хиляда и петстотин',
+        'хиляда и петстотин';
+
+## 2
+is
+        to-numeric-word-form(1023, 'Bulgarian'),
+        'хиляда и двадесет и три',
+        'хиляда и двадесет и три';
+
+## 3
+is
+        to-numeric-word-form(6023, 'Bulgarian'),
+        'шест хиляди и двадесет и три',
+        'шест хиляди и двадесет и три';
+
+## 4
+is
+        to-numeric-word-form(120_211, 'Bulgarian'),
+        'сто и двадесет хиляди двеста и единадесет',
+        'сто и двадесет хиляди двеста и единадесет';
+
+## 5
+is
+        to-numeric-word-form(456, 'Bulgarian'),
+        'четиристотин петдесет и шест',
+        'четиристотин петдесет и шест';
+
+## 6
+my @testPairs6 = [
+    33 => "тридесет и три",
+    122 => "сто двадесет и две",
+    546 => "петстотин четиридесет и шест",
+    12_091 => "дванадесет хиляди и деветдесет и едно",
+    5_087_456 => "пет милиона осемдесет и седем хиляди четиристотин петдесет и шест"
+];
+
+subtest {
+        for @testPairs6 -> $p {
+                is-deeply
+                        to-numeric-word-form($p.key, lang => 'Bulgarian'),
+                        $p.value,
+                        "list of numbers {$p.key}";
+        }
+}, "Check list of numbers";
+
+
+done-testing;
