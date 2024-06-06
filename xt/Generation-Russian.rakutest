@@ -1,0 +1,61 @@
+use Test;
+
+use lib <. lib>;
+
+use Lingua::NumericWordForms;
+
+plan *;
+
+#-----------------------------------------------------------
+# Russian numeric word form generation
+#-----------------------------------------------------------
+
+## 1
+is
+        to-numeric-word-form(1500, lang => 'Russian'),
+        'тысача пятьсот',
+        'тысача пятьсот';
+
+## 2
+is
+        to-numeric-word-form(1023, 'Russian'),
+        'тысача двадцать три',
+        'тысача двадцать три';
+
+## 3
+is
+        to-numeric-word-form(6023, 'Russian'),
+        'шесть тысач двадцать три',
+        'шесть тысач двадцать три';
+
+## 4
+is
+        to-numeric-word-form(120_211, 'Russian'),
+        'сто двадцать тысач двухсот одинадцать',
+        'сто двадцать тысач двухсот одинадцать';
+
+## 5
+is
+        to-numeric-word-form(456, 'Russian'),
+        'четыресот пятьдесят шесть',
+        'четыресот пятьдесят шесть';
+
+## 6
+my @testPairs6 = [
+    33 => "тридцать три",
+    122 => "сто двадцать два",
+    546 => "пятьсот сорок шесть",
+    12_091 => "двенадцать тысяч девяносто один",
+    5_087_456 => "пять миллионов восемьдесят семь тысяч четыреста пятьдесят шесть"
+];
+
+subtest {
+        for @testPairs6 -> $p {
+        is-deeply
+                to-numeric-word-form($p.key, lang => 'Russian'),
+                $p.value,
+                "list of numbers {$p.key}";
+        }
+}, "Check list of numbers";
+
+done-testing;
