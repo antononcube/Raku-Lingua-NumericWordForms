@@ -43,7 +43,7 @@ role Lingua::NumericWordForms::Roles::Ukrainian::WordedNumberSpec
     token name_of_10000:sym<Ukrainian> {'десять тисяч'}
     token name_of_1000000:sym<Ukrainian> {'мільйон' | 'мільйонів' | 'мільйони'}
     token name_of_bil:sym<Ukrainian>     {'мільярд' | 'мільярдів' | 'мільярди'}
-    token name_of_tril:sym<Ukrainian>    {'більйон' | 'більйонів' | 'більйони'}
+    token name_of_tril:sym<Ukrainian>    {'трильйон' | 'трильйонів' | 'трильйони'}
 
-    token worded-number-and-conjunction:sym<Ukrainian> {'и'}
+    token worded-number-and-conjunction:sym<Ukrainian> {'та'}
 }

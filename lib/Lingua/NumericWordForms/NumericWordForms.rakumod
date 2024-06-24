@@ -66,8 +66,8 @@ my %langToActionExtended =
     "български"      => Lingua::NumericWordForms::Actions::Bulgarian::WordedNumberSpec,
     "polski"         => Lingua::NumericWordForms::Actions::Polish::WordedNumberSpec,
     "português"      => Lingua::NumericWordForms::Actions::Portuguese::WordedNumberSpec,
-    "руский"         => Lingua::NumericWordForms::Actions::Russian::WordedNumberSpec,
-    "український"    => Lingua::NumericWordForms::Actions::Ukrainian::WordedNumberSpec,
+    "русский"        => Lingua::NumericWordForms::Actions::Russian::WordedNumberSpec,
+    "українська"     => Lingua::NumericWordForms::Actions::Ukrainian::WordedNumberSpec,
     "日本語"          => Lingua::NumericWordForms::Actions::Japanese::WordedNumberSpec,
     "한국어"           => Lingua::NumericWordForms::Actions::Korean::WordedNumberSpec;
 
@@ -100,8 +100,8 @@ my %langToRoleExtended =
     "български"      => Lingua::NumericWordForms::Roles::Bulgarian::WordedNumberSpec,
     "polski"         => Lingua::NumericWordForms::Roles::Polish::WordedNumberSpec,
     "português"      => Lingua::NumericWordForms::Roles::Portuguese::WordedNumberSpec,
-    "руский"         => Lingua::NumericWordForms::Roles::Russian::WordedNumberSpec,
-    "український"    => Lingua::NumericWordForms::Roles::Ukrainian::WordedNumberSpec,
+    "русский"        => Lingua::NumericWordForms::Roles::Russian::WordedNumberSpec,
+    "українська"     => Lingua::NumericWordForms::Roles::Ukrainian::WordedNumberSpec,
     "日本語"          => Lingua::NumericWordForms::Roles::Japanese::WordedNumberSpec,
     "한국어"           => Lingua::NumericWordForms::Roles::Korean::WordedNumberSpec;
 
