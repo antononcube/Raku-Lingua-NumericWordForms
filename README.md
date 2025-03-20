@@ -335,13 +335,18 @@ The following TODO items are ordered by priority, the most important are on top.
    - [X] DONE Czech, Russian, Ukrainian, Polish
    
    - [X] DONE Japanese
-   
+
    - [X] DONE Koremutake
    
    - [X] DONE Portuguese
    
    - [X] DONE Azerbaijani
    
+   - [ ] TODO Kazakh
+        - Implemented, pending proofreading.
+        - Very similar to Azerbaijani
+          - The Kazakh action class should inherit the Azerbaijani one
+          
    - [ ] TODO Korean
    
      - Implemented to a point.
