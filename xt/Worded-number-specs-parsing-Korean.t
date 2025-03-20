@@ -1,7 +1,6 @@
 use Test;
 
-use lib './lib';
-use lib '.';
+# use lib <. ./lib>;
 
 use Lingua::NumericWordForms::Roles::Korean::WordedNumberSpec;
 use Lingua::NumericWordForms::Actions::Korean::WordedNumberSpec;

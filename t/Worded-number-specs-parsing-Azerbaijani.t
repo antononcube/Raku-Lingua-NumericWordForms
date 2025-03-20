@@ -1,7 +1,6 @@
 use Test;
 
-use lib './lib';
-use lib '.';
+# use lib <. ./lib>;
 
 use Lingua::NumericWordForms::Roles::Azerbaijani::WordedNumberSpec;
 use Lingua::NumericWordForms::Actions::Azerbaijani::WordedNumberSpec;
