@@ -1,7 +1,7 @@
 {
   "name": "Lingua::NumericWordForms",
   "description": "Lingua::NumericWordForms has generators, parsers, and interpreters of numeric word forms in different languages.",
-  "version": "0.5.6",
+  "version": "0.5.7",
   "perl": "6.d",
   "authors": [
     "Anton Antonov"
@@ -19,6 +19,7 @@
     "Lingua::NumericWordForms::Actions::French::WordedNumberSpec": "lib/Lingua/NumericWordForms/Actions/French/WordedNumberSpec.rakumod",
     "Lingua::NumericWordForms::Actions::Greek::WordedNumberSpec": "lib/Lingua/NumericWordForms/Actions/Greek/WordedNumberSpec.rakumod",
     "Lingua::NumericWordForms::Actions::Japanese::WordedNumberSpec": "lib/Lingua/NumericWordForms/Actions/Japanese/WordedNumberSpec.rakumod",
+    "Lingua::NumericWordForms::Actions::Kazakh::WordedNumberSpec": "lib/Lingua/NumericWordForms/Actions/Kazakh/WordedNumberSpec.rakumod",
     "Lingua::NumericWordForms::Actions::Korean::WordedNumberSpec": "lib/Lingua/NumericWordForms/Actions/Korean/WordedNumberSpec.rakumod",
     "Lingua::NumericWordForms::Actions::Koremutake::WordedNumberSpec": "lib/Lingua/NumericWordForms/Actions/Koremutake/WordedNumberSpec.rakumod",
     "Lingua::NumericWordForms::Actions::Persian::WordedNumberSpec": "lib/Lingua/NumericWordForms/Actions/Persian/WordedNumberSpec.rakumod",
@@ -37,6 +38,7 @@
     "Lingua::NumericWordForms::Roles::French::WordedNumberSpec": "lib/Lingua/NumericWordForms/Roles/French/WordedNumberSpec.rakumod",
     "Lingua::NumericWordForms::Roles::Greek::WordedNumberSpec": "lib/Lingua/NumericWordForms/Roles/Greek/WordedNumberSpec.rakumod",
     "Lingua::NumericWordForms::Roles::Japanese::WordedNumberSpec": "lib/Lingua/NumericWordForms/Roles/Japanese/WordedNumberSpec.rakumod",
+    "Lingua::NumericWordForms::Roles::Kazakh::WordedNumberSpec": "lib/Lingua/NumericWordForms/Roles/Kazakh/WordedNumberSpec.rakumod",
     "Lingua::NumericWordForms::Roles::Korean::WordedNumberSpec": "lib/Lingua/NumericWordForms/Roles/Korean/WordedNumberSpec.rakumod",
     "Lingua::NumericWordForms::Roles::Koremutake::WordedNumberSpec": "lib/Lingua/NumericWordForms/Roles/Koremutake/WordedNumberSpec.rakumod",
     "Lingua::NumericWordForms::Roles::Persian::WordedNumberSpec": "lib/Lingua/NumericWordForms/Roles/Persian/WordedNumberSpec.rakumod",
