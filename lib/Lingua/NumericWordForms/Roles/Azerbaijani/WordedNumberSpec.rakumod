@@ -24,7 +24,7 @@ role Lingua::NumericWordForms::Roles::Azerbaijani::WordedNumberSpec
     token name_of_14:sym<Azerbaijani> { 'on' \h+ 'dörd' | 'он' \h+ 'дөрд' }
     token name_of_15:sym<Azerbaijani> { 'on' \h+ 'beş' | 'он' \h+ 'беш' }
     token name_of_16:sym<Azerbaijani> { 'on' \h+ 'altı' | 'он' \h+ 'алты' }
-    token name_of_17:sym<Azerbaijani> { 'on' \h+ 'yeddi' | 'он' \h+ ' жедди' }
+    token name_of_17:sym<Azerbaijani> { 'on' \h+ 'yeddi' | 'он' \h+ 'жедди' }
     token name_of_18:sym<Azerbaijani> { 'on' \h+ 'səkkiz' | 'он' \h+ 'сәккиз' }
     token name_of_19:sym<Azerbaijani> { 'on' \h+ 'doqquz' | 'он' \h+ 'доггуз' }
     token name_of_20:sym<Azerbaijani> { 'iyirmi' | 'ижирми' }
