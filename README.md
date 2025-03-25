@@ -294,6 +294,72 @@ grammars and roles outside of this package.
 
 ------
 
+## CLI
+
+The package provides two Command Line Interface (CLI) functions:
+`from-numeric-word-form` and `to-numeric-word-form`.
+
+Corresponding usage messages and examples are given below.
+
+### `from-numeric-word-form`
+
+#### Usage message
+
+```shell
+from-numeric-word-form --help
+```
+```
+# Usage:
+#   from-numeric-word-form <text> [-l|--lang=<Str>] [-p|--pairs] [-f|--format=<Str>] -- Interprets numeric word forms into numbers.
+#   from-numeric-word-form [<words> ...] [-l|--lang=<Str>] [-p|--pairs] [-f|--format=<Str>] -- Takes a list of words to be a numeric word form and interprets it into a number.
+#   from-numeric-word-form [-l|--lang=<Str>] [-p|--pairs] [-f|--format=<Str>] -- Interprets numeric word forms from a (pipeline) input.
+#   
+#     <text>               Text to interpret to numbers.
+#     -l|--lang=<Str>      Language [default: 'Automatic']
+#     -p|--pairs           Should Language-number pairs be returned or not? [default: False]
+#     -f|--format=<Str>    Output format one of 'text', 'lines', or 'raku'. [default: 'text']
+#     [<words> ...]        Text to interpret to numbers.
+```
+
+#### Example
+
+```shell
+from-numeric-word-form two hundred and five
+```
+```
+# 205
+```
+
+### `to-numeric-word-form`
+
+#### Usage message
+
+```shell
+to-numeric-word-form --help
+```
+```
+# Usage:
+#   to-numeric-word-form <text> [-l|--lang=<Str>] [-f|--format=<Str>] -- Coverts numbers into numeric word forms.
+#   to-numeric-word-form [<words> ...] [-l|--lang=<Str>] [-f|--format=<Str>] -- Takes a list of numbers and converts it into a list of numeric word forms.
+#   to-numeric-word-form [-l|--lang=<Str>] [-f|--format=<Str>] -- Converts numbers from a (pipeline) input into numeric word forms.
+#   
+#     <text>               String of one or more numbers to convert into numeric word forms. (Multiple numbers can be separated with ';'.)
+#     -l|--lang=<Str>      Language (one of 'English' or 'Koremutake'.) [default: 'English']
+#     -f|--format=<Str>    Output format one of 'text', 'lines', or 'raku'. [default: 'text']
+#     [<words> ...]        Number strings to be converted into numeric word forms.
+```
+
+#### Example
+
+```shell
+to-numeric-word-form 33 124 99832 --lang Bulgarian
+```
+```
+# тридесет и три; сто двадесет и четири; деветдесет и девет хиляди осемстотин тридесет и две
+```
+
+------
+
 ## TODO
 
 The following TODO items are ordered by priority, the most important are on top. 
@@ -342,10 +408,10 @@ The following TODO items are ordered by priority, the most important are on top.
    
    - [X] DONE Azerbaijani
    
-   - [ ] TODO Kazakh
-        - Implemented, pending proofreading.
-        - Very similar to Azerbaijani
-          - The Kazakh action class should inherit the Azerbaijani one
+   - [X] DONE Kazakh
+        -  [X] Implemented, pending proofreading.
+        - Very similar to Azerbaijani.
+          - The Kazakh action class should inherit the Azerbaijani one.
           
    - [ ] TODO Korean
    
@@ -404,6 +470,8 @@ test(Ukrainian):Added new tests.
   - Proofreading and correcting Greek tests and role
 - Thanks to [Denis](https://github.com/DenisVCode) for:
   - Proofreading the Czech language unit tests and suggesting corrections.
+- Thanks to Aikerim Belispayeva, [aikerimbelis](https://github.com/aikerimbelis), for:
+  - Proofreading the Kazah language unit tests and suggesting corrections.
     
 ------
 

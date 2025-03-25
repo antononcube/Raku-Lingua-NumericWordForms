@@ -237,6 +237,43 @@ grammars and roles outside of this package.
 
 ------
 
+## CLI
+
+The package provides two Command Line Interface (CLI) functions:
+`from-numeric-word-form` and `to-numeric-word-form`.
+
+Corresponding usage messages and examples are given below.
+
+### `from-numeric-word-form`
+
+#### Usage message
+
+```shell
+from-numeric-word-form --help
+```
+
+#### Example
+
+```shell
+from-numeric-word-form two hundred and five
+```
+
+### `to-numeric-word-form`
+
+#### Usage message
+
+```shell
+to-numeric-word-form --help
+```
+
+#### Example
+
+```shell
+to-numeric-word-form 33 124 99832 --lang Bulgarian
+```
+
+------
+
 ## TODO
 
 The following TODO items are ordered by priority, the most important are on top. 
@@ -285,10 +322,10 @@ The following TODO items are ordered by priority, the most important are on top.
    
    - [X] DONE Azerbaijani
    
-   - [ ] TODO Kazakh
-        - Implemented, pending proofreading.
-        - Very similar to Azerbaijani
-          - The Kazakh action class should inherit the Azerbaijani one
+   - [X] DONE Kazakh
+        -  [X] Implemented, pending proofreading.
+        - Very similar to Azerbaijani.
+          - The Kazakh action class should inherit the Azerbaijani one.
           
    - [ ] TODO Korean
    
@@ -347,6 +384,8 @@ test(Ukrainian):Added new tests.
   - Proofreading and correcting Greek tests and role
 - Thanks to [Denis](https://github.com/DenisVCode) for:
   - Proofreading the Czech language unit tests and suggesting corrections.
+- Thanks to Aikerim Belispayeva, [aikerimbelis](https://github.com/aikerimbelis), for:
+  - Proofreading the Kazah language unit tests and suggesting corrections.
     
 ------
 
