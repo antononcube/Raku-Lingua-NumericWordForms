@@ -3,6 +3,8 @@ use v6.d;
 
 use Lingua::NumericWordForms;
 
+my %*SUB-MAIN-OPTS = :named-anywhere;
+
 sub positional-of-pairs($expr) { $expr ~~ Positional && ([and] $expr.map({ $_ ~~ Pair })); }
 
 multi format-output(Str $format, $output) {

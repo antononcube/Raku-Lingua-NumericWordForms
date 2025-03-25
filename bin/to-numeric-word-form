@@ -3,6 +3,8 @@ use v6.d;
 
 use Lingua::NumericWordForms;
 
+my %*SUB-MAIN-OPTS = :named-anywhere;
+
 multi format-output(Str $format, $output) {
     given $format.lc {
         when $_ eq 'raku' && $output.elems == 1 { say $output[0].raku; }
@@ -15,7 +17,7 @@ multi format-output(Str $format, $output) {
 
 #| Coverts numbers into numeric word forms.
 multi sub MAIN(Str $text,                          #= String of one or more numbers to convert into numeric word forms. (Multiple numbers can be separated with ';'.)
-               Str :l(:$lang) = 'English',         #= Language (one of 'English' or 'Koremutake'.)
+               Str :l(:$lang) = 'English',         #= Language (one of 'Bulgarian', 'English', or 'Koremutake'.)
                Str :f(:$format) = 'text'           #= Output format one of 'text', 'lines', or 'raku'.
                ) {
     my @res = to-numeric-word-form($text, $lang);
@@ -24,7 +26,7 @@ multi sub MAIN(Str $text,                          #= String of one or more numb
 
 #| Takes a list of numbers and converts it into a list of numeric word forms.
 multi sub MAIN(*@words,                            #= Number strings to be converted into numeric word forms.
-               Str :l(:$lang) = 'English',         #= Language (one of 'English' or 'Koremutake'.)
+               Str :l(:$lang) = 'English',         #= Language (one of 'Bulgarian', 'English', or 'Koremutake'.)
                Str :f(:$format) = 'text'           #= Output format one of 'text', 'lines', or 'raku'.
                ) {
     my @res = to-numeric-word-form( @words.join(';'), $lang);
@@ -32,7 +34,7 @@ multi sub MAIN(*@words,                            #= Number strings to be conve
 }
 
 #| Converts numbers from a (pipeline) input into numeric word forms.
-multi sub MAIN(Str :l(:$lang) = 'English',         #= Language (one of 'English' or 'Koremutake'.)
+multi sub MAIN(Str :l(:$lang) = 'English',         #= Language (one of 'Bulgarian', 'English', or 'Koremutake'.)
                Str :f(:$format) = 'text'           #= Output format one of 'text', 'lines', or 'raku'.
                ) {
     my $text = lines>>.trim.join(';');
