@@ -7,16 +7,16 @@ role Lingua::NumericWordForms::Roles::Kazakh::WordedNumberSpec
 
     regex worded_number_100s:sym<Kazakh> { <name_2_to_9> <suffix_for_100> | <name_of_100> }
 
-    token name_of_0:sym<Kazakh> { 'nöl' | 'нел' }
-    token name_of_1:sym<Kazakh> { 'bir' | 'бир' }
-    token name_of_2:sym<Kazakh> { 'eki' | 'еки' }
+    token name_of_0:sym<Kazakh> { 'nöl' | 'нөл'}
+    token name_of_1:sym<Kazakh> { 'bir' | 'бір' }
+    token name_of_2:sym<Kazakh> { 'eki' | 'екі' }
     token name_of_3:sym<Kazakh> { 'üş' | 'үш' }
     token name_of_4:sym<Kazakh> { 'tört' | 'төрт' }
     token name_of_5:sym<Kazakh> { 'bes' | 'бес' }
     token name_of_6:sym<Kazakh> { 'altı' | 'алты' }
     token name_of_7:sym<Kazakh> { 'jeti' | 'жетi' }
-    token name_of_8:sym<Kazakh> { 'segiz' | 'сәгiз' }
-    token name_of_9:sym<Kazakh> { 'toğız' | 'тогыз' }
+    token name_of_8:sym<Kazakh> { 'segiz' | 'сегіз'}
+    token name_of_9:sym<Kazakh> { 'toğız' | 'тоғыз' }
     token name_of_10:sym<Kazakh> { 'on' | 'он' }
     token name_of_11:sym<Kazakh> { 'on' \h+ 'bir' | 'он' \h+ 'бир' }
     token name_of_12:sym<Kazakh> { 'on' \h+ 'eki' | 'он' \h+ 'еки' }
