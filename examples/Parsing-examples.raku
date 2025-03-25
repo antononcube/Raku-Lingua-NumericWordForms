@@ -1,7 +1,6 @@
 use v6;
 
-use lib './lib';
-use lib '.';
+# use lib <. ./lib>;
 
 use Lingua::NumericWordForms;
 use Lingua::NumericWordForms::Roles::Bulgarian::WordedNumberSpec;
