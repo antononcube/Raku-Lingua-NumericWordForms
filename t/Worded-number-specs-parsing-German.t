@@ -1,0 +1,187 @@
+use Test;
+
+use lib <. ./lib>;
+
+use Lingua::NumericWordForms::Roles::German::WordedNumberSpec;
+use Lingua::NumericWordForms::Actions::German::WordedNumberSpec;
+
+grammar ParseObj
+        does Lingua::NumericWordForms::Roles::German::WordedNumberSpec {
+    rule TOP { <numeric-word-form>  }
+};
+
+sub parse-func(Str:D $spec) {
+    ParseObj.parse(
+            $spec.lc,
+            rule => 'numeric-word-form',
+            actions => Lingua::NumericWordForms::Actions::German::WordedNumberSpec.new).made,
+}
+
+plan 42;
+## 1
+is parse-func('null'), 0,
+'null';
+
+## 2
+is parse-func('drei'), 3,
+'drei';
+
+## 3
+is parse-func('vier'), 4,
+'vier';
+
+## 4
+is parse-func('neun'), 9,
+'neun';
+
+## 5
+is parse-func('achtzehn'), 18,
+'achtzehn';
+
+## 6
+is parse-func('neunzehn'), 19,
+'neunzehn';
+
+## 7
+is parse-func('ein-und-zwanzig'), 21,
+'ein-und-zwanzig';
+
+## 8
+is parse-func('neun-und-zwanzig'), 29,
+'neun-und-zwanzig';
+
+## 9
+is parse-func('sechs-und-fünfzig'), 56,
+'sechs-und-fünfzig';
+
+## 10
+is parse-func('sechs-und-siebzig'), 76,
+'sechs-und-siebzig';
+
+## 11
+is parse-func('fünf-und-achtzig'), 85,
+'fünf-und-achtzig';
+
+## 12
+is parse-func('sieben-und-neunzig'), 97,
+'sieben-und-neunzig';
+
+## 13
+is parse-func('ein-hundert-drei-und-sechzig'), 163,
+'ein-hundert-drei-und-sechzig';
+
+## 14
+is parse-func('ein-hundert-acht-und-sechzig'), 168,
+'ein-hundert-acht-und-sechzig';
+
+## 15
+is parse-func('zwei-hundert-vier'), 204,
+'zwei-hundert-vier';
+
+## 16
+is parse-func('zwei-hundert-sechzig'), 260,
+'zwei-hundert-sechzig';
+
+## 17
+is parse-func('vier-hundert-sieben-und-zwanzig'), 427,
+'vier-hundert-sieben-und-zwanzig';
+
+## 18
+is parse-func('acht-hundert-vier'), 804,
+'acht-hundert-vier';
+
+## 19
+is parse-func('zwei-tausend-zwei-und-siebzig'), 2072,
+'zwei-tausend-zwei-und-siebzig';
+
+## 20
+is parse-func('zwei-tausend-zwei-hundert-acht-und-zwanzig'), 2228,
+'zwei-tausend-zwei-hundert-acht-und-zwanzig';
+
+## 21
+is parse-func('fünf-tausend-fünf-hundert-acht-und-zwanzig'), 5528,
+'fünf-tausend-fünf-hundert-acht-und-zwanzig';
+
+## 22
+is parse-func('fünf-tausend-acht-hundert-fünfzig'), 5850,
+'fünf-tausend-acht-hundert-fünfzig';
+
+## 23
+is parse-func('sechs-tausend-fünf-hundert-acht'), 6508,
+'sechs-tausend-fünf-hundert-acht';
+
+## 24
+is parse-func('sieben-tausend-vier-hundert-zwölf'), 7412,
+'sieben-tausend-vier-hundert-zwölf';
+
+## 25
+is parse-func('zwei-hundert-fünf-und-vierzig-tausend-drei-hundert-vier-und-zwanzig'), 245324,
+'zwei-hundert-fünf-und-vierzig-tausend-drei-hundert-vier-und-zwanzig';
+
+## 26
+is parse-func('sechs-hundert-fünfzehn-tausend-zwei-hundert-acht-und-neunzig'), 615298,
+'sechs-hundert-fünfzehn-tausend-zwei-hundert-acht-und-neunzig';
+
+## 27
+is parse-func('sieben-hundert-ein-und-dreißig-tausend-ein-hundert-sechs'), 731106,
+'sieben-hundert-ein-und-dreißig-tausend-ein-hundert-sechs';
+
+## 28
+is parse-func('acht-hundert-drei-und-zwanzig-tausend-acht-hundert-vier-und-zwanzig'), 823824,
+'acht-hundert-drei-und-zwanzig-tausend-acht-hundert-vier-und-zwanzig';
+
+## 29
+is parse-func('acht-hundert-ein-und-neunzig-tausend-acht-hundert-ein-und-siebzig'), 891871,
+'acht-hundert-ein-und-neunzig-tausend-acht-hundert-ein-und-siebzig';
+
+## 30
+is parse-func('neun-hundert-ein-und-vierzig-tausend-fünf-hundert-sechs'), 941506,
+'neun-hundert-ein-und-vierzig-tausend-fünf-hundert-sechs';
+
+## 31
+is parse-func('fünf-und-fünfzig Millionen drei-hundert-neunzig-tausend-fünf-hundert-sieben-und-zwanzig'), 55390527,
+'fünf-und-fünfzig Millionen drei-hundert-neunzig-tausend-fünf-hundert-sieben-und-zwanzig';
+
+## 32
+is parse-func('sechs-und-siebzig Millionen sieben-hundert-vier-und-zwanzig-tausend-vier-hundert-sechs-und-dreißig'), 76724436,
+'sechs-und-siebzig Millionen sieben-hundert-vier-und-zwanzig-tausend-vier-hundert-sechs-und-dreißig';
+
+## 33
+is parse-func('zwei-hundert-sieben-und-vierzig Millionen fünf-hundert-sieben-tausend-achtzehn'), 247507018,
+'zwei-hundert-sieben-und-vierzig Millionen fünf-hundert-sieben-tausend-achtzehn';
+
+## 34
+is parse-func('fünf-hundert-sechzehn Millionen sieben-hundert-drei-und-fünfzig-tausend-drei-hundert-acht-und-siebzig'), 516753378,
+'fünf-hundert-sechzehn Millionen sieben-hundert-drei-und-fünfzig-tausend-drei-hundert-acht-und-siebzig';
+
+## 35
+is parse-func('acht-hundert-zwei-und-vierzig Millionen sieben-hundert-vier-tausend-sieben-hundert-drei-und-achtzig'), 842704783,
+'acht-hundert-zwei-und-vierzig Millionen sieben-hundert-vier-tausend-sieben-hundert-drei-und-achtzig';
+
+## 36
+is parse-func('neun-hundert-acht-und-achtzig Millionen neun-hundert-ein-und-sechzig-tausend-drei-hundert-vier-und-zwanzig'), 988961324,
+'neun-hundert-acht-und-achtzig Millionen neun-hundert-ein-und-sechzig-tausend-drei-hundert-vier-und-zwanzig';
+
+## 37
+is parse-func('fünf-hundert-sieben-und-achtzig Milliarden sieben-hundert-sieben-und-zwanzig Millionen zwei-hundert-dreißig-tausend-ein-hundert-neun-und-neunzig'), 587727230199,
+'fünf-hundert-sieben-und-achtzig Milliarden sieben-hundert-sieben-und-zwanzig Millionen zwei-hundert-dreißig-tausend-ein-hundert-neun-und-neunzig';
+
+## 38
+is parse-func('sechs-hundert-sieben-und-zwanzig Milliarden fünf-hundert-achtzig Millionen neun-hundert-fünf-und-dreißig-tausend-zwei-und-siebzig'), 627580935072,
+'sechs-hundert-sieben-und-zwanzig Milliarden fünf-hundert-achtzig Millionen neun-hundert-fünf-und-dreißig-tausend-zwei-und-siebzig';
+
+## 39
+is parse-func('sieben-hundert-vier-und-achtzig Milliarden sechs-hundert-dreißig Millionen sieben-hundert-acht-und-dreißig-tausend-ein-hundert-zwanzig'), 784630738120,
+'sieben-hundert-vier-und-achtzig Milliarden sechs-hundert-dreißig Millionen sieben-hundert-acht-und-dreißig-tausend-ein-hundert-zwanzig';
+
+## 40
+is parse-func('acht-hundert-vier Milliarden drei-hundert-sieben-und-neunzig Millionen vier-hundert-sechzehn-tausend-sieben-hundert-sechs-und-dreißig'), 804397416736,
+'acht-hundert-vier Milliarden drei-hundert-sieben-und-neunzig Millionen vier-hundert-sechzehn-tausend-sieben-hundert-sechs-und-dreißig';
+
+## 41
+is parse-func('acht-hundert-sieben-und-sechzig Milliarden fünf-hundert-ein-und-sechzig Millionen drei-hundert-achtzig-tausend-vier-hundert-vierzehn'), 867561380414,
+'acht-hundert-sieben-und-sechzig Milliarden fünf-hundert-ein-und-sechzig Millionen drei-hundert-achtzig-tausend-vier-hundert-vierzehn';
+
+## 42
+is parse-func('neun-hundert-achtzig Milliarden sieben-hundert-sechs-und-dreißig Millionen ein-hundert-acht-und-dreißig-tausend-acht-hundert-neun-und-dreißig'), 980736138839,
+'neun-hundert-achtzig Milliarden sieben-hundert-sechs-und-dreißig Millionen ein-hundert-acht-und-dreißig-tausend-acht-hundert-neun-und-dreißig';
