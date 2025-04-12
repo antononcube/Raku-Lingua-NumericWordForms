@@ -16,7 +16,7 @@ role Lingua::NumericWordForms::Roles::WordedNumberSpec {
     proto token worded-number-and-conjunction {*}
     token worded-number-and-conjunction:sym<General> {'and'}
 
-    token hyphen-symbol { '-' | '‐' }
+    token hyphen-symbol { '-' | '‐' | <:Pd> }
 
     ## Hundreds
     proto token worded_number_100s {*}
