@@ -1,6 +1,6 @@
 use Test;
 
-use lib <. ./lib>;
+#use lib <. ./lib>;
 
 use Lingua::NumericWordForms::Roles::German::WordedNumberSpec;
 use Lingua::NumericWordForms::Actions::German::WordedNumberSpec;
@@ -186,5 +186,12 @@ is parse-func('acht-hundert-sieben-und-sechzig Milliarden fünf-hundert-ein-und-
 ## 42
 is parse-func('neun-hundert-achtzig Milliarden sieben-hundert-sechs-und-dreißig Millionen ein-hundert-acht-und-dreißig-tausend-acht-hundert-neun-und-dreißig'), 980736138839,
 'neun-hundert-achtzig Milliarden sieben-hundert-sechs-und-dreißig Millionen ein-hundert-acht-und-dreißig-tausend-acht-hundert-neun-und-dreißig';
+
+## 43
+subtest {
+    is parse-func('dreiundfuffzig'), 53;
+    is parse-func('hundertunddutzend'), 112;
+    is parse-func('ein-hundert-und-zwölf'), 112;
+}, "special cases";
 
 done-testing;
