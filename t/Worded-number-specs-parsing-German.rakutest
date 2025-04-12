@@ -56,8 +56,8 @@ is parse-func('sechs-und-fünfzig'), 56,
 'sechs-und-fünfzig';
 
 ## 10
-is parse-func('sechs-und-siebzig'), 76,
-'sechs-und-siebzig';
+is parse-func('sechsundsiebzig'), 76,
+'sechsundsiebzig';
 
 ## 11
 is parse-func('fünf-und-achtzig'), 85,
@@ -80,8 +80,8 @@ is parse-func('zwei-hundert-vier'), 204,
 'zwei-hundert-vier';
 
 ## 16
-is parse-func('zwei-hundert-sechzig'), 260,
-'zwei-hundert-sechzig';
+is parse-func('zweihundertsechzig'), 260,
+'zweihundertsechzig';
 
 ## 17
 is parse-func('vier-hundert-sieben-und-zwanzig'), 427,
@@ -100,8 +100,8 @@ is parse-func('zwei-tausend-zwei-hundert-acht-und-zwanzig'), 2228,
 'zwei-tausend-zwei-hundert-acht-und-zwanzig';
 
 ## 21
-is parse-func('fünf-tausend-fünf-hundert-acht-und-zwanzig'), 5528,
-'fünf-tausend-fünf-hundert-acht-und-zwanzig';
+is parse-func('fünftausendfünfhundertachtundzwanzig'), 5528,
+'fünftausendfünfhundertachtundzwanzig';
 
 ## 22
 is parse-func('fünf-tausend-acht-hundert-fünfzig'), 5850,
