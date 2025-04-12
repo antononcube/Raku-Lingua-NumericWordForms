@@ -11,12 +11,15 @@ role Lingua::NumericWordForms::Roles::WordedNumberSpec {
 
     ## Separators and conjunctions
     proto token preceding-number-separator {*}
-    regex preceding-number-separator:sym<General>  { \h+ <worded-number-and-conjunction> \h+ | \h* ',' \h+ | \h+ }
+    regex preceding-number-separator:sym<General> { \h+ <worded-number-and-conjunction> \h+ | \h* ',' \h+ | \h+ }
+
+    proto token suffix-separator {*}
+    regex suffix-separator:sym<General> { \h+ }
 
     proto token worded-number-and-conjunction {*}
     token worded-number-and-conjunction:sym<General> {'and'}
 
-    token hyphen-symbol { '-' | '‐' | <:Pd> }
+    token hyphen-symbol { <:Pd> }
 
     ## Hundreds
     proto token worded_number_100s {*}
@@ -26,10 +29,10 @@ role Lingua::NumericWordForms::Roles::WordedNumberSpec {
     regex worded_number_up_to_100:sym<General> { <name_of_10s> [ [ \h* <.hyphen-symbol> \h* | \h+ ]? <name_1_to_10> ]? || <name_up_to_19> }
 
     ## These are 10^3 based groupings (most/all Indo-European languages)
-    regex worded_number_1000s    { [ <worded_number_up_to_1000>    \h+ ]? <name_of_1000> }
-    regex worded_number_1000000s { [ <worded_number_up_to_1000000> \h+ ]? <name_of_1000000> }
-    regex worded_number_bils     { [ <worded_number_up_to_bil>     \h+ ]? <name_of_bil> }
-    regex worded_number_trils    { [ <worded_number_up_to_tril>    \h+ ]? <name_of_tril> }
+    regex worded_number_1000s    { [ <worded_number_up_to_1000>    <.suffix-separator> ]? <name_of_1000> }
+    regex worded_number_1000000s { [ <worded_number_up_to_1000000> <.suffix-separator> ]? <name_of_1000000> }
+    regex worded_number_bils     { [ <worded_number_up_to_bil>     <.suffix-separator> ]? <name_of_bil> }
+    regex worded_number_trils    { [ <worded_number_up_to_tril>    <.suffix-separator> ]? <name_of_tril> }
 
     regex worded_number_up_to_1000    { <worded_number_100s>      [ <.preceding-number-separator>? <worded_number_up_to_100> ]?     || <worded_number_up_to_100> }
     regex worded_number_up_to_1000000 { <worded_number_1000s>     [ <.preceding-number-separator>? <worded_number_up_to_1000> ]?    || <worded_number_up_to_1000> }
