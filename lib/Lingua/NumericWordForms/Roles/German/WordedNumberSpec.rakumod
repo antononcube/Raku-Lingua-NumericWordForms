@@ -6,7 +6,7 @@ role Lingua::NumericWordForms::Roles::German::WordedNumberSpec
         does Lingua::NumericWordForms::Roles::WordedNumberSpec {
 
     regex preceding-number-separator:sym<German> { \h* | <:Pd> }
-    regex suffix-separator:sym<German> { \h+ | <:Pd> }
+    regex suffix-separator:sym<German> { \h* | <:Pd> }
 
     regex worded_number_100s:sym<German> {
         | <name_2_to_9> <:Pd>? <suffix_for_100>
