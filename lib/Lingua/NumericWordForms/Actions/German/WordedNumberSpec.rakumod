@@ -7,6 +7,17 @@ class Lingua::NumericWordForms::Actions::German::WordedNumberSpec
 
     method numeric-word-form:sym<German>($/) { make $/.values[0].made }
 
+    method worded_number_100s:sym<German>($/) { make $<name_of_100> ?? 100 !! $<name_2_to_9>.made * 100 }
+
+    method worded_number_up_to_100:sym<German>($/) {
+        if $<name_of_10s> and $<name_1_to_10> {
+            make ( $<name_of_10s>.made + $<name_1_to_10>.made )
+        } elsif $<name_of_10s> {
+            make $<name_of_10s>.made
+        } else {
+            make $<name_up_to_19>.made
+        }
+    }
     method name_of_0:sym<German>($/) {make 0}
     method name_of_1:sym<German>($/) {make 1}
     method name_of_2:sym<German>($/) {make 2}
@@ -36,9 +47,10 @@ class Lingua::NumericWordForms::Actions::German::WordedNumberSpec
     method name_of_80:sym<German>($/) {make 80}
     method name_of_90:sym<German>($/) {make 90}
     method name_of_100:sym<German>($/) {make 100}
+    method suffix_for_100:sym<German>($/) {make 100}
     method name_of_1000:sym<German>($/) {make 1_000}
     method name_of_10000:sym<German>($/) {make 10_000}
     method name_of_1000000:sym<German>($/) {make 1_000_000}
-    method name_of_1000000000:sym<German>($/) {make 1_000_000_000}
-    method name_of_1000000000000:sym<German>($/) {make 1_000_000_000_000}
+    method name_of_bil:sym<German>($/) {make 1_000_000_000}
+    method name_of_tril:sym<German>($/) {make 1_000_000_000_000}
 }
