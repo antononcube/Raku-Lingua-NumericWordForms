@@ -21,7 +21,7 @@ role Lingua::NumericWordForms::Roles::German::WordedNumberSpec
 
     token name_of_0:sym<German> { 'null' }
     token name_of_1:sym<German> { 'eins' | 'ein' }
-    token name_of_2:sym<German> { 'zwei' }
+    token name_of_2:sym<German> { 'zwei' | 'zwo' }
     token name_of_3:sym<German> { 'drei' }
     token name_of_4:sym<German> { 'vier' }
     token name_of_5:sym<German> { 'fünf' }
@@ -31,7 +31,7 @@ role Lingua::NumericWordForms::Roles::German::WordedNumberSpec
     token name_of_9:sym<German> { 'neun' }
     token name_of_10:sym<German> { 'zehn' }
     token name_of_11:sym<German> { 'elf' }
-    token name_of_12:sym<German> { 'zwölf' }
+    token name_of_12:sym<German> { 'zwölf' | 'dutzend' }
     token name_of_13:sym<German> { 'dreizehn' }
     token name_of_14:sym<German> { 'vierzehn' }
     token name_of_15:sym<German> { 'fünfzehn' }
@@ -42,8 +42,8 @@ role Lingua::NumericWordForms::Roles::German::WordedNumberSpec
     token name_of_20:sym<German> { 'zwanzig' }
     token name_of_30:sym<German> { 'dreißig' }
     token name_of_40:sym<German> { 'vierzig' }
-    token name_of_50:sym<German> { 'fünfzig' }
-    token name_of_60:sym<German> { 'sechzig' }
+    token name_of_50:sym<German> { 'fünfzig' | 'fuffzig' }
+    token name_of_60:sym<German> { 'sechzig' | 'schock' }
     token name_of_70:sym<German> { 'siebzig' }
     token name_of_80:sym<German> { 'achtzig' }
     token name_of_90:sym<German> { 'neunzig' }
