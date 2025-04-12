@@ -5,6 +5,7 @@ use Lingua::NumericWordForms::Roles::Bulgarian::WordedNumberSpec;
 use Lingua::NumericWordForms::Roles::Czech::WordedNumberSpec;
 use Lingua::NumericWordForms::Roles::English::WordedNumberSpec;
 use Lingua::NumericWordForms::Roles::French::WordedNumberSpec;
+use Lingua::NumericWordForms::Roles::German::WordedNumberSpec;
 use Lingua::NumericWordForms::Roles::Greek::WordedNumberSpec;
 use Lingua::NumericWordForms::Roles::Japanese::WordedNumberSpec;
 use Lingua::NumericWordForms::Roles::Kazakh::WordedNumberSpec;
@@ -22,6 +23,7 @@ use Lingua::NumericWordForms::Actions::Bulgarian::WordedNumberSpec;
 use Lingua::NumericWordForms::Actions::Czech::WordedNumberSpec;
 use Lingua::NumericWordForms::Actions::English::WordedNumberSpec;
 use Lingua::NumericWordForms::Actions::French::WordedNumberSpec;
+use Lingua::NumericWordForms::Actions::German::WordedNumberSpec;
 use Lingua::NumericWordForms::Actions::Greek::WordedNumberSpec;
 use Lingua::NumericWordForms::Actions::Japanese::WordedNumberSpec;
 use Lingua::NumericWordForms::Actions::Kazakh::WordedNumberSpec;
@@ -47,6 +49,7 @@ my %langToAction =
     "czech"          => Lingua::NumericWordForms::Actions::Czech::WordedNumberSpec,
     "english"        => Lingua::NumericWordForms::Actions::English::WordedNumberSpec,
     "french"         => Lingua::NumericWordForms::Actions::French::WordedNumberSpec,
+    "german"         => Lingua::NumericWordForms::Actions::German::WordedNumberSpec,
     "greek"          => Lingua::NumericWordForms::Actions::Greek::WordedNumberSpec,
     "japanese"       => Lingua::NumericWordForms::Actions::Japanese::WordedNumberSpec,
     "kazakh"         => Lingua::NumericWordForms::Actions::Kazakh::WordedNumberSpec,
@@ -65,6 +68,7 @@ my %langToActionExtended =
     "český"          => Lingua::NumericWordForms::Actions::Czech::WordedNumberSpec,
     "español"        => Lingua::NumericWordForms::Actions::Spanish::WordedNumberSpec,
     "français"       => Lingua::NumericWordForms::Actions::French::WordedNumberSpec,
+    "deutsch"        => Lingua::NumericWordForms::Actions::German::WordedNumberSpec,
     "qazaq"          => Lingua::NumericWordForms::Actions::Kazakh::WordedNumberSpec,
     "казак"          => Lingua::NumericWordForms::Actions::Kazakh::WordedNumberSpec,
     "қазақ"          => Lingua::NumericWordForms::Actions::Kazakh::WordedNumberSpec,
@@ -86,6 +90,7 @@ my %langToRole =
     "czech"          => Lingua::NumericWordForms::Roles::Czech::WordedNumberSpec,
     "english"        => Lingua::NumericWordForms::Roles::English::WordedNumberSpec,
     "french"         => Lingua::NumericWordForms::Roles::French::WordedNumberSpec,
+    "german"         => Lingua::NumericWordForms::Roles::German::WordedNumberSpec,
     "greek"          => Lingua::NumericWordForms::Roles::Greek::WordedNumberSpec,
     "japanese"       => Lingua::NumericWordForms::Roles::Japanese::WordedNumberSpec,
     "kazakh"         => Lingua::NumericWordForms::Roles::Kazakh::WordedNumberSpec,
@@ -103,6 +108,7 @@ my %langToRoleExtended =
     "český"          => Lingua::NumericWordForms::Roles::Czech::WordedNumberSpec,
     "español"        => Lingua::NumericWordForms::Roles::Spanish::WordedNumberSpec,
     "français"       => Lingua::NumericWordForms::Roles::French::WordedNumberSpec,
+    "deutsch"        => Lingua::NumericWordForms::Roles::German::WordedNumberSpec,
     "qazaq"          => Lingua::NumericWordForms::Roles::Kazakh::WordedNumberSpec,
     "казак"          => Lingua::NumericWordForms::Roles::Kazakh::WordedNumberSpec,
     "қазақ"          => Lingua::NumericWordForms::Roles::Kazakh::WordedNumberSpec,
