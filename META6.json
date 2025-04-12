@@ -37,6 +37,7 @@
     "Lingua::NumericWordForms::Roles::Czech::WordedNumberSpec": "lib/Lingua/NumericWordForms/Roles/Czech/WordedNumberSpec.rakumod",
     "Lingua::NumericWordForms::Roles::English::WordedNumberSpec": "lib/Lingua/NumericWordForms/Roles/English/WordedNumberSpec.rakumod",
     "Lingua::NumericWordForms::Roles::French::WordedNumberSpec": "lib/Lingua/NumericWordForms/Roles/French/WordedNumberSpec.rakumod",
+    "Lingua::NumericWordForms::Roles::German::WordedNumberSpec": "lib/Lingua/NumericWordForms/Roles/German/WordedNumberSpec.rakumod",
     "Lingua::NumericWordForms::Roles::Greek::WordedNumberSpec": "lib/Lingua/NumericWordForms/Roles/Greek/WordedNumberSpec.rakumod",
     "Lingua::NumericWordForms::Roles::Japanese::WordedNumberSpec": "lib/Lingua/NumericWordForms/Roles/Japanese/WordedNumberSpec.rakumod",
     "Lingua::NumericWordForms::Roles::Kazakh::WordedNumberSpec": "lib/Lingua/NumericWordForms/Roles/Kazakh/WordedNumberSpec.rakumod",
