@@ -5,7 +5,7 @@ use Lingua::NumericWordForms::Roles::WordedNumberSpec;
 role Lingua::NumericWordForms::Roles::German::WordedNumberSpec
         does Lingua::NumericWordForms::Roles::WordedNumberSpec {
 
-    regex preceding-number-separator:sym<German> { \h* | <:Pd> }
+    regex preceding-number-separator:sym<German> { \h* | <:Pd> | \h* <worded-number-and-conjunction> \h* }
     regex suffix-separator:sym<German> { \h* | <:Pd> }
 
     regex worded_number_100s:sym<German> {
