@@ -6,6 +6,7 @@ role Lingua::NumericWordForms::Roles::German::WordedNumberSpec
         does Lingua::NumericWordForms::Roles::WordedNumberSpec {
 
     regex preceding-number-separator:sym<German> { \h* | <:Pd> }
+    regex suffix-separator:sym<German> { \h+ | <:Pd> }
 
     regex worded_number_100s:sym<German> {
         | <name_2_to_9> <:Pd>? <suffix_for_100>
@@ -50,9 +51,9 @@ role Lingua::NumericWordForms::Roles::German::WordedNumberSpec
     token suffix_for_100:sym<German> { 'hundert' }
     token name_of_1000:sym<German> { 'ein' <:Pd>? 'tausend' | 'tausend' }
     token name_of_10000:sym<German> { 'zehntausend' | 'zehn' <:Pd>? 'tausend' }
-    token name_of_1000000:sym<German> {:i 'eine Million' | 'Million' }
-    token name_of_bil:sym<German> {:i 'eine Milliarde' | 'Milliarde' }
-    token name_of_tril:sym<German> {:i 'eine Billion' | 'Billion' }
+    token name_of_1000000:sym<German> {:i 'eine Million' | 'Million' | 'Millionen' }
+    token name_of_bil:sym<German> {:i 'eine Milliarde' | 'Milliarde' | 'Milliarden' }
+    token name_of_tril:sym<German> {:i 'eine Billion' | 'Billion' | 'Billionen' }
 
     token worded-number-and-conjunction:sym<German> {'und'}
 }
