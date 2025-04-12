@@ -5,10 +5,14 @@ use Lingua::NumericWordForms::Roles::WordedNumberSpec;
 role Lingua::NumericWordForms::Roles::German::WordedNumberSpec
         does Lingua::NumericWordForms::Roles::WordedNumberSpec {
 
-    regex preceding-number-separator:sym<German> { \h* | <:Pd> }
+    regex worded_number_up_to_100:sym<German> {
+        || <name_of_10s>
+        || <name_1_to_10> <:Pd>? <.worded-number-and-conjunction> <:Pd>? <name_of_10s>
+        || <name_up_to_19>
+    }
 
     token name_of_0:sym<German> { 'null' | 'null' }
-    token name_of_1:sym<German> { 'eins' | 'eins' }
+    token name_of_1:sym<German> { 'eins' | 'ein' }
     token name_of_2:sym<German> { 'zwei' | 'zwei' }
     token name_of_3:sym<German> { 'drei' | 'drei' }
     token name_of_4:sym<German> { 'vier' | 'vier' }
@@ -36,11 +40,14 @@ role Lingua::NumericWordForms::Roles::German::WordedNumberSpec
     token name_of_80:sym<German> { 'achtzig' | 'achtzig' }
     token name_of_90:sym<German> { 'neunzig' | 'neunzig' }
     token name_of_100:sym<German> { 'einhundert' | 'hundert' }
+    token suffix_for_100:sym<German> { 'hundert' }
     token name_of_1000:sym<German> { 'eintausend' | 'tausend' }
     token name_of_10000:sym<German> { 'zehntausend' | 'zehn-tausend' }
-    token name_of_1000000:sym<German> { 'eine Million' | 'Million' }
-    token name_of_1000000000:sym<German> { 'eine Milliarde' | 'Milliarde' }
-    token name_of_1000000000000:sym<German> { 'eine Billion' | 'Billion' }
+    token name_of_1000000:sym<German> {:i 'eine Million' | 'Million' }
+    token name_of_1000000000:sym<German> {:i 'eine Milliarde' | 'Milliarde' }
+    token name_of_1000000000000:sym<German> {:i 'eine Billion' | 'Billion' }
+    token name_of_bil:sym<German> {:i 'eine Milliarde' | 'Milliarde' }
+    token name_of_tril:sym<German> {:i 'eine Billion' | 'Billion' }
 
-    token worded-number-and-conjunction:sym<German> { 'und' }
+    token worded-number-and-conjunction:sym<German> {'und'}
 }
