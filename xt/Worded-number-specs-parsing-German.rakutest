@@ -17,7 +17,8 @@ sub parse-func(Str:D $spec) {
             actions => Lingua::NumericWordForms::Actions::German::WordedNumberSpec.new).made,
 }
 
-plan 42;
+plan *;
+
 ## 1
 is parse-func('null'), 0,
 'null';
@@ -185,3 +186,5 @@ is parse-func('acht-hundert-sieben-und-sechzig Milliarden fünf-hundert-ein-und-
 ## 42
 is parse-func('neun-hundert-achtzig Milliarden sieben-hundert-sechs-und-dreißig Millionen ein-hundert-acht-und-dreißig-tausend-acht-hundert-neun-und-dreißig'), 980736138839,
 'neun-hundert-achtzig Milliarden sieben-hundert-sechs-und-dreißig Millionen ein-hundert-acht-und-dreißig-tausend-acht-hundert-neun-und-dreißig';
+
+done-testing;
