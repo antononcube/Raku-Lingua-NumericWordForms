@@ -7,7 +7,7 @@
 [![https://raku.land/zef:antononcube/Lingua::NumericWordForms](https://raku.land/zef:antononcube/Lingua::NumericWordForms/badges/downloads)](https://raku.land/zef:antononcube/Lingua::NumericWordForms)
 [![License: Artistic-2.0](https://img.shields.io/badge/License-Artistic%202.0-0298c3.svg)](https://opensource.org/licenses/Artistic-2.0)
 
-🇦🇿 :bulgaria: 🇨🇿 🇬🇧 🇫🇷 :greece: :iran: 🇯🇵 🇰🇿 :poland: 🇵🇹 🇷🇺 🇪🇸 :ukraine:
+🇦🇿 :bulgaria: 🇨🇿 🇬🇧 🇫🇷 🇩🇪 :greece: :iran: 🇯🇵 🇰🇿 :poland: 🇵🇹 🇷🇺 🇪🇸 :ukraine:
 
 ## Introduction
 
@@ -169,7 +169,7 @@ Here we retrieve a list of all supported languages:
 from-numeric-word-form('languages').sort
 ```
 ```
-# (azerbaijani azərbaycan bulgarian czech english español français french greek japanese kazakh korean koremutake persian polish polski portuguese português qazaq russian spanish ukrainian český ελληνικά български казак руский український қазақ 日本語 한국어)
+# (azerbaijani azərbaycan bulgarian czech deutsch english español français french german greek japanese kazakh korean koremutake persian polish polski portuguese português qazaq russian spanish ukrainian český ελληνικά български казак руский український қазақ 日本語 한국어)
 ```
 
 **Remark:** In the list above some languages appear twice, with both their English and native names.
@@ -344,7 +344,7 @@ to-numeric-word-form --help
 #   to-numeric-word-form [-l|--lang=<Str>] [-f|--format=<Str>] -- Converts numbers from a (pipeline) input into numeric word forms.
 #   
 #     <text>               String of one or more numbers to convert into numeric word forms. (Multiple numbers can be separated with ';'.)
-#     -l|--lang=<Str>      Language (one of 'English' or 'Koremutake'.) [default: 'English']
+#     -l|--lang=<Str>      Language (one of 'Bulgarian', 'English', or 'Koremutake'.) [default: 'English']
 #     -f|--format=<Str>    Output format one of 'text', 'lines', or 'raku'. [default: 'text']
 #     [<words> ...]        Number strings to be converted into numeric word forms.
 ```
@@ -413,6 +413,9 @@ The following TODO items are ordered by priority, the most important are on top.
         - Very similar to Azerbaijani.
           - The Kazakh action class should inherit the Azerbaijani one.
           
+   - [X] DONE German
+        - As expected, required some refactoring to handle the agglutinative word forms. 
+     
    - [ ] TODO Korean
    
      - Implemented to a point.
