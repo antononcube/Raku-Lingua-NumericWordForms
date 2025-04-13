@@ -409,7 +409,6 @@ The following TODO items are ordered by priority, the most important are on top.
    - [X] DONE Azerbaijani
    
    - [X] DONE Kazakh
-        -  [X] Implemented, pending proofreading.
         - Very similar to Azerbaijani.
           - The Kazakh action class should inherit the Azerbaijani one.
           
