@@ -494,3 +494,7 @@ test(Ukrainian):Added new tests.
 Anton Antonov   
 Florida, USA   
 April-May, 2021
+October 2022 (updated, separate executable doc)
+October 2022 (updated, Azerbaijani parsing)
+June, 2024 (updated, Bulgarian generation)
+March-April, 2025 (updated, Kazakh & German parsing)
