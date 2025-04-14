@@ -10,7 +10,7 @@ role Lingua::NumericWordForms::Roles::Romanian::WordedNumberSpec
     regex worded_number_up_to_100:sym<Romanian> { <name_of_10s> [[\h* <.worded-number-and-conjunction> \h* | \h+]? <name_1_to_10>]? || <name_up_to_19> }
 
     token name_of_0:sym<Romanian> { 'zero' | 'zero' }
-    token name_of_1:sym<Romanian> { 'unu' | 'o' }
+    token name_of_1:sym<Romanian> { 'unu' | 'una' | 'o' }
     token name_of_2:sym<Romanian> { 'doi' | 'două' }
     token name_of_3:sym<Romanian> { 'trei' | 'trei' }
     token name_of_4:sym<Romanian> { 'patru' | 'patru' }
@@ -37,13 +37,13 @@ role Lingua::NumericWordForms::Roles::Romanian::WordedNumberSpec
     token name_of_70:sym<Romanian> { 'şaptezeci' | 'şaptezeci' }
     token name_of_80:sym<Romanian> { 'optzeci' | 'optzeci' }
     token name_of_90:sym<Romanian> { 'nouăzeci' | 'nouăzeci' }
-    token name_of_100:sym<Romanian> { 'una' \h+ 'sută' | 'o' \h+ 'sută' | 'sută' | 'sute'}
+    token name_of_100:sym<Romanian> { 'una' \h+ 'sută' | 'o' \h+ 'sută' | 'sută' | 'sute' }
     token suffix_for_100:sym<Romanian>  {'sute'}
-    token name_of_1000:sym<Romanian> { 'una' \h+ 'mie' | 'mie' }
+    token name_of_1000:sym<Romanian> { 'una' \h+ 'mie' | 'mie' | 'una' \h+ 'mii' | 'mii' }
     token name_of_10000:sym<Romanian> { 'zece' \h+ 'mii' | 'mii' }
-    token name_of_1000000:sym<Romanian> { 'unu' \h+ 'milion' | 'milion' }
-    token name_of_bil:sym<Romanian> { 'unu' \h+ 'miliard' | 'miliard' }
+    token name_of_1000000:sym<Romanian> { 'unu' \h+ 'milion' | 'milion' | 'milioane' }
+    token name_of_bil:sym<Romanian> { 'unu' \h+ 'miliard' | 'miliard' | 'miliarde' }
     token name_of_tril:sym<Romanian> { 'unu' \h+ 'bilion' | 'bilion' }
 
-    token worded-number-and-conjunction:sym<Romanian> {'și' | 'şi'}
+    token worded-number-and-conjunction:sym<Romanian> { 'și' | 'şi' }
 }
