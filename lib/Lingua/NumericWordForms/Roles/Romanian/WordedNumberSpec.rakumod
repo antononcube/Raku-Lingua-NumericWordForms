@@ -37,12 +37,12 @@ role Lingua::NumericWordForms::Roles::Romanian::WordedNumberSpec
     token name_of_70:sym<Romanian> { 'şaptezeci' | 'şaptezeci' }
     token name_of_80:sym<Romanian> { 'optzeci' | 'optzeci' }
     token name_of_90:sym<Romanian> { 'nouăzeci' | 'nouăzeci' }
-    token name_of_100:sym<Romanian> { 'una' \h+ 'sută' | 'o' \h+ 'sută' | 'sută' | 'sute' }
+    token name_of_100:sym<Romanian> { 'una sută' | 'o sută' | 'sută' | 'sute' }
     token suffix_for_100:sym<Romanian>  {'sute'}
-    token name_of_1000:sym<Romanian> { 'una' \h+ 'mie' | 'mie' | 'una' \h+ 'mii' | 'mii' }
-    token name_of_1000000:sym<Romanian> { 'unu' \h+ 'milion' | 'milion' | 'milioane' }
-    token name_of_bil:sym<Romanian> { 'unu' \h+ 'miliard' | 'miliard' | 'miliarde' }
-    token name_of_tril:sym<Romanian> { 'unu' \h+ 'bilion' | 'bilion' }
+    token name_of_1000:sym<Romanian> { 'una mie' | 'mie' | 'una mii' | 'mii' }
+    token name_of_1000000:sym<Romanian> { 'unu milion' | 'milion' | 'milioane' }
+    token name_of_bil:sym<Romanian> { 'unu miliard' | 'miliard' | 'miliarde' }
+    token name_of_tril:sym<Romanian> { 'unu bilion' | 'bilion' }
 
     token worded-number-and-conjunction:sym<Romanian> { 'și' | 'şi' }
 }
