@@ -7,7 +7,7 @@
 [![https://raku.land/zef:antononcube/Lingua::NumericWordForms](https://raku.land/zef:antononcube/Lingua::NumericWordForms/badges/downloads)](https://raku.land/zef:antononcube/Lingua::NumericWordForms)
 [![License: Artistic-2.0](https://img.shields.io/badge/License-Artistic%202.0-0298c3.svg)](https://opensource.org/licenses/Artistic-2.0)
 
-🇦🇿 :bulgaria: 🇨🇿 🇬🇧 🇫🇷 🇩🇪 :greece: :iran: 🇯🇵 🇰🇿 :poland: 🇵🇹 🇷🇺 🇪🇸 :ukraine:
+🇦🇿 :bulgaria: 🇨🇿 🇬🇧 🇫🇷 🇩🇪 :greece: :iran: 🇯🇵 🇰🇿 :poland: 🇵🇹 🇷🇴 🇷🇺 🇪🇸 :ukraine:
 
 ## Introduction
 
@@ -169,7 +169,7 @@ Here we retrieve a list of all supported languages:
 from-numeric-word-form('languages').sort
 ```
 ```
-# (azerbaijani azərbaycan bulgarian czech deutsch english español français french german greek japanese kazakh korean koremutake persian polish polski portuguese português qazaq russian spanish ukrainian český ελληνικά български казак руский український қазақ 日本語 한국어)
+# (azerbaijani azərbaycan bulgarian czech deutsch english español français french german greek japanese kazakh korean koremutake persian polish polski portuguese português qazaq romanian română russian spanish ukrainian český ελληνικά български казак руский український қазақ 日本語 한국어)
 ```
 
 **Remark:** In the list above some languages appear twice, with both their English and native names.
@@ -415,6 +415,8 @@ The following TODO items are ordered by priority, the most important are on top.
    - [X] DONE German
         - As expected, required some refactoring to handle the agglutinative word forms. 
      
+   - [X] DONE Romanian
+   
    - [ ] TODO Korean
    
      - Implemented to a point.
@@ -474,7 +476,11 @@ test(Ukrainian):Added new tests.
   - Proofreading the Czech language unit tests and suggesting corrections.
 - Thanks to Aikerim Belispayeva, [aikerimbelis](https://github.com/aikerimbelis), for:
   - Proofreading the Kazah language unit tests and suggesting corrections.
-    
+- Thanks to Herbert Breunung, [lichtkind](https://github.com/lichtkind), for:
+    - Proofreading the German language unit tests
+    - Suggesting corrections and extensions
+    - Verifying the numeric word forms parsing with the [DSL Translations](https://antononcube.shinyapps.io/DSL-evaluations/) interface
+  
 ------
 
 ## References
