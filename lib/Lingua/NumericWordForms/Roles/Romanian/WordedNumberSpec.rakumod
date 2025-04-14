@@ -40,7 +40,6 @@ role Lingua::NumericWordForms::Roles::Romanian::WordedNumberSpec
     token name_of_100:sym<Romanian> { 'una' \h+ 'sută' | 'o' \h+ 'sută' | 'sută' | 'sute' }
     token suffix_for_100:sym<Romanian>  {'sute'}
     token name_of_1000:sym<Romanian> { 'una' \h+ 'mie' | 'mie' | 'una' \h+ 'mii' | 'mii' }
-    token name_of_10000:sym<Romanian> { 'zece' \h+ 'mii' | 'mii' }
     token name_of_1000000:sym<Romanian> { 'unu' \h+ 'milion' | 'milion' | 'milioane' }
     token name_of_bil:sym<Romanian> { 'unu' \h+ 'miliard' | 'miliard' | 'miliarde' }
     token name_of_tril:sym<Romanian> { 'unu' \h+ 'bilion' | 'bilion' }
