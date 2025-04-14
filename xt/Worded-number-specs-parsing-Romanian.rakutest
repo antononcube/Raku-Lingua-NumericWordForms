@@ -1,0 +1,190 @@
+use Test;
+
+use lib <. ./lib>;
+
+use Lingua::NumericWordForms::Roles::Romanian::WordedNumberSpec;
+use Lingua::NumericWordForms::Actions::Romanian::WordedNumberSpec;
+
+grammar ParseObj
+        does Lingua::NumericWordForms::Roles::Romanian::WordedNumberSpec {
+    rule TOP { <numeric-word-form>  }
+};
+
+sub parse-func(Str:D $spec) {
+    ParseObj.parse(
+            $spec.lc,
+            rule => 'numeric-word-form',
+            actions => Lingua::NumericWordForms::Actions::Romanian::WordedNumberSpec.new).made,
+}
+
+plan 42;
+
+## 1
+is parse-func('zero'), 0,
+'zero';
+
+## 2
+is parse-func('trei'), 3,
+'trei';
+
+## 3
+is parse-func('patru'), 4,
+'patru';
+
+## 4
+is parse-func('nouă'), 9,
+'nouă';
+
+## 5
+is parse-func('optsprezece'), 18,
+'optsprezece';
+
+## 6
+is parse-func('nouăsprezece'), 19,
+'nouăsprezece';
+
+## 7
+is parse-func('douăzeci şi unu'), 21,
+'douăzeci şi unu';
+
+## 8
+is parse-func('douăzeci şi nouă'), 29,
+'douăzeci şi nouă';
+
+## 9
+is parse-func('cincizeci şi şase'), 56,
+'cincizeci şi şase';
+
+## 10
+is parse-func('şaptezeci şi şase'), 76,
+'şaptezeci şi şase';
+
+## 11
+is parse-func('optzeci şi cinci'), 85,
+'optzeci şi cinci';
+
+## 12
+is parse-func('nouăzeci şi şapte'), 97,
+'nouăzeci şi şapte';
+
+## 13
+is parse-func('una sută şasezeci şi trei'), 163,
+'una sută şasezeci şi trei';
+
+## 14
+is parse-func('una sută şasezeci şi opt'), 168,
+'una sută şasezeci şi opt';
+
+## 15
+is parse-func('două sute patru'), 204,
+'două sute patru';
+
+## 16
+is parse-func('două sute şasezeci'), 260,
+'două sute şasezeci';
+
+## 17
+is parse-func('patru sute douăzeci şi şapte'), 427,
+'patru sute douăzeci şi şapte';
+
+## 18
+is parse-func('opt sute patru'), 804,
+'opt sute patru';
+
+## 19
+is parse-func('două mii şaptezeci şi doi'), 2072,
+'două mii şaptezeci şi doi';
+
+## 20
+is parse-func('două mii două sute douăzeci şi opt'), 2228,
+'două mii două sute douăzeci şi opt';
+
+## 21
+is parse-func('cinci mii cinci sute douăzeci şi opt'), 5528,
+'cinci mii cinci sute douăzeci şi opt';
+
+## 22
+is parse-func('cinci mii opt sute cincizeci'), 5850,
+'cinci mii opt sute cincizeci';
+
+## 23
+is parse-func('şase mii cinci sute opt'), 6508,
+'şase mii cinci sute opt';
+
+## 24
+is parse-func('şapte mii patru sute doisprezece'), 7412,
+'şapte mii patru sute doisprezece';
+
+## 25
+is parse-func('două sute patruzeci şi cinci mii trei sute douăzeci şi patru'), 245324,
+'două sute patruzeci şi cinci mii trei sute douăzeci şi patru';
+
+## 26
+is parse-func('şase sute cincisprezece mii două sute nouăzeci şi opt'), 615298,
+'şase sute cincisprezece mii două sute nouăzeci şi opt';
+
+## 27
+is parse-func('şapte sute treizeci şi una mii una sută şase'), 731106,
+'şapte sute treizeci şi una mii una sută şase';
+
+## 28
+is parse-func('opt sute douăzeci şi trei mii opt sute douăzeci şi patru'), 823824,
+'opt sute douăzeci şi trei mii opt sute douăzeci şi patru';
+
+## 29
+is parse-func('opt sute nouăzeci şi una mii opt sute şaptezeci şi unu'), 891871,
+'opt sute nouăzeci şi una mii opt sute şaptezeci şi unu';
+
+## 30
+is parse-func('nouă sute patruzeci şi una mii cinci sute şase'), 941506,
+'nouă sute patruzeci şi una mii cinci sute şase';
+
+## 31
+is parse-func('cincizeci şi cinci milioane trei sute nouăzeci mii cinci sute douăzeci şi şapte'), 55390527,
+'cincizeci şi cinci milioane trei sute nouăzeci mii cinci sute douăzeci şi şapte';
+
+## 32
+is parse-func('şaptezeci şi şase milioane şapte sute douăzeci şi patru mii patru sute treizeci şi şase'), 76724436,
+'şaptezeci şi şase milioane şapte sute douăzeci şi patru mii patru sute treizeci şi şase';
+
+## 33
+is parse-func('două sute patruzeci şi şapte milioane cinci sute şapte mii optsprezece'), 247507018,
+'două sute patruzeci şi şapte milioane cinci sute şapte mii optsprezece';
+
+## 34
+is parse-func('cinci sute şasesprezece milioane şapte sute cincizeci şi trei mii trei sute şaptezeci şi opt'), 516753378,
+'cinci sute şasesprezece milioane şapte sute cincizeci şi trei mii trei sute şaptezeci şi opt';
+
+## 35
+is parse-func('opt sute patruzeci şi două milioane şapte sute patru mii şapte sute optzeci şi trei'), 842704783,
+'opt sute patruzeci şi două milioane şapte sute patru mii şapte sute optzeci şi trei';
+
+## 36
+is parse-func('nouă sute optzeci şi opt milioane nouă sute şasezeci şi una mii trei sute douăzeci şi patru'), 988961324,
+'nouă sute optzeci şi opt milioane nouă sute şasezeci şi una mii trei sute douăzeci şi patru';
+
+## 37
+is parse-func('cinci sute optzeci şi şapte miliarde şapte sute douăzeci şi şapte milioane două sute treizeci mii una sută nouăzeci şi nouă'), 587727230199,
+'cinci sute optzeci şi şapte miliarde şapte sute douăzeci şi şapte milioane două sute treizeci mii una sută nouăzeci şi nouă';
+
+## 38
+is parse-func('şase sute douăzeci şi şapte miliarde cinci sute optzeci milioane nouă sute treizeci şi cinci mii şaptezeci şi doi'), 627580935072,
+'şase sute douăzeci şi şapte miliarde cinci sute optzeci milioane nouă sute treizeci şi cinci mii şaptezeci şi doi';
+
+## 39
+is parse-func('şapte sute optzeci şi patru miliarde şase sute treizeci milioane şapte sute treizeci şi opt mii una sută douăzeci'), 784630738120,
+'şapte sute optzeci şi patru miliarde şase sute treizeci milioane şapte sute treizeci şi opt mii una sută douăzeci';
+
+## 40
+is parse-func('opt sute patru miliarde trei sute nouăzeci şi şapte milioane patru sute şasesprezece mii şapte sute treizeci şi şase'), 804397416736,
+'opt sute patru miliarde trei sute nouăzeci şi şapte milioane patru sute şasesprezece mii şapte sute treizeci şi şase';
+
+## 41
+is parse-func('opt sute şasezeci şi şapte miliarde cinci sute şasezeci şi unu milioane trei sute optzeci mii patru sute patrusprezece'), 867561380414,
+'opt sute şasezeci şi şapte miliarde cinci sute şasezeci şi unu milioane trei sute optzeci mii patru sute patrusprezece';
+
+## 42
+is parse-func('nouă sute optzeci miliarde şapte sute treizeci şi şase milioane una sută treizeci şi opt mii opt sute treizeci şi nouă'), 980736138839,
+'nouă sute optzeci miliarde şapte sute treizeci şi şase milioane una sută treizeci şi opt mii opt sute treizeci şi nouă';
+
+done-testing;
