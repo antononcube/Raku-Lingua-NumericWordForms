@@ -240,7 +240,7 @@ translate-numeric-word-form('two hundred thousand and five', 'English' => 'Bulga
 [Koremutake](https://shorl.com/koremutake.php) 
 only.
 
-Here is are Russian to Koremutake example:
+Here is a Russian to Koremutake example:
 
 ```perl6
 my $numForm = "три тысячи восемьсот девяносто";
