@@ -212,4 +212,18 @@ is parse-func('opt sute şasezeci şi şapte miliarde cinci sute şasezeci şi u
 is parse-func('nouă sute optzeci miliarde şapte sute treizeci şi şase milioane una sută treizeci şi opt mii opt sute treizeci şi nouă'), 980736138839,
 'nouă sute optzeci miliarde şapte sute treizeci şi şase milioane una sută treizeci şi opt mii opt sute treizeci şi nouă';
 
+#==========================================================
+# Bugs
+#==========================================================
+
+## 43
+subtest {
+    my $nf1 = 'un milion nouă sute nouăzeci si nouă de mii nouă sute nouăzeci si nouă';
+    #say ParseObj.parse($nf);
+    is parse-func($nf1), 1_999_999, '1_999_999 with marks';
+
+    my $nf2 = 'un milion noua sute nouazeci si noua de mii noua sute nouazeci si noua';
+    is parse-func($nf2), 1_999_999, '1_999_999 without marks';
+}
+
 done-testing;
