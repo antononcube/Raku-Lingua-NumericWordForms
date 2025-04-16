@@ -394,6 +394,8 @@ test(Ukrainian):Added new tests.
     - Proofreading the German language unit tests
     - Suggesting corrections and extensions
     - Verifying the numeric word forms parsing with the [DSL Translations](https://antononcube.shinyapps.io/DSL-evaluations/) interface
+- Thanks to Nora Popescu for:
+  - Proofreading bug reporting and suggestions for Romanian language parser. 
   
 ------
 
