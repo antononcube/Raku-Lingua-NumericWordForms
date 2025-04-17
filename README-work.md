@@ -421,4 +421,4 @@ April-May, 2021
 October, 2022 (updated, separate executable doc)   
 March, 2023 (updated, Azerbaijani parsing)   
 June, 2024 (updated, Bulgarian generation)   
-March-April, 2025 (updated, Kazakh, German, and Romanian parsing)   
+March-April, 2025 (updated; Kazakh, German, and Romanian parsing)   
