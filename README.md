@@ -483,7 +483,7 @@ test(Ukrainian):Added new tests.
     - Suggesting corrections and extensions
     - Verifying the German numeric word forms parsing with the [DSL Translations](https://antononcube.shinyapps.io/DSL-evaluations/) interface
 - Thanks to Nora Popescu for:
-    - Bug reporting and suggestions for the Romanian language parser.
+    - Bug reporting and suggestions for the Romanian language parser
     - Verifying the Romanian numeric word forms parsing with the [DSL Translations](https://antononcube.shinyapps.io/DSL-evaluations/) interface
 
 ------
