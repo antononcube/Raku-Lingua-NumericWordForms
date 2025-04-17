@@ -373,7 +373,8 @@ The following TODO items are ordered by priority, the most important are on top.
    - [X] DONE English
    - [X] DONE Koremutake
    - [ ] TODO Russian
-   - [ ] TODO General algorithm
+   - [X] CANCELED General algorithm
+     - Canceled because it is a hard problem and Large Language Models (LLMs) can do it.
     
 4. [ ] TODO Documentation of the general programming approach.
 
@@ -383,6 +384,7 @@ The following TODO items are ordered by priority, the most important are on top.
    - [ ] TODO How to implement / include a new language?
    - [ ] TODO How the random numbers test files were made?
    - [ ] TODO Profiling, limitations, alternatives.
+   - [ ] TODO Comparison with LLM-based conversions.
 
 5. [ ] TODO Full, consistent Persian numbers parsing. 
    - Currently, Persian number parsing works only for numbers less than 101.  
@@ -479,9 +481,10 @@ test(Ukrainian):Added new tests.
 - Thanks to Herbert Breunung, [lichtkind](https://github.com/lichtkind), for:
     - Proofreading the German language unit tests
     - Suggesting corrections and extensions
-    - Verifying the numeric word forms parsing with the [DSL Translations](https://antononcube.shinyapps.io/DSL-evaluations/) interface
+    - Verifying the German numeric word forms parsing with the [DSL Translations](https://antononcube.shinyapps.io/DSL-evaluations/) interface
 - Thanks to Nora Popescu for:
-    - Proofreading bug reporting and suggestions for Romanian language parser.
+    - Bug reporting and suggestions for the Romanian language parser.
+    - Verifying the Romanian numeric word forms parsing with the [DSL Translations](https://antononcube.shinyapps.io/DSL-evaluations/) interface
 
 ------
 
