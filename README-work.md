@@ -187,14 +187,14 @@ translate-numeric-word-form('хиляда двадесет и три', 'Bulgaria
 translate-numeric-word-form('two hundred thousand and five', 'English' => 'Bulgarian');
 ```
 
-**Remark:** Currently that function translates to Bulgarian, English, and 
-[Koremutake](https://shorl.com/koremutake.php) 
-only.
+**Remark:** Currently that function translates to Bulgarian, English, 
+[Koremutake](https://shorl.com/koremutake.php), and Russian.
+only (from any of the package languages.)
 
-Here is a Russian to Koremutake example:
+Here is a Spanish to Koremutake example:
 
 ```perl6
-my $numForm = "три тысячи восемьсот девяносто";
+my $numForm = "tres mil ochocientos noventa";
 my $trRes = translate-numeric-word-form($numForm, 'Automatic' => 'Koremutake');
 say "Given           : $numForm";
 say "To Koremutake   : $trRes";
@@ -282,11 +282,11 @@ The following TODO items are ordered by priority, the most important are on top.
 
 2. [X] DONE Automatic determination of the language
 
-3. [ ] TODO Word form generation:
+3. [X] DONE Word form generation:
    - [X] DONE Bulgarian
    - [X] DONE English
    - [X] DONE Koremutake
-   - [ ] TODO Russian
+   - [X] DONE Russian
    - [X] CANCELED General algorithm
        - Canceled because it is a hard problem and Large Language Models (LLMs) can do it.
 
@@ -421,4 +421,4 @@ April-May, 2021
 October, 2022 (updated, separate executable doc)   
 March, 2023 (updated, Azerbaijani parsing)   
 June, 2024 (updated, Bulgarian generation)   
-March-April, 2025 (updated; Kazakh, German, and Romanian parsing)   
+March-April, 2025 (updated; Kazakh, German, and Romanian parsing; Russian generation)   

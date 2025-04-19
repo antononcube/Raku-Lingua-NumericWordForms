@@ -236,21 +236,21 @@ translate-numeric-word-form('two hundred thousand and five', 'English' => 'Bulga
 # двеста хиляди и пет
 ```
 
-**Remark:** Currently that function translates to Bulgarian, English, and 
-[Koremutake](https://shorl.com/koremutake.php) 
-only.
+**Remark:** Currently that function translates to Bulgarian, English, 
+[Koremutake](https://shorl.com/koremutake.php), and Russian.
+only (from any of the package languages.)
 
-Here is a Russian to Koremutake example:
+Here is a Spanish to Koremutake example:
 
 ```perl6
-my $numForm = "три тысячи восемьсот девяносто";
+my $numForm = "tres mil ochocientos noventa";
 my $trRes = translate-numeric-word-form($numForm, 'Automatic' => 'Koremutake');
 say "Given           : $numForm";
 say "To Koremutake   : $trRes";
 say "From Koremutake : {from-numeric-word-form($trRes)}";
 ```
 ```
-# Given           : три тысячи восемьсот девяносто
+# Given           : tres mil ochocientos noventa
 # To Koremutake   : jami
 # From Koremutake : 3890
 ```
@@ -368,14 +368,14 @@ The following TODO items are ordered by priority, the most important are on top.
 
 2. [X] DONE Automatic determination of the language
 
-3. [ ] TODO Word form generation:
+3. [X] DONE Word form generation:
    - [X] DONE Bulgarian
    - [X] DONE English
    - [X] DONE Koremutake
-   - [ ] TODO Russian
+   - [X] DONE Russian
    - [X] CANCELED General algorithm
-     - Canceled because it is a hard problem and Large Language Models (LLMs) can do it.
-    
+       - Canceled because it is a hard problem and Large Language Models (LLMs) can do it.
+
 4. [ ] TODO Documentation of the general programming approach.
 
    - [ ] TODO What are the main challenges?
@@ -385,7 +385,7 @@ The following TODO items are ordered by priority, the most important are on top.
    - [ ] TODO How the random numbers test files were made?
    - [ ] TODO Profiling, limitations, alternatives.
    - [ ] TODO Comparison with LLM-based conversions.
-
+   
 5. [ ] TODO Full, consistent Persian numbers parsing. 
    - Currently, Persian number parsing works only for numbers less than 101.  
    
@@ -479,13 +479,13 @@ test(Ukrainian):Added new tests.
 - Thanks to Aikerim Belispayeva, [aikerimbelis](https://github.com/aikerimbelis), for:
   - Proofreading the Kazah language unit tests and suggesting corrections.
 - Thanks to Herbert Breunung, [lichtkind](https://github.com/lichtkind), for:
-    - Proofreading the German language unit tests
-    - Suggesting corrections and extensions
-    - Verifying the German numeric word forms parsing with the [DSL Translations](https://antononcube.shinyapps.io/DSL-evaluations/) interface
+  - Proofreading the German language unit tests
+  - Suggesting corrections and extensions
+  - Verifying the German numeric word forms parsing with the [DSL Translations](https://antononcube.shinyapps.io/DSL-evaluations/) interface
 - Thanks to Nora Popescu for:
-    - Bug reporting and suggestions for the Romanian language parser
-    - Verifying the Romanian numeric word forms parsing with the [DSL Translations](https://antononcube.shinyapps.io/DSL-evaluations/) interface
-
+  - Bug reporting and suggestions for the Romanian language parser
+  - Verifying the Romanian numeric word forms parsing with the [DSL Translations](https://antononcube.shinyapps.io/DSL-evaluations/) interface
+  
 ------
 
 ## References
@@ -507,4 +507,4 @@ April-May, 2021
 October, 2022 (updated, separate executable doc)   
 March, 2023 (updated, Azerbaijani parsing)   
 June, 2024 (updated, Bulgarian generation)   
-March-April, 2025 (updated; Kazakh, German, and Romanian parsing)   
+March-April, 2025 (updated; Kazakh, German, and Romanian parsing; Russian generation)   
