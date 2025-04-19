@@ -65,9 +65,8 @@ zef install https://github.com/antononcube/Raku-Lingua-NumericWordForms.git
 ### Generation 
 
 The generation of numeric word forms is a *secondary* goal of this package.
-Currently only generation of Bulgarian, English, and [Koremutake](https://shorl.com/koremutake.php) 
+Currently only generation of Bulgarian, English, [Koremutake](https://shorl.com/koremutake.php), and Russian 
 numeric word forms are implemented. 
-(I plan to implement Russian word forms generation soon...)
 Here are examples:
 
 ```perl6
@@ -75,11 +74,13 @@ use Lingua::NumericWordForms;
 say to-numeric-word-form(8093);
 say to-numeric-word-form(8093, 'Bulgarian');
 say to-numeric-word-form(8093, 'Koremutake');
+say to-numeric-word-form(8093, 'Russian');
 ```
 ```
 # eight thousand, ninety three
 # осем хиляди и деветдесет и три
 # pohy
+# восемь тысяч девяносто три
 ```
 
 The first argument of `to-numeric-word-form` can be:
