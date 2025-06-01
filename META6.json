@@ -1,7 +1,7 @@
 {
   "name": "Lingua::NumericWordForms",
   "description": "Lingua::NumericWordForms has generators, parsers, and interpreters of numeric word forms in different languages.",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "perl": "6.d",
   "authors": [
     "Anton Antonov"
@@ -12,6 +12,7 @@
   "test-depends": [],
   "provides": {
     "Lingua::NumericWordForms": "lib/Lingua/NumericWordForms/NumericWordForms.rakumod",
+    "Lingua::NumericWordForms::Actions::Armenian::WordedNumberSpec": "lib/Lingua/NumericWordForms/Actions/Armenian/WordedNumberSpec.rakumod",
     "Lingua::NumericWordForms::Actions::Azerbaijani::WordedNumberSpec": "lib/Lingua/NumericWordForms/Actions/Azerbaijani/WordedNumberSpec.rakumod",
     "Lingua::NumericWordForms::Actions::Bulgarian::WordedNumberSpec": "lib/Lingua/NumericWordForms/Actions/Bulgarian/WordedNumberSpec.rakumod",
     "Lingua::NumericWordForms::Actions::Czech::WordedNumberSpec": "lib/Lingua/NumericWordForms/Actions/Czech/WordedNumberSpec.rakumod",
@@ -33,6 +34,7 @@
     "Lingua::NumericWordForms::Actions::WordedNumberSpec": "lib/Lingua/NumericWordForms/Actions/WordedNumberSpec.rakumod",
     "Lingua::NumericWordForms::Generators::Bulgarian": "lib/Lingua/NumericWordForms/Generators/Bulgarian.rakumod",
     "Lingua::NumericWordForms::Generators::Russian": "lib/Lingua/NumericWordForms/Generators/Russian.rakumod",
+    "Lingua::NumericWordForms::Roles::Armenian::WordedNumberSpec": "lib/Lingua/NumericWordForms/Roles/Armenian/WordedNumberSpec.rakumod",
     "Lingua::NumericWordForms::Roles::Azerbaijani::WordedNumberSpec": "lib/Lingua/NumericWordForms/Roles/Azerbaijani/WordedNumberSpec.rakumod",
     "Lingua::NumericWordForms::Roles::Bulgarian::WordedNumberSpec": "lib/Lingua/NumericWordForms/Roles/Bulgarian/WordedNumberSpec.rakumod",
     "Lingua::NumericWordForms::Roles::Czech::WordedNumberSpec": "lib/Lingua/NumericWordForms/Roles/Czech/WordedNumberSpec.rakumod",
