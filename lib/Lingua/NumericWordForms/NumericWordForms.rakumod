@@ -1,5 +1,6 @@
 unit module Lingua::NumericWordForms;
 
+use Lingua::NumericWordForms::Roles::Armenian::WordedNumberSpec;
 use Lingua::NumericWordForms::Roles::Azerbaijani::WordedNumberSpec;
 use Lingua::NumericWordForms::Roles::Bulgarian::WordedNumberSpec;
 use Lingua::NumericWordForms::Roles::Czech::WordedNumberSpec;
@@ -19,6 +20,7 @@ use Lingua::NumericWordForms::Roles::Russian::WordedNumberSpec;
 use Lingua::NumericWordForms::Roles::Spanish::WordedNumberSpec;
 use Lingua::NumericWordForms::Roles::Ukrainian::WordedNumberSpec;
 
+use Lingua::NumericWordForms::Actions::Armenian::WordedNumberSpec;
 use Lingua::NumericWordForms::Actions::Azerbaijani::WordedNumberSpec;
 use Lingua::NumericWordForms::Actions::Bulgarian::WordedNumberSpec;
 use Lingua::NumericWordForms::Actions::Czech::WordedNumberSpec;
@@ -46,6 +48,7 @@ use Lingua::NumericWordForms::Generators::Russian;
 # Parsing
 #===========================================================
 my %langToAction =
+    "armenian"       => Lingua::NumericWordForms::Actions::Armenian::WordedNumberSpec,
     "azerbaijani"    => Lingua::NumericWordForms::Actions::Azerbaijani::WordedNumberSpec,
     "bulgarian"      => Lingua::NumericWordForms::Actions::Bulgarian::WordedNumberSpec,
     "czech"          => Lingua::NumericWordForms::Actions::Czech::WordedNumberSpec,
@@ -67,6 +70,7 @@ my %langToAction =
 
 
 my %langToActionExtended =
+    "հայերեն"        => Lingua::NumericWordForms::Actions::Armenian::WordedNumberSpec,
     "azərbaycan"     => Lingua::NumericWordForms::Actions::Azerbaijani::WordedNumberSpec,
     "český"          => Lingua::NumericWordForms::Actions::Czech::WordedNumberSpec,
     "español"        => Lingua::NumericWordForms::Actions::Spanish::WordedNumberSpec,
@@ -89,6 +93,7 @@ my %langToActionExtended =
 %langToAction = %langToAction , %langToActionExtended;
 
 my %langToRole =
+    "armenian"       => Lingua::NumericWordForms::Roles::Armenian::WordedNumberSpec,
     "azerbaijani"    => Lingua::NumericWordForms::Roles::Azerbaijani::WordedNumberSpec,
     "bulgarian"      => Lingua::NumericWordForms::Roles::Bulgarian::WordedNumberSpec,
     "czech"          => Lingua::NumericWordForms::Roles::Czech::WordedNumberSpec,
@@ -109,6 +114,7 @@ my %langToRole =
     "ukrainian"      => Lingua::NumericWordForms::Roles::Ukrainian::WordedNumberSpec;
 
 my %langToRoleExtended =
+    "հայերեն"        => Lingua::NumericWordForms::Roles::Armenian::WordedNumberSpec,
     "azərbaycan"     => Lingua::NumericWordForms::Roles::Azerbaijani::WordedNumberSpec,
     "český"          => Lingua::NumericWordForms::Roles::Czech::WordedNumberSpec,
     "español"        => Lingua::NumericWordForms::Roles::Spanish::WordedNumberSpec,
