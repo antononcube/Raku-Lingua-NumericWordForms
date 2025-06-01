@@ -7,7 +7,7 @@
 [![https://raku.land/zef:antononcube/Lingua::NumericWordForms](https://raku.land/zef:antononcube/Lingua::NumericWordForms/badges/downloads)](https://raku.land/zef:antononcube/Lingua::NumericWordForms)
 [![License: Artistic-2.0](https://img.shields.io/badge/License-Artistic%202.0-0298c3.svg)](https://opensource.org/licenses/Artistic-2.0)
 
-🇦🇿 :bulgaria: 🇨🇿 🇬🇧 🇫🇷 🇩🇪 :greece: :iran: 🇯🇵 🇰🇿 :poland: 🇵🇹 🇷🇴 🇷🇺 🇪🇸 :ukraine:
+🇦🇲 🇦🇿 :bulgaria: 🇨🇿 🇬🇧 🇫🇷 🇩🇪 :greece: :iran: 🇯🇵 🇰🇿 :poland: 🇵🇹 🇷🇴 🇷🇺 🇪🇸 :ukraine:
 
 ## Introduction
 
@@ -332,6 +332,8 @@ The following TODO items are ordered by priority, the most important are on top.
         - As expected, required some refactoring to handle the agglutinative word forms. 
      
    - [X] DONE Romanian
+   
+   - [X] DONE Armenian
    
    - [ ] TODO Korean
    
