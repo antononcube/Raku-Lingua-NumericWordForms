@@ -65,7 +65,7 @@ zef install https://github.com/antononcube/Raku-Lingua-NumericWordForms.git
 ### Generation 
 
 The generation of numeric word forms is a *secondary* goal of this package.
-Currently only generation of Bulgarian, English, [Koremutake](https://shorl.com/koremutake.php), and Russian 
+Currently only generation of Bulgarian, English, Japanese, [Koremutake](https://shorl.com/koremutake.php), and Russian 
 numeric word forms are implemented. 
 Here are examples:
 
@@ -75,6 +75,7 @@ say to-numeric-word-form(8093);
 say to-numeric-word-form(8093, 'Bulgarian');
 say to-numeric-word-form(8093, 'Koremutake');
 say to-numeric-word-form(8093, 'Russian');
+say to-numeric-word-form(8093, 'Japanese');
 ```
 
 The first argument of `to-numeric-word-form` can be:
@@ -285,6 +286,7 @@ The following TODO items are ordered by priority, the most important are on top.
 3. [X] DONE Word form generation:
    - [X] DONE Bulgarian
    - [X] DONE English
+   - [X] DONE Japanese
    - [X] DONE Koremutake
    - [X] DONE Russian
    - [X] CANCELED General algorithm
