@@ -1,0 +1,61 @@
+use Test;
+
+# use lib <. lib>;
+
+use Lingua::NumericWordForms;
+
+plan *;
+
+#-----------------------------------------------------------
+# Japanese numeric word form generation
+#-----------------------------------------------------------
+
+## 1
+is
+        to-numeric-word-form(1500, lang => 'Japanese'),
+        '千五百',
+        '千五百';
+
+## 2
+is
+        to-numeric-word-form(1023, 'Japanese'),
+        '千二十三',
+        '千二十三';
+
+## 3
+is
+        to-numeric-word-form(6023, 'Japanese'),
+        '六千二十三',
+        '六千二十三';
+
+## 4
+is
+        to-numeric-word-form(120_211, 'Japanese'),
+        '十二万二百十一',
+        '十二万二百十一';
+
+## 5
+is
+        to-numeric-word-form(456, 'Japanese'),
+        '四百五十六',
+        '四百五十六';
+
+## 6
+my @testPairs6 = [
+    33 => "三十三",
+    122 => "百二十二",
+    546 => "五百四十六",
+    12_091 => "一万二千九十一",
+    5_087_456 => "五百八万七千四百五十六"
+];
+
+subtest {
+        for @testPairs6 -> $p {
+        is-deeply
+                to-numeric-word-form($p.key, lang => 'Japanese'),
+                $p.value,
+                "list of numbers {$p.key}";
+        }
+}, "Check list of numbers";
+
+done-testing;
