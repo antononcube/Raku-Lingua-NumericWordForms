@@ -1,0 +1,61 @@
+use Test;
+
+use lib <. lib>;
+
+use Lingua::NumericWordForms;
+
+plan *;
+
+#-----------------------------------------------------------
+# Armenian numeric word form generation
+#-----------------------------------------------------------
+
+## 1
+is
+        to-numeric-word-form(1500, lang => 'Armenian'),
+        'մեկ հազար հինգ հարյուր',
+        'մեկ հազար հինգ հարյուր';
+
+## 2
+is
+        to-numeric-word-form(1023, 'Armenian'),
+        'մեկ հազար քսան երեք',
+        'մեկ հազար քսան երեք';
+
+## 3
+is
+        to-numeric-word-form(6023, 'Armenian'),
+        'վեց հազար քսան երեք',
+        'վեց հազար քսան երեք';
+
+## 4
+is
+        to-numeric-word-form(120_211, 'Armenian'),
+        'հարյուր քսան հազար երկու հարյուր տասն մեկ',
+        '(մեկ) հարյուր քսան հազար երկու հարյուր տասն մեկ';
+
+## 5
+is
+        to-numeric-word-form(456, 'Armenian'),
+        'չորս հարյուր հիսուն վեց',
+        'չորս հարյուր հիսուն վեց';
+
+## 6
+my @testPairs6 = [
+    33 => "三十三",
+    122 => "百二十二",
+    546 => "五百四十六",
+    12_091 => "一万二千九十一",
+    5_087_456 => "五百八万七千四百五十六"
+];
+
+subtest {
+        for @testPairs6 -> $p {
+        is-deeply
+                to-numeric-word-form($p.key, lang => 'Armenian'),
+                $p.value,
+                "list of numbers {$p.key}";
+        }
+}, "Check list of numbers";
+
+done-testing;

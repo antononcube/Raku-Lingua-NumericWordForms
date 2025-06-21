@@ -1,6 +1,6 @@
 use v6.d;
 
-class Lingua::NumericWordForms::Generators::Japenese {
+class Lingua::NumericWordForms::Generators::Japanese {
     my %KANJI = (
     0 => '',
     1 => '一',

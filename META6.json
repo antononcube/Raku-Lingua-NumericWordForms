@@ -32,6 +32,7 @@
     "Lingua::NumericWordForms::Actions::Spanish::WordedNumberSpec": "lib/Lingua/NumericWordForms/Actions/Spanish/WordedNumberSpec.rakumod",
     "Lingua::NumericWordForms::Actions::Ukrainian::WordedNumberSpec": "lib/Lingua/NumericWordForms/Actions/Ukrainian/WordedNumberSpec.rakumod",
     "Lingua::NumericWordForms::Actions::WordedNumberSpec": "lib/Lingua/NumericWordForms/Actions/WordedNumberSpec.rakumod",
+    "Lingua::NumericWordForms::Generators::Armenian": "lib/Lingua/NumericWordForms/Generators/Armenian.rakumod",
     "Lingua::NumericWordForms::Generators::Bulgarian": "lib/Lingua/NumericWordForms/Generators/Bulgarian.rakumod",
     "Lingua::NumericWordForms::Generators::Japanese": "lib/Lingua/NumericWordForms/Generators/Japanese.rakumod",
     "Lingua::NumericWordForms::Generators::Russian": "lib/Lingua/NumericWordForms/Generators/Russian.rakumod",
